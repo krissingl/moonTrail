@@ -1,6 +1,6 @@
 # Moon Trail
 
-> Oregon Trail on the Moon
+> Oregon Trail on the Moon- currently under developement.
 
 ### Game Summary
 
