@@ -1,11 +1,13 @@
 import React from 'react';
+import TitleMenu from './titleMenu.jsx';
 import classes from '../css/styles.css';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      page: 'start'
+      page: 'start',
+      landmark: 'Mare Crisium'
     }
     this.changePage = this.changePage.bind(this);
   }
@@ -20,14 +22,16 @@ class App extends React.Component {
       level = (
         <div>
           <h1>Welcome to Moon Trail!</h1>
-          <button>Start</button>
-          <button>ScoreBoard</button>
+          <button className={classes.startBtn}>Start</button>
         </div>
       )
     }
     return (
       <div>
-        {level}
+        <TitleMenu />
+        <div>
+          {level}
+        </div>
       </div>
     )
   }
