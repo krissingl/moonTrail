@@ -2,7 +2,9 @@ import React from 'react';
 
 const TitleMenu = () => {
   return (
-    <div>Ollo?</div>
+    <div>
+      <button>Main Menu</button>
+    </div>
   )
 }
 
