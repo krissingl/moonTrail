@@ -1,10 +1,11 @@
 import React from 'react';
+import classes from '../css/styles.css';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      page: 'home'
+      page: 'start'
     }
     this.changePage = this.changePage.bind(this);
   }
@@ -15,9 +16,16 @@ class App extends React.Component {
 
   render () {
     let level;
+    if (this.state.page === 'start') {
+      level = (
+        <div>
+          <h1>Welcome to Moon Trail!</h1>
+        </div>
+      )
+    }
     return (
       <div>
-        Ollo?
+        {level}
       </div>
     )
   }
