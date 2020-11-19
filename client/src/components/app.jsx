@@ -25,28 +25,28 @@ class App extends React.Component {
     let level;
     if (this.state.page === 'main') {
       level = (
-        <Main />
+        <Main changePage={this.changePage} />
       )
     } else if (this.state.page === 'intro') {
       level = (
-        <Intro />
+        <Intro changePage={this.changePage} />
       )
     } else if (this.state.page === 'naming') {
       level = (
-        <NameAstros />
+        <NameAstros changePage={this.changePage} />
       )
     } else if (this.state.page === 'rover') {
       level = (
-        <ChooseRover />
+        <ChooseRover changePage={this.changePage} />
       )
     } else if (this.state.page === 'supplies') {
       level = (
-        <ChooseSupplies />
+        <ChooseSupplies changePage={this.changePage} />
       )
     }
     return (
       <div>
-        <TitleMenu />
+        <TitleMenu changePage={this.changePage} />
         <div>
           {level}
         </div>

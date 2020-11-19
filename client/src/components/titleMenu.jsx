@@ -1,9 +1,9 @@
 import React from 'react';
 
-const TitleMenu = () => {
+const TitleMenu = ({ changePage }) => {
   return (
     <div>
-      <button>Main Menu</button>
+      <button onClick={() => { changePage('main'); }} >Main Menu</button>
     </div>
   )
 }
