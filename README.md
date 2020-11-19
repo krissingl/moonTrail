@@ -10,6 +10,6 @@ On their way back from a successful mission to Mars, our spacecraft temporarily 
 
 ### Paths
 
-Players can choose to take one of four paths to arrive at their destination.
+Players can choose to take one of four paths to arrive at their destination. The journey starts at Mare Crisium (the crash site) and ends at Herodotus.
 
 ![](PossiblePaths.jpg)
