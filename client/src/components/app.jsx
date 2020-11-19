@@ -1,11 +1,18 @@
 import React from 'react';
+import TitleMenu from './titleMenu.jsx';
+import Main from './main.jsx';
+import Intro from './intro.jsx';
+import NameAstros from './nameAstro.jsx';
+import ChooseRover from './chooseRover.jsx';
+import ChooseSupplies from './chooseSupplies.jsx';
 import classes from '../css/styles.css';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      page: 'start'
+      page: 'main',
+      landmark: 'Mare Crisium'
     }
     this.changePage = this.changePage.bind(this);
   }
@@ -16,18 +23,33 @@ class App extends React.Component {
 
   render () {
     let level;
-    if (this.state.page === 'start') {
+    if (this.state.page === 'main') {
       level = (
-        <div>
-          <h1>Welcome to Moon Trail!</h1>
-          <button>Start</button>
-          <button>ScoreBoard</button>
-        </div>
+        <Main />
+      )
+    } else if (this.state.page === 'intro') {
+      level = (
+        <Intro />
+      )
+    } else if (this.state.page === 'naming') {
+      level = (
+        <NameAstros />
+      )
+    } else if (this.state.page === 'rover') {
+      level = (
+        <ChooseRover />
+      )
+    } else if (this.state.page === 'supplies') {
+      level = (
+        <ChooseSupplies />
       )
     }
     return (
       <div>
-        {level}
+        <TitleMenu />
+        <div>
+          {level}
+        </div>
       </div>
     )
   }
