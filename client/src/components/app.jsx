@@ -1,9 +1,10 @@
 import React from 'react';
 import TitleMenu from './titleMenu.jsx';
+import Main from './main.jsx';
 import Intro from './intro.jsx';
 import NameAstros from './nameAstro.jsx';
 import ChooseRover from './chooseRover.jsx';
-import ChooseSupplies from './chooseSupplies';
+import ChooseSupplies from './chooseSupplies.jsx';
 import classes from '../css/styles.css';
 
 class App extends React.Component {
@@ -24,10 +25,7 @@ class App extends React.Component {
     let level;
     if (this.state.page === 'main') {
       level = (
-        <div>
-          <h1>Welcome to Moon Trail!</h1>
-          <button className={classes.startBtn}>Start</button>
-        </div>
+        <Main />
       )
     } else if (this.state.page === 'intro') {
       level = (
