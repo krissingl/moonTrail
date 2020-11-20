@@ -12,7 +12,10 @@ class App extends React.Component {
     super();
     this.state = {
       page: 'main',
-      landmark: 'Mare Crisium'
+      landmark: 'Mare Crisium',
+      rover: '',
+      crew: [],
+      supplies: []
     }
     this.changePage = this.changePage.bind(this);
   }
