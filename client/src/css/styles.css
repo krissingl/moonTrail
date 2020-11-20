@@ -1,0 +1,4 @@
+.crewNames {
+  display: flex;
+  flex-direction: column;
+}
