@@ -1,10 +1,10 @@
 import React from 'react';
 
-const NameAstros = () => {
+const NameAstros = ({ changePage }) => {
   return (
     <div>
       <h3>This is the Naming Astronaunts Page</h3>
-      <button>Choose Rover</button>
+      <button onClick={() => { changePage('rover'); }} >Choose Rover</button>
     </div>
   )
 }
