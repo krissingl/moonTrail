@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Intro = ({ changePage }) => {
-  console.log('ChooseSupplies fired');
+  console.log('Intro fired');
   return (
     <div>
       <h3>This is the Intro Page</h3>
