@@ -1,9 +1,15 @@
 import React from 'react';
+import landmarks from '../../dist/landmarks.json';
 
-const Landmark = () => {
-  console.log('Landmark fired');
+const Landmark = ({ changePage }) => {
+  console.log(landmarks.landmarkList.MareCrisium[0].name);
   return (
-    <div>This is the Landmark page</div>
+    <div>
+      <h3>
+        This is the Landmark page
+      </h3>
+      <button type="button" onClick={() => { changePage('traveling'); }}>Travel</button>
+    </div>
   );
 };
 

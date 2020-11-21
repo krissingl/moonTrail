@@ -5,7 +5,7 @@ const ChooseSupplies = ({ changePage }) => {
   return (
     <div>
       <h3>This is the Supply Choosing Page</h3>
-      <button type="button" onClick={() => { changePage('supplies'); }}>Begin Journey</button>
+      <button type="button" onClick={() => { changePage('landmark'); }}>Begin Journey</button>
     </div>
   );
 };

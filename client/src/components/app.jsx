@@ -5,6 +5,8 @@ import Intro from './intro.jsx';
 import NameAstros from './nameAstro.jsx';
 import ChooseRover from './chooseRover.jsx';
 import ChooseSupplies from './chooseSupplies.jsx';
+import Landmark from './landmark.jsx';
+import Traveling from './traveling.jsx';
 
 class App extends React.Component {
   constructor() {
@@ -40,6 +42,14 @@ class App extends React.Component {
     } else if (this.state.page === 'supplies') {
       level = (
         <ChooseSupplies changePage={this.changePage} />
+      );
+    } else if (this.state.page === 'landmark') {
+      level = (
+        <Landmark changePage={this.changePage} />
+      );
+    } else if (this.state.page === 'traveling') {
+      level = (
+        <Traveling changePage={this.changePage} />
       );
     }
     return (

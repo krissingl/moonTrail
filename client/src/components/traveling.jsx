@@ -1,9 +1,14 @@
 import React from 'react';
 
-const TravelingPage = () => {
+const TravelingPage = ({ changePage }) => {
   console.log('TravelPage fired');
   return (
-    <div>This is the Traveling screen</div>
+    <div>
+      <h3>
+        This is the Traveling screen
+      </h3>
+      <button type="button" onClick={() => { changePage('landmark'); }}>Arrive at Landmark</button>
+    </div>
   );
 };
 
