@@ -2,7 +2,8 @@ import React from 'react';
 import landmarks from '../../dist/landmarks.json';
 
 const Landmark = ({ changePage }) => {
-  console.log(landmarks.landmarkList.MareCrisium[0].name);
+  const { landmarkList } = landmarks;
+  console.log(landmarkList.MareCrisium[0].name);
   return (
     <div>
       <h3>
