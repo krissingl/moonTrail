@@ -13,7 +13,7 @@ class App extends React.Component {
     this.state = {
       page: 'main',
       landmark: 'Mare Crisium',
-      rover: '',
+      speed: '',
       crew: [],
       supplies: []
     }
