@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Landmark = () => {
-  let landmark;
+  console.log('Landmark fired');
   return (
     <div>This is the Landmark page</div>
   );
