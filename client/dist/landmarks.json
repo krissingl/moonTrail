@@ -1,0 +1,22 @@
+{
+  "landmarkList": [
+    {"landmark": "Mare Crisium", "next": [{"name": "Taruntius", "distance": 14}]},
+    {"landmark": "Taruntius", "next": [{"name": "Plinius", "distance": 21}]},
+    {"landmark": "Plinius", "next": [{"name": "Manilius", "distance": 17}, {"name": "Aristillus", "distance": 32}]},
+    {"landmark": "Manilius", "next": [{"name": "Triesnecker", "distance": 15}, {"name": "Apennine Mts.", "distance": 20}]},
+    {"landmark": "Aristillus", "next": [{"name": "Archimedes", "distance": 9}, {"name": "Cassini", "distance": 11}]},
+    {"landmark": "Triesnecker", "next": [{"name": "Copernicus", "distance": 27}]},
+    {"landmark": "Apennine Mts.", "next": [{"name": "Eratosthenes", "distance": 13}]},
+    {"landmark": "Eratosthenes", "next": [{"name": "Copernicus", "distance": 7}]},
+    {"landmark": "Archimedes", "next": [{"name": "Timocharis", "distance": 8}]},
+    {"landmark": "Cassini", "next": [{"name": "Plato", "distance": 16}]},
+    {"landmark": "Copernicus", "next": [{"name": "Kepler", "distance": 18}]},
+    {"landmark": "Timocharis", "next": [{"name": "Lambert", "distance": 12}]},
+    {"landmark": "Plato", "next": [{"name": "Sinus Roris", "distance": 21}]},
+    {"landmark": "Kepler", "next": [{"name": "Herodotus", "distance": 20}]},
+    {"landmark": "Lambert", "next": [{"name": "Aristarchus", "distance": 10}]},
+    {"landmark": "Sinus Roris", "next": [{"name": "Sinus Iridum", "distance": 5}]},
+    {"landmark": "Aristarchus", "next": [{"name": "Herodotus", "distance": 13}]},
+    {"landmark": "Sinus Iridum", "next": [{"name": "Herodotus", "distance": 31}]}
+  ]
+}
