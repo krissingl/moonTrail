@@ -24,8 +24,10 @@ class App extends React.Component {
     this.setState({ page: newPage });
   }
 
-  changeCrew(crewList) {
+  changeCrew(e, crewList) {
+    e.preventDefault();
     this.setState({ crew: crewList });
+    console.log(this.state.crew);
   }
 
   render() {
@@ -65,6 +67,7 @@ class App extends React.Component {
         </div>
       );
     }
+    console.log(this.state.crew);
     return (
       <div>
         <TitleMenu changePage={this.changePage} />
