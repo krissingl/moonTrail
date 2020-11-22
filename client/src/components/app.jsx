@@ -14,12 +14,18 @@ class App extends React.Component {
     super();
     this.state = {
       page: 'main',
+      crew: [],
     };
     this.changePage = this.changePage.bind(this);
+    this.changeCrew = this.changeCrew.bind(this);
   }
 
   changePage(newPage) {
     this.setState({ page: newPage });
+  }
+
+  changeCrew(crewList) {
+    this.setState({ crew: crewList });
   }
 
   render() {
@@ -34,7 +40,7 @@ class App extends React.Component {
       );
     } else if (this.state.page === 'naming') {
       level = (
-        <NameAstros changePage={this.changePage} />
+        <NameAstros changePage={this.changePage} changeCrew={this.changeCrew} />
       );
     } else if (this.state.page === 'rover') {
       level = (
@@ -55,7 +61,7 @@ class App extends React.Component {
       level = (
         <div>
           <Traveling changePage={this.changePage} />
-          <StatusScreen />
+          <StatusScreen crew={this.state.crew} />
         </div>
       );
     }
