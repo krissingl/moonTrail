@@ -7,6 +7,7 @@ import ChooseRover from './chooseRover.jsx';
 import ChooseSupplies from './chooseSupplies.jsx';
 import Landmark from './landmark.jsx';
 import Traveling from './traveling.jsx';
+import StatusScreen from './statusScreen.jsx';
 
 class App extends React.Component {
   constructor() {
@@ -45,11 +46,17 @@ class App extends React.Component {
       );
     } else if (this.state.page === 'landmark') {
       level = (
-        <Landmark changePage={this.changePage} />
+        <div>
+          <Landmark changePage={this.changePage} />
+          <StatusScreen />
+        </div>
       );
     } else if (this.state.page === 'traveling') {
       level = (
-        <Traveling changePage={this.changePage} />
+        <div>
+          <Traveling changePage={this.changePage} />
+          <StatusScreen />
+        </div>
       );
     }
     return (
