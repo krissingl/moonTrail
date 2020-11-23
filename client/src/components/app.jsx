@@ -33,6 +33,7 @@ class App extends React.Component {
 
   changeRover(e, newRover) {
     e.preventDefault();
+    console.log(newRover);
     this.setState({ rover: newRover });
   }
 
@@ -62,19 +63,17 @@ class App extends React.Component {
       level = (
         <div>
           <Landmark changePage={this.changePage} />
-          <StatusScreen rover={this.state.rover} crew={this.state.crew} />
+          <StatusScreen crew={this.state.crew} />
         </div>
       );
     } else if (this.state.page === 'traveling') {
       level = (
         <div>
           <Traveling changePage={this.changePage} />
-          <StatusScreen crew={this.state.crew} />
+          <StatusScreen crew={this.state.crew} rover={this.state.rover} />
         </div>
       );
     }
-    console.log(this.state.crew);
-    console.log(this.state.rover);
     return (
       <div>
         <TitleMenu changePage={this.changePage} />

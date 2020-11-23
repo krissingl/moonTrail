@@ -5,7 +5,7 @@ const ChooseRover = ({ changePage, changeRover }) => {
   const roverList = rovers.map((rover) => (
     <option key={rover} value={rover}>{rover}</option>
   ));
-  const [rover, handleRoverChange] = useState('');
+  const [rover, handleRoverChange] = useState('MiniCoup');
   const findRover = (e) => {
     handleRoverChange(e.target.value);
   };
