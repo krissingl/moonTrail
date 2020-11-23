@@ -23,7 +23,7 @@ const NameAstros = ({ changePage, changeCrew }) => {
 
   return (
     <div>
-      <h3>This is the Naming Astronaunts Page</h3>
+      <h3>What are the names of the astronaunts on this mission?</h3>
       <div>
         <form
           className={classes.crewNames}

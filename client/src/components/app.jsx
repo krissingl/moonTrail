@@ -15,9 +15,11 @@ class App extends React.Component {
     this.state = {
       page: 'main',
       crew: [],
+      rover: 'rover',
     };
     this.changePage = this.changePage.bind(this);
     this.changeCrew = this.changeCrew.bind(this);
+    this.changeRover = this.changeRover.bind(this);
   }
 
   changePage(newPage) {
@@ -27,7 +29,12 @@ class App extends React.Component {
   changeCrew(e, crewList) {
     e.preventDefault();
     this.setState({ crew: crewList });
-    console.log(this.state.crew);
+  }
+
+  changeRover(e, newRover) {
+    e.preventDefault();
+    console.log(newRover);
+    this.setState({ rover: newRover });
   }
 
   render() {
@@ -46,7 +53,7 @@ class App extends React.Component {
       );
     } else if (this.state.page === 'rover') {
       level = (
-        <ChooseRover changePage={this.changePage} />
+        <ChooseRover changePage={this.changePage} changeRover={this.changeRover} />
       );
     } else if (this.state.page === 'supplies') {
       level = (
@@ -56,18 +63,17 @@ class App extends React.Component {
       level = (
         <div>
           <Landmark changePage={this.changePage} />
-          <StatusScreen />
+          <StatusScreen crew={this.state.crew} />
         </div>
       );
     } else if (this.state.page === 'traveling') {
       level = (
         <div>
           <Traveling changePage={this.changePage} />
-          <StatusScreen crew={this.state.crew} />
+          <StatusScreen crew={this.state.crew} rover={this.state.rover} />
         </div>
       );
     }
-    console.log(this.state.crew);
     return (
       <div>
         <TitleMenu changePage={this.changePage} />
