@@ -27,7 +27,7 @@ const NameAstros = ({ changePage, changeCrew }) => {
       <div>
         <form
           className={classes.crewNames}
-          onSubmit={(e) => { const crewList = createCrewList(); changeCrew(e, crewList); }}
+          onSubmit={(e) => { const crewList = createCrewList(); changeCrew(e, crewList); changePage('rover'); }}
         >
           <label>
             Crew Member 1:
@@ -49,10 +49,9 @@ const NameAstros = ({ changePage, changeCrew }) => {
             Crew Member 5:
             <input type="text" value={astro5} onChange={changeAstro5} />
           </label>
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Choose Rover" />
         </form>
       </div>
-      <button type="button" onClick={() => { changePage('rover'); }}>Choose Rover</button>
     </div>
   );
 };
