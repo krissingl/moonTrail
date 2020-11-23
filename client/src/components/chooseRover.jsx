@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const ChooseRover = ({ changePage }) => {
+const ChooseRover = ({ changePage, changeRover }) => {
   const rovers = ['MiniCoup', 'MiddleMan', 'StationWagon'];
   const roverList = rovers.map((rover) => (
     <option key={rover} value={rover}>{rover}</option>
@@ -19,7 +19,7 @@ const ChooseRover = ({ changePage }) => {
           {roverList}
         </select>
       </div>
-      <button type="button" onClick={() => { changePage('supplies'); }}>Choose Supplies</button>
+      <button type="button" onClick={(e) => { changeRover(e, rover); changePage('supplies'); }}>Choose Supplies</button>
     </div>
   );
 };
