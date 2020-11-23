@@ -7,18 +7,27 @@ import ChooseRover from './chooseRover.jsx';
 import ChooseSupplies from './chooseSupplies.jsx';
 import Landmark from './landmark.jsx';
 import Traveling from './traveling.jsx';
+import StatusScreen from './statusScreen.jsx';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
       page: 'main',
+      crew: [],
     };
     this.changePage = this.changePage.bind(this);
+    this.changeCrew = this.changeCrew.bind(this);
   }
 
   changePage(newPage) {
     this.setState({ page: newPage });
+  }
+
+  changeCrew(e, crewList) {
+    e.preventDefault();
+    this.setState({ crew: crewList });
+    console.log(this.state.crew);
   }
 
   render() {
@@ -33,7 +42,7 @@ class App extends React.Component {
       );
     } else if (this.state.page === 'naming') {
       level = (
-        <NameAstros changePage={this.changePage} />
+        <NameAstros changePage={this.changePage} changeCrew={this.changeCrew} />
       );
     } else if (this.state.page === 'rover') {
       level = (
@@ -45,13 +54,20 @@ class App extends React.Component {
       );
     } else if (this.state.page === 'landmark') {
       level = (
-        <Landmark changePage={this.changePage} />
+        <div>
+          <Landmark changePage={this.changePage} />
+          <StatusScreen />
+        </div>
       );
     } else if (this.state.page === 'traveling') {
       level = (
-        <Traveling changePage={this.changePage} />
+        <div>
+          <Traveling changePage={this.changePage} />
+          <StatusScreen crew={this.state.crew} />
+        </div>
       );
     }
+    console.log(this.state.crew);
     return (
       <div>
         <TitleMenu changePage={this.changePage} />
