@@ -15,7 +15,7 @@ class App extends React.Component {
     this.state = {
       page: 'main',
       crew: [],
-      rover: '',
+      rover: 'rover',
     };
     this.changePage = this.changePage.bind(this);
     this.changeCrew = this.changeCrew.bind(this);
@@ -29,12 +29,11 @@ class App extends React.Component {
   changeCrew(e, crewList) {
     e.preventDefault();
     this.setState({ crew: crewList });
-    console.log(this.state.crew);
   }
 
-  changeRover(e, roverType) {
+  changeRover(e, newRover) {
     e.preventDefault();
-    this.setState({ rover: roverType });
+    this.setState({ rover: newRover });
   }
 
   render() {
@@ -75,6 +74,7 @@ class App extends React.Component {
       );
     }
     console.log(this.state.crew);
+    console.log(this.state.rover);
     return (
       <div>
         <TitleMenu changePage={this.changePage} />

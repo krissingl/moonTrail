@@ -9,10 +9,9 @@ const ChooseRover = ({ changePage, changeRover }) => {
   const findRover = (e) => {
     handleRoverChange(e.target.value);
   };
-  console.log(rover);
   return (
     <div>
-      <h3>This is the Rover Choosing Page</h3>
+      <h3>Choose the best Rover for your journey!</h3>
       <div>
         <span>Select Rover:</span>
         <select onChange={findRover}>
