@@ -4,25 +4,30 @@ import classes from '../css/styles.css';
 
 const ChooseSupplies = ({ changePage }) => {
   const [totalWeight, changeTotalWeight] = useState(0);
-  const [oxy, changeOxyAmount] = useState(0);
+  const [oxyAmount, changeOxyAmount] = useState(0);
+  const [foodAmount, changeFoodAmount] = useState(0);
+  const [waterAmount, changeWaterAmount] = useState(0);
+  const [clothesAmount, changeClothesAmount] = useState(0);
+  const [clothesAmount2, changeClothesAmount2] = useState(0);
+  const [suitAmount, changeSuitAmount] = useState(0);
+  const [suitAmount2, changeSuitAmount2] = useState(0);
+  const [AImainAmount, changeAImainAmount] = useState(0);
+  const [tirePatchAmount, changeTirePatchAmount] = useState(0);
+  const [roverMainAmount, changeRoverMainAmount] = useState(0);
   const addOneSupply = (e) => {
     changeTotalWeight(totalWeight + Number(e.target.value));
-    changeOxyAmount(oxy + 1);
-    console.log(totalWeight);
-    console.log(oxy);
+    changeOxyAmount(oxyAmount + 1);
   };
   const minusOneSupply = (e) => {
     changeTotalWeight(totalWeight - Number(e.target.value));
-    changeOxyAmount(oxy - 1);
-    console.log(totalWeight);
-    console.log(oxy);
+    changeOxyAmount(oxyAmount - 1);
   };
   const supplyList = data.supplyList.map((supply) => (
     <div className={classes.supplyList}>
       <label>
         {supply.type}
         :
-        {oxy}
+        {oxyAmount}
       </label>
       <div>
         <button type="button" value={supply.weight} onClick={minusOneSupply}>--</button>
