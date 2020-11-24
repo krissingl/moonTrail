@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import data from '../../dist/data.json';
 import classes from '../css/styles.css';
 
-const ChooseSupplies = ({ changePage, choosenSupplies }) => {
+const ChooseSupplies = ({ changePage, chosenSupplies }) => {
   const [totalWeight, changeTotalWeight] = useState(0);
   const [oxyAmount, changeOxyAmount] = useState(0);
   const [foodAmount, changeFoodAmount] = useState(0);
@@ -52,7 +52,9 @@ const ChooseSupplies = ({ changePage, choosenSupplies }) => {
     <div className={classes.supplyList}>
       <label>
         {supply.type}
-        :
+        (weight:
+        {supply.weight}
+        ):
         {supplyAmountList[index]}
       </label>
       <div>
@@ -61,9 +63,16 @@ const ChooseSupplies = ({ changePage, choosenSupplies }) => {
       </div>
     </div>
   ));
+  const finalizeSupplies = () => {
+    console.log('Ollo?');
+  };
   return (
     <div className={classes.supplyPage}>
       <h3>This is the Supply Choosing Page</h3>
+      <div>
+        Current Weight:
+        {totalWeight}
+      </div>
       <button type="button">What should we take?</button>
       <div>{supplyList}</div>
       <button type="button" onClick={() => { changePage('landmark'); }}>Begin journey</button>
