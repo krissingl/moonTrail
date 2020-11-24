@@ -1,29 +1,62 @@
-import React from 'react';
+import React, { useState } from 'react';
+import data from '../../dist/data.json';
 import classes from '../css/styles.css';
 
 const ChooseSupplies = ({ changePage }) => {
-  const supplies = [{ type: 'Oxygen Tank', weight: 10 }, { type: 'Freeze-Dried-Food-Pack', weight: 1 }, { type: 'Water-Pouch', weight: 2 }, { type: 'Regular Clothes Set', weight: 3 }, { type: 'Warm Clothes Set', weight: 6 }, { type: 'Regular Space Suit', weight: 5 }, { type: 'Dust Proof Space Suit', weight: 10 }, { type: 'AI Maintenance Toolkit', weight: 5 }, { type: 'Rover Tire Patch', weight: 2 }, { type: 'Rover Maintenance Toolkit', weight: 8 }];
-  const supplyList = supplies.map((supply) => (
+  const [totalWeight, changeTotalWeight] = useState(0);
+  const [oxy, changeOxyAmount] = useState(0);
+  const addOneSupply = (e) => {
+    changeTotalWeight(totalWeight + Number(e.target.value));
+    changeOxyAmount(oxy + 1);
+    console.log(totalWeight);
+    console.log(oxy);
+  };
+  const minusOneSupply = (e) => {
+    changeTotalWeight(totalWeight - Number(e.target.value));
+    changeOxyAmount(oxy - 1);
+    console.log(totalWeight);
+    console.log(oxy);
+  };
+  const supplyList = data.supplyList.map((supply) => (
     <div className={classes.supplyList}>
       <label>
         {supply.type}
         :
+        {oxy}
       </label>
-      <input type="text" className={classes.supplyInput} weight={supply.weight} />
+      <div>
+        <button type="button" value={supply.weight} onClick={minusOneSupply}>--</button>
+        <button type="button" value={supply.weight} onClick={addOneSupply}>+</button>
+      </div>
     </div>
   ));
   return (
-    <div>
+    <div className={classes.supplyPage}>
       <h3>This is the Supply Choosing Page</h3>
-      <button type="button">What should I take?</button>
-      <div>
-        <form onSubmit={() => { changePage('landmark'); }}>
-          {supplyList}
-          <input type="submit" value="Begin Journey" />
-        </form>
-      </div>
+      <button type="button">What should we take?</button>
+      <div>{supplyList}</div>
+      <button type="button" onClick={() => { changePage('landmark'); }}>Begin journey</button>
     </div>
   );
 };
 
 export default ChooseSupplies;
+
+/*  const useInput = (initialValue) => {
+    const [value, setValue] = useState(initialValue);
+    const handleChange = (e) => {
+      setValue(e.target.value);
+    };
+    return [value, handleChange];
+  };
+        <form onSubmit={() => { changePage('landmark'); }}>
+          {supplyList}
+          <input type="submit" value="Begin Journey" />
+        </form>
+const [listedSupply, handleSupplyChange] = useInput('');
+  const handleSupplyInputChange = (e) => {
+    handleSupplyChange(e.target.value);
+    console.log(listedSupply);
+  };
+
+*/
