@@ -38,6 +38,11 @@ class App extends React.Component {
     this.setState({ rover: newRover });
   }
 
+  changefinalSupplies(e, finalSupplies) {
+    e.preventDefault();
+    this.setState({ supplyList: finalSupplies });
+  }
+
   render() {
     let level;
     if (this.state.page === 'main') {
@@ -58,7 +63,10 @@ class App extends React.Component {
       );
     } else if (this.state.page === 'supplies') {
       level = (
-        <ChooseSupplies changePage={this.changePage} chosenSupplies={this.state.supplyList} />
+        <ChooseSupplies
+          changePage={this.changePage}
+          changefinalSupplies={this.changefinalSupplies}
+        />
       );
     } else if (this.state.page === 'landmark') {
       level = (
@@ -71,7 +79,11 @@ class App extends React.Component {
       level = (
         <div>
           <Traveling changePage={this.changePage} />
-          <StatusScreen crew={this.state.crew} rover={this.state.rover} />
+          <StatusScreen
+            crew={this.state.crew}
+            rover={this.state.rover}
+            supplyList={this.state.supplyList}
+          />
         </div>
       );
     }

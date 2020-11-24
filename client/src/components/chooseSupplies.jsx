@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import data from '../../dist/data.json';
 import classes from '../css/styles.css';
 
-const ChooseSupplies = ({ changePage, chosenSupplies }) => {
+const ChooseSupplies = ({ changePage, changefinalSupplies }) => {
   const [totalWeight, changeTotalWeight] = useState(0);
   const [oxyAmount, changeOxyAmount] = useState(0);
   const [foodAmount, changeFoodAmount] = useState(0);
@@ -63,7 +63,7 @@ const ChooseSupplies = ({ changePage, chosenSupplies }) => {
       </div>
     </div>
   ));
-  const finalizeSupplies = () => {
+  const getFinalSupplies = () => {
     console.log('Ollo?');
   };
   return (
@@ -74,8 +74,8 @@ const ChooseSupplies = ({ changePage, chosenSupplies }) => {
         {totalWeight}
       </div>
       <div>{supplyList}</div>
-      <button type="button">Any advice on what should I take?</button>
-      <button type="button" onClick={() => { changePage('landmark'); }}>Begin journey</button>
+      <button type="button" onClick={() => { changePage('supplyAdvice'); }}>Any advice on what should I take?</button>
+      <button type="button" onClick={(e) => { const finalSupplies = getFinalSupplies(); changefinalSupplies(e, finalSupplies); changePage('landmark'); }}>Begin journey</button>
     </div>
   );
 };
