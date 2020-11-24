@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import data from '../../dist/data.json';
 import classes from '../css/styles.css';
 
-const ChooseSupplies = ({ changePage }) => {
+const ChooseSupplies = ({ changePage, choosenSupplies }) => {
   const [totalWeight, changeTotalWeight] = useState(0);
   const [oxyAmount, changeOxyAmount] = useState(0);
   const [foodAmount, changeFoodAmount] = useState(0);
@@ -72,22 +72,3 @@ const ChooseSupplies = ({ changePage }) => {
 };
 
 export default ChooseSupplies;
-
-/*  const useInput = (initialValue) => {
-    const [value, setValue] = useState(initialValue);
-    const handleChange = (e) => {
-      setValue(e.target.value);
-    };
-    return [value, handleChange];
-  };
-        <form onSubmit={() => { changePage('landmark'); }}>
-          {supplyList}
-          <input type="submit" value="Begin Journey" />
-        </form>
-const [listedSupply, handleSupplyChange] = useInput('');
-  const handleSupplyInputChange = (e) => {
-    handleSupplyChange(e.target.value);
-    console.log(listedSupply);
-  };
-
-*/

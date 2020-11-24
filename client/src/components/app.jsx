@@ -16,6 +16,7 @@ class App extends React.Component {
       page: 'main',
       crew: [],
       rover: 'rover',
+      supplyList: [],
     };
     this.changePage = this.changePage.bind(this);
     this.changeCrew = this.changeCrew.bind(this);
@@ -57,7 +58,7 @@ class App extends React.Component {
       );
     } else if (this.state.page === 'supplies') {
       level = (
-        <ChooseSupplies changePage={this.changePage} />
+        <ChooseSupplies changePage={this.changePage} chosenSupplies={this.state.supplyList} />
       );
     } else if (this.state.page === 'landmark') {
       level = (
