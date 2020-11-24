@@ -1,8 +1,8 @@
 import React from 'react';
-import landmarks from '../../dist/data.json';
+import data from '../../dist/data.json';
 
 const Landmark = ({ changePage }) => {
-  const { landmarkList } = landmarks;
+  const { landmarkList } = data;
   console.log(landmarkList.MareCrisium[0].name);
   // create landmark hook to change with every next landmark change
   return (
