@@ -5,6 +5,8 @@ import Intro from './intro.jsx';
 import NameAstros from './nameAstro.jsx';
 import ChooseRover from './chooseRover.jsx';
 import ChooseSupplies from './chooseSupplies.jsx';
+import SupplyAdvice from './supplyAdvice.jsx';
+import ChoiceReview from './choiceReview.jsx';
 import Landmark from './landmark.jsx';
 import Traveling from './traveling.jsx';
 import StatusScreen from './statusScreen.jsx';
@@ -21,6 +23,7 @@ class App extends React.Component {
     this.changePage = this.changePage.bind(this);
     this.changeCrew = this.changeCrew.bind(this);
     this.changeRover = this.changeRover.bind(this);
+    this.changeFinalSupplies = this.changeFinalSupplies.bind(this);
   }
 
   changePage(newPage) {
@@ -38,7 +41,7 @@ class App extends React.Component {
     this.setState({ rover: newRover });
   }
 
-  changefinalSupplies(e, finalSupplies) {
+  changeFinalSupplies(e, finalSupplies) {
     e.preventDefault();
     this.setState({ supplyList: finalSupplies });
   }
@@ -65,7 +68,7 @@ class App extends React.Component {
       level = (
         <ChooseSupplies
           changePage={this.changePage}
-          changefinalSupplies={this.changefinalSupplies}
+          changeFinalSupplies={this.changeFinalSupplies}
         />
       );
     } else if (this.state.page === 'landmark') {
@@ -85,6 +88,19 @@ class App extends React.Component {
             supplyList={this.state.supplyList}
           />
         </div>
+      );
+    } else if (this.state.page === 'review') {
+      level = (
+        <ChoiceReview
+          changePage={this.changePage}
+          crew={this.state.crew}
+          rover={this.state.rover}
+          supplyList={this.state.supplyList}
+        />
+      );
+    } else if (this.state.page === 'supplyAdvice') {
+      level = (
+        <SupplyAdvice changePage={this.changePage} />
       );
     }
     return (

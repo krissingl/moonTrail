@@ -1,8 +1,9 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import data from '../../dist/data.json';
 import classes from '../css/styles.css';
 
-const ChooseSupplies = ({ changePage, changefinalSupplies }) => {
+const ChooseSupplies = ({ changePage, changeFinalSupplies }) => {
   const [totalWeight, changeTotalWeight] = useState(0);
   const [oxyAmount, changeOxyAmount] = useState(0);
   const [foodAmount, changeFoodAmount] = useState(0);
@@ -64,7 +65,16 @@ const ChooseSupplies = ({ changePage, changefinalSupplies }) => {
     </div>
   ));
   const getFinalSupplies = () => {
-    console.log('Ollo?');
+    const finalSupplyList = data.supplyList.map((supply, index) => {
+      const finalSupply = {
+        type: supply.type,
+        weight: supply.weight,
+        amount: supplyAmountList[index],
+        totalWeight: (supplyAmountList[index] * supply.weight),
+      };
+      return finalSupply;
+    });
+    return finalSupplyList;
   };
   return (
     <div className={classes.supplyPage}>
@@ -75,7 +85,7 @@ const ChooseSupplies = ({ changePage, changefinalSupplies }) => {
       </div>
       <div>{supplyList}</div>
       <button type="button" onClick={() => { changePage('supplyAdvice'); }}>Any advice on what should I take?</button>
-      <button type="button" onClick={(e) => { const finalSupplies = getFinalSupplies(); changefinalSupplies(e, finalSupplies); changePage('review'); }}>Review</button>
+      <button type="button" onClick={(e) => { const finalSupplies = getFinalSupplies(); changeFinalSupplies(e, finalSupplies); changePage('review'); }}>Review</button>
     </div>
   );
 };
