@@ -6,11 +6,15 @@ class ChooseSupplies extends React.Component {
   constructor({ changePage }) {
     super({ changePage });
     this.state = {
-
+      oxy: {
+        amount: 0,
+        totalWeight: 0,
+      },
     };
   }
 
   render() {
+    console.log(this.state.oxy);
     const supplyList = data.supplyList.map((supply) => (
       <div className={classes.supplyList}>
         <label>
