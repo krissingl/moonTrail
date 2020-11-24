@@ -14,24 +14,50 @@ const ChooseSupplies = ({ changePage }) => {
   const [AImainAmount, changeAImainAmount] = useState(0);
   const [tirePatchAmount, changeTirePatchAmount] = useState(0);
   const [roverMainAmount, changeRoverMainAmount] = useState(0);
-  const addOneSupply = (e) => {
+
+  const supplyAmountList = [
+    oxyAmount,
+    foodAmount,
+    waterAmount,
+    clothesAmount,
+    clothesAmount2,
+    suitAmount,
+    suitAmount2,
+    AImainAmount,
+    tirePatchAmount,
+    roverMainAmount,
+  ];
+  const supplyAmountFuncList = [
+    changeOxyAmount,
+    changeFoodAmount,
+    changeWaterAmount,
+    changeClothesAmount,
+    changeClothesAmount2,
+    changeSuitAmount,
+    changeSuitAmount2,
+    changeAImainAmount,
+    changeTirePatchAmount,
+    changeRoverMainAmount,
+  ];
+
+  const addOneSupply = (e, callback, value) => {
     changeTotalWeight(totalWeight + Number(e.target.value));
-    changeOxyAmount(oxyAmount + 1);
+    callback(value + 1);
   };
-  const minusOneSupply = (e) => {
+  const minusOneSupply = (e, callback, value) => {
     changeTotalWeight(totalWeight - Number(e.target.value));
-    changeOxyAmount(oxyAmount - 1);
+    callback(value - 1);
   };
-  const supplyList = data.supplyList.map((supply) => (
+  const supplyList = data.supplyList.map((supply, index) => (
     <div className={classes.supplyList}>
       <label>
         {supply.type}
         :
-        {oxyAmount}
+        {supplyAmountList[index]}
       </label>
       <div>
-        <button type="button" value={supply.weight} onClick={minusOneSupply}>--</button>
-        <button type="button" value={supply.weight} onClick={addOneSupply}>+</button>
+        <button type="button" value={supply.weight} onClick={(e) => minusOneSupply(e, supplyAmountFuncList[index], supplyAmountList[index])}>--</button>
+        <button type="button" value={supply.weight} onClick={(e) => addOneSupply(e, supplyAmountFuncList[index], supplyAmountList[index])}>+</button>
       </div>
     </div>
   ));
