@@ -75,7 +75,7 @@ const ChooseSupplies = ({ changePage, changefinalSupplies }) => {
       </div>
       <div>{supplyList}</div>
       <button type="button" onClick={() => { changePage('supplyAdvice'); }}>Any advice on what should I take?</button>
-      <button type="button" onClick={(e) => { const finalSupplies = getFinalSupplies(); changefinalSupplies(e, finalSupplies); changePage('landmark'); }}>Begin journey</button>
+      <button type="button" onClick={(e) => { const finalSupplies = getFinalSupplies(); changefinalSupplies(e, finalSupplies); changePage('review'); }}>Review</button>
     </div>
   );
 };
