@@ -37,7 +37,6 @@ class App extends React.Component {
 
   changeRover(e, newRover) {
     e.preventDefault();
-    console.log(newRover);
     this.setState({ rover: newRover });
   }
 

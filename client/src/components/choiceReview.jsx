@@ -31,7 +31,8 @@ const ChoiceReview = ({
         Supply List:
         {chosenSupplies}
       </div>
-      <button type="button" onClick={() => { changePage('landmark'); }}>Choose Supplies</button>
+      <button type="button" onClick={() => { changePage('main'); }}>Start Over</button>
+      <button type="button" onClick={() => { changePage('landmark'); }}>Begin the Journey!</button>
     </div>
   );
 };
