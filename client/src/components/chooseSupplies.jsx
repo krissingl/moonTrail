@@ -73,8 +73,8 @@ const ChooseSupplies = ({ changePage, chosenSupplies }) => {
         Current Weight:
         {totalWeight}
       </div>
-      <button type="button">What should we take?</button>
       <div>{supplyList}</div>
+      <button type="button">Any advice on what should I take?</button>
       <button type="button" onClick={() => { changePage('landmark'); }}>Begin journey</button>
     </div>
   );
