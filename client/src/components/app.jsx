@@ -5,6 +5,8 @@ import Intro from './intro.jsx';
 import NameAstros from './nameAstro.jsx';
 import ChooseRover from './chooseRover.jsx';
 import ChooseSupplies from './chooseSupplies.jsx';
+import SupplyAdvice from './supplyAdvice.jsx';
+import ChoiceReview from './choiceReview.jsx';
 import Landmark from './landmark.jsx';
 import Traveling from './traveling.jsx';
 import StatusScreen from './statusScreen.jsx';
@@ -16,10 +18,12 @@ class App extends React.Component {
       page: 'main',
       crew: [],
       rover: 'rover',
+      supplyList: [],
     };
     this.changePage = this.changePage.bind(this);
     this.changeCrew = this.changeCrew.bind(this);
     this.changeRover = this.changeRover.bind(this);
+    this.changeFinalSupplies = this.changeFinalSupplies.bind(this);
   }
 
   changePage(newPage) {
@@ -33,8 +37,12 @@ class App extends React.Component {
 
   changeRover(e, newRover) {
     e.preventDefault();
-    console.log(newRover);
     this.setState({ rover: newRover });
+  }
+
+  changeFinalSupplies(e, finalSupplies) {
+    e.preventDefault();
+    this.setState({ supplyList: finalSupplies });
   }
 
   render() {
@@ -57,7 +65,10 @@ class App extends React.Component {
       );
     } else if (this.state.page === 'supplies') {
       level = (
-        <ChooseSupplies changePage={this.changePage} />
+        <ChooseSupplies
+          changePage={this.changePage}
+          changeFinalSupplies={this.changeFinalSupplies}
+        />
       );
     } else if (this.state.page === 'landmark') {
       level = (
@@ -70,8 +81,25 @@ class App extends React.Component {
       level = (
         <div>
           <Traveling changePage={this.changePage} />
-          <StatusScreen crew={this.state.crew} rover={this.state.rover} />
+          <StatusScreen
+            crew={this.state.crew}
+            rover={this.state.rover}
+            supplyList={this.state.supplyList}
+          />
         </div>
+      );
+    } else if (this.state.page === 'review') {
+      level = (
+        <ChoiceReview
+          changePage={this.changePage}
+          crew={this.state.crew}
+          rover={this.state.rover}
+          supplyList={this.state.supplyList}
+        />
+      );
+    } else if (this.state.page === 'supplyAdvice') {
+      level = (
+        <SupplyAdvice changePage={this.changePage} />
       );
     }
     return (
