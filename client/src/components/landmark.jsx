@@ -1,5 +1,5 @@
 import React from 'react';
-import landmarks from '../../dist/landmarks.json';
+import landmarks from '../../dist/data.json';
 
 const Landmark = ({ changePage }) => {
   const { landmarkList } = landmarks;
