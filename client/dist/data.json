@@ -30,5 +30,6 @@
     { "type": "AI Maintenance Toolkit", "weight": 5 },
     { "type": "Rover Tire Patch", "weight": 2 },
     { "type": "Rover Maintenance Toolkit", "weight": 8 }
-  ]
+  ],
+  "introVerbiage": "On your way back from a successful mission to Mars, your spacecraft temporarily loses control of its flight systems and flies straight into a meteor shower. After being hit by a meteor, your crew is able to make an emergency landing on the moon. You must find your way to the emergency launch site to get back home. You can take one of four possible paths that each have their unique challenges and story elements. Strategically choosing the best equipment for a specific path and choosing to travel in a strategic way is the key to victory. The game ends either when all your crew is killed or the rover reaches the exit launch site. If the rover reaches the exit launch site, you receive a point score for what survived the journey."
 }
