@@ -1,9 +1,12 @@
 import React from 'react';
 
-const SupplyAdvice = () => {
+const SupplyAdvice = ({ changePage }) => {
   console.log('Supply Advice page fired');
   return (
-    <div>This is the supply Advice page</div>
+    <div>
+      <h3>This is the supply Advice page</h3>
+      <button type="button" onClick={() => { changePage('supplies'); }}>Back to Supplies</button>
+    </div>
   );
 };
 
