@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
 const ChooseRover = ({ changePage, changeRover }) => {
-  const rovers = ['MiniCoup', 'MiddleMan', 'StationWagon'];
+  const rovers = [{ type: 'MiniCoup', storageCapacity: 200 }, { type: 'MiddleMan', storageCapacity: 350 }, { type: 'StationWagon', storageCapacity: 500 }];
   const roverList = rovers.map((rover) => (
-    <option key={rover} value={rover}>{rover}</option>
+    <option key={rover.type} value={rover.type}>{rover.type}</option>
   ));
   const [rover, handleRoverChange] = useState('MiniCoup');
   const findRover = (e) => {
