@@ -1,14 +1,23 @@
 import React, { useState } from 'react';
 
 const ChooseRover = ({ changePage, changeRover }) => {
-  const rovers = [{ type: 'MiniCoup', storageCapacity: 200 }, { type: 'MiddleMan', storageCapacity: 350 }, { type: 'StationWagon', storageCapacity: 500 }];
+  const rovers = ['MiniCoup', 'MiddleMan', 'StationWagon'];
   const roverList = rovers.map((rover) => (
-    <option key={rover.type} value={rover.type}>{rover.type}</option>
+    <option key={rover} value={rover}>{rover}</option>
   ));
   const [rover, handleRoverChange] = useState('MiniCoup');
   const findRover = (e) => {
     handleRoverChange(e.target.value);
   };
+  let storageCapacity;
+  if (rover === 'MiniCoup') {
+    storageCapacity = 200;
+  } else if (rover === 'MiddleMan') {
+    storageCapacity = 350;
+  } else if (rover === 'StationWagon') {
+    storageCapacity = 500;
+  }
+  console.log(storageCapacity);
   return (
     <div>
       <h3>Choose the best Rover for your journey!</h3>
