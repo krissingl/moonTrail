@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
+import AlertWindow from './popUpAlert.jsx';
 import data from '../../dist/data.json';
 import classes from '../css/styles.css';
 
-const ChooseSupplies = ({ changePage, changeFinalSupplies }) => {
+const ChooseSupplies = ({ changePage, changeFinalSupplies, maxStorage }) => {
   const [totalWeight, changeTotalWeight] = useState(0);
   const [oxyAmount, changeOxyAmount] = useState(0);
   const [foodAmount, changeFoodAmount] = useState(0);
@@ -15,6 +16,7 @@ const ChooseSupplies = ({ changePage, changeFinalSupplies }) => {
   const [AImainAmount, changeAImainAmount] = useState(0);
   const [tirePatchAmount, changeTirePatchAmount] = useState(0);
   const [roverMainAmount, changeRoverMainAmount] = useState(0);
+  const [showAlert, toggleAlert] = useState(false);
 
   const supplyAmountList = [
     oxyAmount,
@@ -42,21 +44,23 @@ const ChooseSupplies = ({ changePage, changeFinalSupplies }) => {
   ];
 
   const addOneSupply = (e, callback, value) => {
-    changeTotalWeight(totalWeight + Number(e.target.value));
-    callback(value + 1);
+    if ((totalWeight + Number(e.target.value)) <= maxStorage) {
+      changeTotalWeight(totalWeight + Number(e.target.value));
+      callback(value + 1);
+    } else {
+      toggleAlert(true);
+    }
   };
   const minusOneSupply = (e, callback, value) => {
     changeTotalWeight(totalWeight - Number(e.target.value));
     callback(value - 1);
   };
   const supplyList = data.supplyList.map((supply, index) => (
-    <div className={classes.supplyList}>
+    <div className={classes.supplyItem}>
       <label>
-        {supply.type}
-        (weight:
-        {supply.weight}
-        ):
-        {supplyAmountList[index]}
+        {`${supply.type} (WEIGHT: ${supply.weight})`}
+        <br />
+        {`how many: ${supplyAmountList[index]}`}
       </label>
       <div>
         <button type="button" value={supply.weight} onClick={(e) => minusOneSupply(e, supplyAmountFuncList[index], supplyAmountList[index])}>--</button>
@@ -76,15 +80,29 @@ const ChooseSupplies = ({ changePage, changeFinalSupplies }) => {
     });
     return finalSupplyList;
   };
+  let alertPopUp;
+  if (showAlert) {
+    const alertMsg = 'There is not enough storage!';
+    alertPopUp = (
+      <AlertWindow message={alertMsg} toggleAlert={toggleAlert} />
+    );
+  }
   return (
     <div className={classes.supplyPage}>
-      <h3>This is the Supply Choosing Page</h3>
+      <h3>CHOOSE THE SUPPLIES TO TAKE ON THIS MISSION</h3>
+      {alertPopUp}
       <div>
-        Current Weight:
+        current weight:
         {totalWeight}
       </div>
+      <div>
+        max weight:
+        {maxStorage}
+      </div>
+      <br />
       <div>{supplyList}</div>
       <button type="button" onClick={() => { changePage('supplyAdvice'); }}>Any advice on what should I take?</button>
+      <br />
       <button type="button" onClick={(e) => { const finalSupplies = getFinalSupplies(); changeFinalSupplies(e, finalSupplies); changePage('review'); }}>Review</button>
     </div>
   );

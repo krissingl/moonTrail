@@ -9,22 +9,23 @@ const ChoiceReview = ({
   const crewList = crew.map((astro) => (
     <div>{astro}</div>
   ));
-  const chosenRover = rover;
+  const chosenRover = `Type: ${rover.type} Max Speed: ${rover.maxSpeed} Max Storage: ${rover.storageCapacity}`;
   const chosenSupplies = supplyList.map((supply) => (
     <div>
       <div>{supply.type}</div>
-      <div>{supply.amount}</div>
+      <div>{`How many: ${supply.amount}`}</div>
     </div>
   ));
   return (
     <div>
-      <h3>This is the choice review page</h3>
+      <h3>REVIEW BEFORE MISSION LAUNCH</h3>
       <div>
         Crew List:
         {crewList}
       </div>
       <div>
-        Rover Type:
+        Rover:
+        <br />
         {chosenRover}
       </div>
       <div>

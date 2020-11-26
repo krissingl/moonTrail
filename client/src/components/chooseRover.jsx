@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import classes from '../css/styles.css';
+import bug from '../../dist/extras/rovers/bug.gif';
+import jeep from '../../dist/extras/rovers/jeep.gif';
+import stationWag from '../../dist/extras/rovers/stationWagon.gif';
 
 const ChooseRover = ({ changePage, changeRover }) => {
   const rovers = ['MiniCoup', 'MiddleMan', 'StationWagon'];
@@ -11,27 +15,56 @@ const ChooseRover = ({ changePage, changeRover }) => {
   };
   let storageCapacity;
   let maxSpeed;
+  let roverImg;
   if (rover === 'MiniCoup') {
     storageCapacity = 400;
     maxSpeed = 10;
+    roverImg = (
+      <div>
+        <img className={classes.bugRoverImg} src={bug} alt="roverGif" />
+      </div>
+    );
   } else if (rover === 'MiddleMan') {
     storageCapacity = 500;
     maxSpeed = 7;
+    roverImg = (
+      <div>
+        <img className={classes.jeepRoverImg} src={jeep} alt="roverGif" />
+      </div>
+    );
   } else if (rover === 'StationWagon') {
     storageCapacity = 700;
     maxSpeed = 5;
+    roverImg = (
+      <div>
+        <img className={classes.sWRoverImg} src={stationWag} alt="roverGif" />
+      </div>
+    );
   }
-  console.log(`Current storage capacity: ${storageCapacity} and max speed: ${maxSpeed}`);
+  const getRoverObject = () => {
+    const roverObj = {
+      type: rover,
+      maxSpeed,
+      storageCapacity,
+    };
+    return roverObj;
+  };
   return (
     <div>
-      <h3>Choose the best Rover for your journey!</h3>
+      <h3>CHOOSE A ROVER TO USE FOR THIS MISSION</h3>
       <div>
         <span>Select Rover:</span>
         <select onChange={findRover}>
           {roverList}
         </select>
       </div>
-      <button type="button" onClick={(e) => { changeRover(e, rover); changePage('supplies'); }}>Choose Supplies</button>
+      <div>
+        <h5>{rover}</h5>
+        {roverImg}
+        <div>{`MAXIMUM STORAGE CAPACITY: ${storageCapacity}`}</div>
+        <div>{`MAXIMUM SPEED: ${maxSpeed}`}</div>
+      </div>
+      <button type="button" onClick={(e) => { const finalRover = getRoverObject(); changeRover(e, finalRover); changePage('supplies'); }}>Choose Supplies</button>
     </div>
   );
 };

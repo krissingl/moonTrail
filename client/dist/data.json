@@ -20,16 +20,16 @@
     "Sinus Iridum": [{"next": "Herodotus", "distance": 31}]
   },
   "supplyList": [
-    { "type": "Oxygen Tank", "weight": 10 },
-    { "type": "Freeze-Dried-Food-Pack", "weight": 1 },
-    { "type": "Water-Pouch", "weight": 2 },
-    { "type": "Regular Clothes Set", "weight": 3 },
-    { "type": "Warm Clothes Set", "weight": 6 },
-    { "type": "Regular Space Suit", "weight": 5 },
-    { "type": "Dust Proof Space Suit", "weight": 10 },
-    { "type": "AI Maintenance Toolkit", "weight": 5 },
-    { "type": "Rover Tire Patch", "weight": 2 },
-    { "type": "Rover Maintenance Toolkit", "weight": 8 }
+    { "type": "OXYGEN TANK", "weight": 10 },
+    { "type": "FREEZE-DRIED FOOD", "weight": 1 },
+    { "type": "WATER-POUCH", "weight": 2 },
+    { "type": "REGULAR CLOTHES SET", "weight": 3 },
+    { "type": "WARM CLOTHES SET", "weight": 6 },
+    { "type": "SPACE SUIT", "weight": 5 },
+    { "type": "DUST-PROOF SPACE SUIT", "weight": 10 },
+    { "type": "AI MAINTENANCE KIT", "weight": 5 },
+    { "type": "ROVER TIRE PATCH", "weight": 2 },
+    { "type": "ROVER MAINTENANCE KIT", "weight": 8 }
   ],
-  "introVerbiage": "On your way back from a successful mission to Mars, your spacecraft temporarily loses control of its flight systems and flies straight into a meteor shower. After being hit by a meteor, your crew is able to make an emergency landing on the moon. You must find your way to the emergency launch site to get back home. You can take one of four possible paths that each have their unique challenges and story elements. Strategically choosing the best equipment for a specific path and choosing to travel in a strategic way is the key to victory. The game ends either when all your crew is killed or the rover reaches the exit launch site. If the rover reaches the exit launch site, you receive a point score for what survived the journey."
+  "introVerbiage": "ON YOUR WAY BACK FROM A SUCCESSFUL MISSION TO MARS, YOUR SPACECRAFT LOST CONTROL OF ITS FLIGHT SYSTEMS AND WAS THROWN INTO A METEOR FIELD. AFTER TAKING DAMAGE FROM SEVERAL METEOR IMPACTS, YOUR CREW MADE AN EMERGENCY LANDING ON THE MOON. YOUR CREW MUST TRAVEL BY ROVER TO AN OLD LANDING SITE WHERE A BACK-UP SPACECRAFT IS WAITING. YOU MUST FIND THE QUICKEST AND SAFEST ROUTE TO THE OLD LANDING SITE AND ESCAPE THE MOON BEFORE RESOURCES RUN OUT. STRATEGICALLY CHOOSE THE ROVER, SUPPLIES, AND ROUTE THAT WILL ASSURE THE HIGHEST POSSIBILITY OF SURVIVAL FOR YOUR CREW. THE MISSION ENDS WHEN EITHER THE ENTIRE CREW HAS PERISHED, OR AT LEAST ONE CREW MEMBER REACHES THE OLD LANDING SITE AND ESCAPES. YOU WILL RECEIVE A POINT SCORE FOR WHATEVER SURVIVES THE JOURNEY."
 }
