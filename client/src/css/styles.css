@@ -18,6 +18,20 @@ button:hover {
   display: flex;
   flex-direction: column;
 }
+.nameAstrosSubmitBtn {
+  border-style: solid;
+  border-color: black;
+  background-color: white;
+  padding: 5px 5px 5px 5px;
+  border-radius: 3px;
+  outline: none;
+  width: 100px;
+}
+.nameAstrosSubmitBtn:hover {
+  cursor: pointer;
+  background-color: rgb(15, 26, 77);
+  color: aliceblue;
+}
 .bugRoverImg {
   width: 300px;
   animation: shake 0.5s;

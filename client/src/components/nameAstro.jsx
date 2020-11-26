@@ -49,7 +49,8 @@ const NameAstros = ({ changePage, changeCrew }) => {
             Crew Member 5:
             <input type="text" value={astro5} onChange={changeAstro5} />
           </label>
-          <input type="submit" value="Choose Rover" />
+          <br />
+          <input type="submit" value="Choose Rover" className={classes.nameAstrosSubmitBtn} />
         </form>
       </div>
     </div>
