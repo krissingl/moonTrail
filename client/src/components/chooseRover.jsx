@@ -32,7 +32,7 @@ const ChooseRover = ({ changePage, changeRover }) => {
   console.log(`Current storage capacity: ${storageCapacity} and max speed: ${maxSpeed}`);
   return (
     <div>
-      <h3>Choose the best Rover for your journey!</h3>
+      <h3>CHOOSE A ROVER TO USE FOR THIS MISSION</h3>
       <div>
         <span>Select Rover:</span>
         <select onChange={findRover}>

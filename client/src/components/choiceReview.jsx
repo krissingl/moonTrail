@@ -18,7 +18,7 @@ const ChoiceReview = ({
   ));
   return (
     <div>
-      <h3>This is the choice review page</h3>
+      <h3>REVIEW BEFORE MISSION LAUNCH</h3>
       <div>
         Crew List:
         {crewList}

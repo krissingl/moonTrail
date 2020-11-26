@@ -44,7 +44,7 @@ const ChooseSupplies = ({ changePage, changeFinalSupplies, maxStorage }) => {
   ];
 
   const addOneSupply = (e, callback, value) => {
-    if ((totalWeight + 1) < maxStorage) {
+    if ((totalWeight + Number(e.target.value)) <= maxStorage) {
       changeTotalWeight(totalWeight + Number(e.target.value));
       callback(value + 1);
     } else {
@@ -58,9 +58,9 @@ const ChooseSupplies = ({ changePage, changeFinalSupplies, maxStorage }) => {
   const supplyList = data.supplyList.map((supply, index) => (
     <div className={classes.supplyItem}>
       <label>
-        {`${supply.type} (weight: ${supply.weight})`}
+        {`${supply.type} (WEIGHT: ${supply.weight})`}
         <br />
-        {`How Many: ${supplyAmountList[index]}`}
+        {`how many: ${supplyAmountList[index]}`}
       </label>
       <div>
         <button type="button" value={supply.weight} onClick={(e) => minusOneSupply(e, supplyAmountFuncList[index], supplyAmountList[index])}>--</button>
@@ -89,14 +89,14 @@ const ChooseSupplies = ({ changePage, changeFinalSupplies, maxStorage }) => {
   }
   return (
     <div className={classes.supplyPage}>
-      <h3>Choose the supplies to take on your journey</h3>
+      <h3>CHOOSE THE SUPPLIES TO TAKE ON THIS MISSION</h3>
       {alertPopUp}
       <div>
-        Current Weight:
+        current weight:
         {totalWeight}
       </div>
       <div>
-        Max Weight:
+        max weight:
         {maxStorage}
       </div>
       <br />
