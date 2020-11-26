@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
+import AlertWindow from './popUpAlert.jsx';
 import data from '../../dist/data.json';
 import classes from '../css/styles.css';
 
@@ -15,6 +16,7 @@ const ChooseSupplies = ({ changePage, changeFinalSupplies, maxStorage }) => {
   const [AImainAmount, changeAImainAmount] = useState(0);
   const [tirePatchAmount, changeTirePatchAmount] = useState(0);
   const [roverMainAmount, changeRoverMainAmount] = useState(0);
+  const [showAlert, toggleAlert] = useState(false);
 
   const supplyAmountList = [
     oxyAmount,
@@ -42,8 +44,12 @@ const ChooseSupplies = ({ changePage, changeFinalSupplies, maxStorage }) => {
   ];
 
   const addOneSupply = (e, callback, value) => {
-    changeTotalWeight(totalWeight + Number(e.target.value));
-    callback(value + 1);
+    if ((totalWeight + 1) < maxStorage) {
+      changeTotalWeight(totalWeight + Number(e.target.value));
+      callback(value + 1);
+    } else {
+      toggleAlert(true);
+    }
   };
   const minusOneSupply = (e, callback, value) => {
     changeTotalWeight(totalWeight - Number(e.target.value));
@@ -74,9 +80,17 @@ const ChooseSupplies = ({ changePage, changeFinalSupplies, maxStorage }) => {
     });
     return finalSupplyList;
   };
+  let alertPopUp;
+  if (showAlert) {
+    const alertMsg = 'There is not enough storage!';
+    alertPopUp = (
+      <AlertWindow message={alertMsg} toggleAlert={toggleAlert} />
+    );
+  }
   return (
     <div className={classes.supplyPage}>
       <h3>Choose the supplies to take on your journey</h3>
+      {alertPopUp}
       <div>
         Current Weight:
         {totalWeight}
