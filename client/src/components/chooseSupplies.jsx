@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import data from '../../dist/data.json';
 import classes from '../css/styles.css';
 
-const ChooseSupplies = ({ changePage, changeFinalSupplies }) => {
+const ChooseSupplies = ({ changePage, changeFinalSupplies, maxStorage }) => {
   const [totalWeight, changeTotalWeight] = useState(0);
   const [oxyAmount, changeOxyAmount] = useState(0);
   const [foodAmount, changeFoodAmount] = useState(0);
@@ -50,13 +50,11 @@ const ChooseSupplies = ({ changePage, changeFinalSupplies }) => {
     callback(value - 1);
   };
   const supplyList = data.supplyList.map((supply, index) => (
-    <div className={classes.supplyList}>
+    <div className={classes.supplyItem}>
       <label>
-        {supply.type}
-        (weight:
-        {supply.weight}
-        ):
-        {supplyAmountList[index]}
+        {`${supply.type} (weight: ${supply.weight})`}
+        <br />
+        {`How Many: ${supplyAmountList[index]}`}
       </label>
       <div>
         <button type="button" value={supply.weight} onClick={(e) => minusOneSupply(e, supplyAmountFuncList[index], supplyAmountList[index])}>--</button>
@@ -78,13 +76,19 @@ const ChooseSupplies = ({ changePage, changeFinalSupplies }) => {
   };
   return (
     <div className={classes.supplyPage}>
-      <h3>This is the Supply Choosing Page</h3>
+      <h3>Choose the supplies to take on your journey</h3>
       <div>
         Current Weight:
         {totalWeight}
       </div>
+      <div>
+        Max Weight:
+        {maxStorage}
+      </div>
+      <br />
       <div>{supplyList}</div>
       <button type="button" onClick={() => { changePage('supplyAdvice'); }}>Any advice on what should I take?</button>
+      <br />
       <button type="button" onClick={(e) => { const finalSupplies = getFinalSupplies(); changeFinalSupplies(e, finalSupplies); changePage('review'); }}>Review</button>
     </div>
   );

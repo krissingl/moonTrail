@@ -9,11 +9,11 @@ const ChoiceReview = ({
   const crewList = crew.map((astro) => (
     <div>{astro}</div>
   ));
-  const chosenRover = rover;
+  const chosenRover = `Type: ${rover.type} Max Speed: ${rover.maxSpeed} Max Storage: ${rover.storageCapacity}`;
   const chosenSupplies = supplyList.map((supply) => (
     <div>
       <div>{supply.type}</div>
-      <div>{supply.amount}</div>
+      <div>{`How many: ${supply.amount}`}</div>
     </div>
   ));
   return (
@@ -24,7 +24,8 @@ const ChoiceReview = ({
         {crewList}
       </div>
       <div>
-        Rover Type:
+        Rover:
+        <br />
         {chosenRover}
       </div>
       <div>

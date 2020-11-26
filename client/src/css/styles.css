@@ -1,10 +1,27 @@
+button {
+  border-style: solid;
+  border-color: black;
+  background-color: white;
+  padding: 5px 5px 5px 5px;
+  border-radius: 5px;
+  outline: none;
+}
+button:hover {
+  cursor: pointer;
+  background-color: rgb(15, 26, 77);
+  color: aliceblue;
+}
 .crewNames {
   display: flex;
   flex-direction: column;
 }
-.supplyList {
+.supplyItem {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 500px;
+  padding: 5px 5px 5px 5px;
+}
+.supplyItem:hover {
+  background-color: rgb(146, 166, 253);
 }

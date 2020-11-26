@@ -21,6 +21,14 @@ const ChooseRover = ({ changePage, changeRover }) => {
     storageCapacity = 700;
     maxSpeed = 5;
   }
+  const getRoverObject = () => {
+    const roverObj = {
+      type: rover,
+      maxSpeed,
+      storageCapacity,
+    };
+    return roverObj;
+  };
   console.log(`Current storage capacity: ${storageCapacity} and max speed: ${maxSpeed}`);
   return (
     <div>
@@ -31,7 +39,7 @@ const ChooseRover = ({ changePage, changeRover }) => {
           {roverList}
         </select>
       </div>
-      <button type="button" onClick={(e) => { changeRover(e, rover); changePage('supplies'); }}>Choose Supplies</button>
+      <button type="button" onClick={(e) => { const finalRover = getRoverObject(); changeRover(e, finalRover); changePage('supplies'); }}>Choose Supplies</button>
     </div>
   );
 };

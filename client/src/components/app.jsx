@@ -35,9 +35,9 @@ class App extends React.Component {
     this.setState({ crew: crewList });
   }
 
-  changeRover(e, newRover) {
+  changeRover(e, roverObj) {
     e.preventDefault();
-    this.setState({ rover: newRover });
+    this.setState({ rover: roverObj });
   }
 
   changeFinalSupplies(e, finalSupplies) {
@@ -66,6 +66,7 @@ class App extends React.Component {
     } else if (this.state.page === 'supplies') {
       level = (
         <ChooseSupplies
+          maxStorage={this.state.rover.storageCapacity}
           changePage={this.changePage}
           changeFinalSupplies={this.changeFinalSupplies}
         />
