@@ -16,6 +16,12 @@ const NameAstros = ({ changePage, changeCrew }) => {
   const [astro4, changeAstro4] = useInput('');
   const [astro5, changeAstro5] = useInput('');
 
+  const isEnabled = (astro1.length > 0)
+    && (astro2.length > 0)
+    && (astro3.length > 0)
+    && (astro4.length > 0)
+    && (astro5.length > 0);
+
   const createCrewList = () => {
     const crewList = [astro1, astro2, astro3, astro4, astro5];
     return crewList;
@@ -49,7 +55,8 @@ const NameAstros = ({ changePage, changeCrew }) => {
             Crew Member 5:
             <input type="text" value={astro5} onChange={changeAstro5} />
           </label>
-          <input type="submit" value="Choose Rover" />
+          <br />
+          <input type="submit" value="Choose Rover" className={classes.nameAstrosSubmitBtn} disabled={!isEnabled} />
         </form>
       </div>
     </div>

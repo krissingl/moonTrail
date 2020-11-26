@@ -56,7 +56,7 @@ const ChooseSupplies = ({ changePage, changeFinalSupplies, maxStorage }) => {
     callback(value - 1);
   };
   const supplyList = data.supplyList.map((supply, index) => (
-    <div className={classes.supplyItem}>
+    <div className={classes.supplyItem} key={supply.type}>
       <label>
         {`${supply.type} (WEIGHT: ${supply.weight})`}
         <br />
@@ -101,9 +101,9 @@ const ChooseSupplies = ({ changePage, changeFinalSupplies, maxStorage }) => {
       </div>
       <br />
       <div>{supplyList}</div>
-      <button type="button" onClick={() => { changePage('supplyAdvice'); }}>Any advice on what should I take?</button>
       <br />
-      <button type="button" onClick={(e) => { const finalSupplies = getFinalSupplies(); changeFinalSupplies(e, finalSupplies); changePage('review'); }}>Review</button>
+      <button type="button" onClick={() => { changePage('supplyAdvice'); }}>Any advice on what should I take?</button>
+      <button type="button" onClick={(e) => { const finalSupplies = getFinalSupplies(); changeFinalSupplies(e, finalSupplies); changePage('review'); }}>Review Equiptment</button>
     </div>
   );
 };
