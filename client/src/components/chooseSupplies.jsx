@@ -101,9 +101,9 @@ const ChooseSupplies = ({ changePage, changeFinalSupplies, maxStorage }) => {
       </div>
       <br />
       <div>{supplyList}</div>
-      <button type="button" onClick={() => { changePage('supplyAdvice'); }}>Any advice on what should I take?</button>
       <br />
-      <button type="button" onClick={(e) => { const finalSupplies = getFinalSupplies(); changeFinalSupplies(e, finalSupplies); changePage('review'); }}>Review</button>
+      <button type="button" onClick={() => { changePage('supplyAdvice'); }}>Any advice on what should I take?</button>
+      <button type="button" onClick={(e) => { const finalSupplies = getFinalSupplies(); changeFinalSupplies(e, finalSupplies); changePage('review'); }}>Review Equiptment</button>
     </div>
   );
 };

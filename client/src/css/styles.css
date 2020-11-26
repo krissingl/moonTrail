@@ -68,6 +68,9 @@ button:hover {
 .supplyItem:hover {
   background-color: rgb(146, 166, 253);
 }
+.reviewItem {
+  padding: 5px 15px 0px 15px;
+}
 .popup {
   position: fixed;
   width: 100%;
