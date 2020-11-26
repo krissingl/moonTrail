@@ -56,7 +56,7 @@ const ChooseSupplies = ({ changePage, changeFinalSupplies, maxStorage }) => {
     callback(value - 1);
   };
   const supplyList = data.supplyList.map((supply, index) => (
-    <div className={classes.supplyItem}>
+    <div className={classes.supplyItem} key={supply.type}>
       <label>
         {`${supply.type} (WEIGHT: ${supply.weight})`}
         <br />

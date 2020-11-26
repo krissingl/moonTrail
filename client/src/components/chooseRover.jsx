@@ -5,11 +5,11 @@ import jeep from '../../dist/extras/rovers/jeep.gif';
 import stationWag from '../../dist/extras/rovers/stationWagon.gif';
 
 const ChooseRover = ({ changePage, changeRover }) => {
-  const rovers = ['MiniCoup', 'MiddleMan', 'StationWagon'];
+  const rovers = ['StationWagon', 'MiddleMan', 'MiniCoup'];
   const roverList = rovers.map((rover) => (
     <option key={rover} value={rover}>{rover}</option>
   ));
-  const [rover, handleRoverChange] = useState('MiniCoup');
+  const [rover, handleRoverChange] = useState('StationWagon');
   const findRover = (e) => {
     handleRoverChange(e.target.value);
   };
@@ -61,9 +61,10 @@ const ChooseRover = ({ changePage, changeRover }) => {
       <div>
         <h5>{rover}</h5>
         {roverImg}
-        <div>{`MAXIMUM STORAGE CAPACITY: ${storageCapacity}`}</div>
         <div>{`MAXIMUM SPEED: ${maxSpeed}`}</div>
+        <div>{`MAXIMUM STORAGE CAPACITY: ${storageCapacity}`}</div>
       </div>
+      <br />
       <button type="button" onClick={(e) => { const finalRover = getRoverObject(); changeRover(e, finalRover); changePage('supplies'); }}>Choose Supplies</button>
     </div>
   );
