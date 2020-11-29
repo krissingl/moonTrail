@@ -4,24 +4,38 @@ const SupplyAdvice = ({ changePage }) => {
   console.log('Supply Advice page fired');
   return (
     <div>
-      <h3>RECOMMENDED SUPLLIES FOR THIS MISSION</h3>
-      <div>OxygenTank…………………Should have at least 2 per Astro</div>
+      <h3>RECOMMENDED SUPLLIES FOR THIS MISSION:</h3>
+      <br />
+      <div>OXYGENTANK.....needed by crew constantly (reccomend: 2+ per crewmember)</div>
       <br />
       <div>
-        Freeze-Dried Food………….Food is deleted by crew consumption every 8 secs during travel
+        FREEZE-DRIED FOOD.....needed by the crew constantly to maintain health
       </div>
       <br />
-      <div>OxygenTank…………………Should have at least 2 per Astro</div>
+      <div>WATER-POUCH.....needed by the crew constantly to maintain health</div>
       <br />
-      <div>OxygenTank…………………Should have at least 2 per Astro</div>
+      <div>
+        REGULAR_CLOTHES_SET.....needed to maintain crew health (reccomend: 2+ sets per crewmember)
+      </div>
       <br />
-      <div>OxygenTank…………………Should have at least 2 per Astro</div>
+      <div>
+        WARM_CLOTHES_SET.....warmer alternative to REGULAR_CLOTHES_SET
+      </div>
       <br />
-      <div>OxygenTank…………………Should have at least 2 per Astro</div>
+      <div>
+        SPACE_SUIT.....each crewmember must have 1 at all times (reccomend: 1+ per crewmember)
+      </div>
       <br />
-      <div>OxygenTank…………………Should have at least 2 per Astro</div>
+      <div>
+        DUST_PROOF_SPACE_SUIT.....safer alternative to the SPACE_SUIT (reccomend: 1+ per crewmember)
+      </div>
       <br />
-      <div>OxygenTank…………………Should have at least 2 per Astro</div>
+      <div>AI_MAINTENANCE_KIT.....needed to maintain AI units (reccomend: 9+)</div>
+      <br />
+      <div>ROVER_TIRE_PATCH.....must-have in case of rover flat tire (reccomend: 5+)</div>
+      <br />
+      <div>ROVER_MAINTENANCE_KIT.....must-have in case of rover breakdown (reccomend: 5+)</div>
+      <br />
       <br />
       <button type="button" onClick={() => { changePage('supplies'); }}>Back to Supplies</button>
     </div>
