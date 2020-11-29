@@ -3,7 +3,7 @@ import data from '../../dist/data.json';
 
 const Landmark = ({ changePage }) => {
   const { landmarkList } = data;
-  console.log(landmarkList.MareCrisium[0].name);
+  console.log(landmarkList.MARE_CRISIUM.next);
   // create landmark hook to change with every next landmark change
   return (
     <div>
