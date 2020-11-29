@@ -10,7 +10,18 @@ const ChoiceReview = ({
   const crewList = crew.map((astro) => (
     <div key={astro} className={classes.reviewItem}>{astro}</div>
   ));
-  const chosenRover = `type: ${rover.type} max-speed: ${rover.maxSpeed} max-storage: ${rover.storageCapacity}`;
+  const chosenRover = (
+    <div>
+      type:
+      {rover.type}
+      <br />
+      max-speed:
+      {rover.maxSpeed}
+      <br />
+      max-storage:
+      {rover.storageCapacity}
+    </div>
+  );
   const chosenSupplies = supplyList.map((supply) => (
     <div key={supply.type} className={classes.reviewItem}>
       <div>{supply.type}</div>
@@ -39,7 +50,7 @@ const ChoiceReview = ({
       </div>
       <br />
       <button type="button" onClick={() => { changePage('main'); }}>Start Over</button>
-      <button type="button" onClick={() => { changePage('landmark'); }}>Begin the Mission!</button>
+      <button type="button" onClick={() => { changePage('landmark'); }}>Launch Mission</button>
     </div>
   );
 };
