@@ -17,8 +17,6 @@ const Landmark = ({ changePage, landmark, changeLandmark }) => {
     nextLandmark = landmarkList[landmark][0].next;
   }
 
-  console.log(isThereFork);
-
   let alertPopUp;
   if (showAlert) {
     alertPopUp = (
@@ -35,6 +33,10 @@ const Landmark = ({ changePage, landmark, changeLandmark }) => {
   if (isThereFork) {
     continueBtn = (
       <button type="button" onClick={() => { changePage('fork'); }}>CONTINUE MISSION</button>
+    );
+  } else if (landmark === 'HERODOTUS') {
+    continueBtn = (
+      <button type="button" onClick={() => { changePage('gameover'); }}>MISSION COMPLETION</button>
     );
   } else {
     continueBtn = (
