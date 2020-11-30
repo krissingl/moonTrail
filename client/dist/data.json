@@ -27,7 +27,7 @@
     { "type": "WARM_CLOTHES_SET", "weight": 6 },
     { "type": "SPACE_SUIT", "weight": 5 },
     { "type": "DUST_PROOF_SPACE_SUIT", "weight": 10 },
-    { "type": "AI_MAINTENANCE_KIT", "weight": 5 },
+    { "type": "CACAL_MAINTENANCE_KIT", "weight": 5 },
     { "type": "ROVER_TIRE_PATCH", "weight": 2 },
     { "type": "ROVER_MAINTENANCE_KIT", "weight": 8 }
   ],

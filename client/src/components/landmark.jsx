@@ -14,7 +14,7 @@ const Landmark = ({ changePage, landmark, changeLandmark }) => {
       </h3>
       <button type="button">LOOK AROUND</button>
       <button type="button">ATTEMPT CONTACT WITH GROUND CONTROL</button>
-      <button type="button">ATTEMPT CAAB DEBUG</button>
+      <button type="button">ATTEMPT CACAL DEBUG</button>
       <button type="button" onClick={(e) => { changeLandmark(e, nextLandmark); changePage('traveling'); }}>CONTINUE MISSION</button>
     </div>
   );
