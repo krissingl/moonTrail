@@ -11,6 +11,7 @@ import Landmark from './landmark.jsx';
 import Traveling from './traveling.jsx';
 import Fork from './fork.jsx';
 import StatusScreen from './statusScreen.jsx';
+import Analyzation from './analyzeSituation.jsx';
 import Gameover from './gameover.jsx';
 
 class App extends React.Component {
@@ -89,11 +90,16 @@ class App extends React.Component {
             changeLandmark={this.changeLandmark}
           />
           <StatusScreen
+            changePage={this.changePage}
             crew={this.state.crew}
             rover={this.state.rover}
             supplyList={this.state.supplyList}
           />
         </div>
+      );
+    } else if (this.state.page === 'analyzeSitch') {
+      level = (
+        <Analyzation changePage={this.changePage} />
       );
     } else if (this.state.page === 'traveling') {
       level = (
@@ -104,6 +110,7 @@ class App extends React.Component {
             changeLandmark={this.changeLandmark}
           />
           <StatusScreen
+            changePage={this.changePage}
             crew={this.state.crew}
             rover={this.state.rover}
             supplyList={this.state.supplyList}
