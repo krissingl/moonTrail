@@ -51,12 +51,12 @@ const Landmark = ({
   return (
     <div>
       <h3>
-        {`YOU HAVE ARRIVED AT ${landmark}`}
+        {`YOU_HAVE_ARRIVED_AT_${landmark}`}
       </h3>
       {alertPopUp}
       <button type="button">LOOK AROUND</button>
-      <button type="button">ATTEMPT CONTACT WITH GROUND CONTROL</button>
-      <button type="button" onClick={() => { changeAlertMsg('Cannot debug CACAL right now'); toggleAlert(true); }}>ATTEMPT CACAL DEBUG</button>
+      <button type="button" onClick={() => { changeAlertMsg('cannot contact GROUND_CONTROL right now'); toggleAlert(true); }}>ATTEMPT CONTACT WITH GROUND CONTROL</button>
+      <button type="button" onClick={() => { changeAlertMsg('cannot debug CACAL right now'); toggleAlert(true); }}>ATTEMPT CACAL DEBUG</button>
       {continueBtn}
     </div>
   );

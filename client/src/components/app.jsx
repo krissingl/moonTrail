@@ -31,6 +31,7 @@ class App extends React.Component {
     this.changeFinalSupplies = this.changeFinalSupplies.bind(this);
     this.changeLandmark = this.changeLandmark.bind(this);
     this.changeTravelingStatus = this.changeTravelingStatus.bind(this);
+    this.resetGame = this.resetGame.bind(this);
   }
 
   changePage(newPage) {
@@ -60,6 +61,10 @@ class App extends React.Component {
   changeTravelingStatus(e, newStatus) {
     e.preventDefault();
     this.setState({ currentlyTraveling: newStatus });
+  }
+
+  resetGame() {
+    this.setState({ currentLandmark: 'MARE_CRISIUM' });
   }
 
   render() {
@@ -159,7 +164,7 @@ class App extends React.Component {
     }
     return (
       <div>
-        <TitleMenu changePage={this.changePage} />
+        <TitleMenu changePage={this.changePage} reset={this.resetGame} />
         <div>
           {level}
         </div>

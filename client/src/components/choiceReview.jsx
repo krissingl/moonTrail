@@ -30,7 +30,7 @@ const ChoiceReview = ({
   ));
   return (
     <div>
-      <h3>REVIEW BEFORE MISSION LAUNCH</h3>
+      <h3>REVIEW_BEFORE_MISSION_LAUNCH</h3>
       <div className={classes.reviewList}>
         crew list:
         {crewList}

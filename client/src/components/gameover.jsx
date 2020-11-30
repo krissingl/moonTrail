@@ -5,7 +5,7 @@ const Gameover = () => {
   if (true) {
     finalScreen = (
       <div>
-        <h3>CONGRAGULATIONS YOU MADE IT HOME!</h3>
+        <h3>CONGRAGULATIONS_YOU_ARE_ENROUTE_HOME!</h3>
         <h5>FINAL SCORE COUNT HERE</h5>
       </div>
     );

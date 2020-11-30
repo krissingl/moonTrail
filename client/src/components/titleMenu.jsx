@@ -1,8 +1,9 @@
 import React from 'react';
+import classes from '../css/styles.css';
 
-const TitleMenu = ({ changePage }) => (
-  <div>
-    <button type="button" onClick={() => { changePage('main'); }}>Main Menu</button>
+const TitleMenu = ({ changePage, reset }) => (
+  <div className={classes.alwaysMenu}>
+    <button type="button" onClick={() => { reset(); changePage('main'); }}>Main Menu</button>
   </div>
 );
 

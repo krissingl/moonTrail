@@ -1,5 +1,6 @@
 body {
   font-family: Andale Mono;
+  background-image: url('../../dist/extras/stars.gif');
 }
 button {
   border-style: solid;
@@ -13,6 +14,12 @@ button:hover {
   cursor: pointer;
   background-color: rgb(15, 26, 77);
   color: aliceblue;
+}
+div {
+  background-color: white;
+}
+.alwaysMenu {
+  background-image: url('../../dist/extras/stars.gif');
 }
 .crewNames {
   display: flex;
@@ -95,4 +102,15 @@ button:hover {
 .statusScreen {
   background-color: black;
   color: rgb(133, 195, 250);
+}
+.statusScreenOpt {
+  background-color: black;
+  color: rgb(133, 195, 250);
+}
+.analyzeMenu {
+  display: flex;
+  flex-direction: column;
+}
+.analyzeMenuBtn {
+  border: none;
 }
