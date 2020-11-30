@@ -9,6 +9,7 @@ import SupplyAdvice from './supplyAdvice.jsx';
 import ChoiceReview from './choiceReview.jsx';
 import Landmark from './landmark.jsx';
 import Traveling from './traveling.jsx';
+import Fork from './fork.jsx';
 import StatusScreen from './statusScreen.jsx';
 
 class App extends React.Component {
@@ -96,7 +97,11 @@ class App extends React.Component {
     } else if (this.state.page === 'traveling') {
       level = (
         <div>
-          <Traveling changePage={this.changePage} landmark={this.state.currentLandmark} />
+          <Traveling
+            changePage={this.changePage}
+            landmark={this.state.currentLandmark}
+            changeLandmark={this.changeLandmark}
+          />
           <StatusScreen
             crew={this.state.crew}
             rover={this.state.rover}
@@ -116,6 +121,14 @@ class App extends React.Component {
     } else if (this.state.page === 'supplyAdvice') {
       level = (
         <SupplyAdvice changePage={this.changePage} />
+      );
+    } else if (this.state.page === 'fork') {
+      level = (
+        <Fork
+          changePage={this.changePage}
+          landmark={this.state.currentLandmark}
+          changeLandmark={this.changeLandmark}
+        />
       );
     }
     return (
