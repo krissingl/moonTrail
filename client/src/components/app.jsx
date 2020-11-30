@@ -19,11 +19,13 @@ class App extends React.Component {
       crew: [],
       rover: 'rover',
       supplyList: [],
+      currentLandmark: 'MARE_CRISIUM',
     };
     this.changePage = this.changePage.bind(this);
     this.changeCrew = this.changeCrew.bind(this);
     this.changeRover = this.changeRover.bind(this);
     this.changeFinalSupplies = this.changeFinalSupplies.bind(this);
+    this.changeLandmark = this.changeLandmark.bind(this);
   }
 
   changePage(newPage) {
@@ -43,6 +45,11 @@ class App extends React.Component {
   changeFinalSupplies(e, finalSupplies) {
     e.preventDefault();
     this.setState({ supplyList: finalSupplies });
+  }
+
+  changeLandmark(e, newLandmark) {
+    e.preventDefault();
+    this.setState({ currentLandmark: newLandmark });
   }
 
   render() {
@@ -74,7 +81,11 @@ class App extends React.Component {
     } else if (this.state.page === 'landmark') {
       level = (
         <div>
-          <Landmark changePage={this.changePage} />
+          <Landmark
+            changePage={this.changePage}
+            landmark={this.state.currentLandmark}
+            changeLandmark={this.changeLandmark}
+          />
           <StatusScreen
             crew={this.state.crew}
             rover={this.state.rover}
@@ -85,7 +96,7 @@ class App extends React.Component {
     } else if (this.state.page === 'traveling') {
       level = (
         <div>
-          <Traveling changePage={this.changePage} />
+          <Traveling changePage={this.changePage} landmark={this.state.currentLandmark} />
           <StatusScreen
             crew={this.state.crew}
             rover={this.state.rover}

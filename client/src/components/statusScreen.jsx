@@ -1,4 +1,5 @@
 import React from 'react';
+import data from '../../dist/data.json';
 import classes from '../css/styles.css';
 
 const StatusScreen = ({ crew, rover, supplyList }) => {
