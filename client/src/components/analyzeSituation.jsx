@@ -1,7 +1,12 @@
 import React from 'react';
 
-const Analyzation = ({ changePage }) => {
-  console.log('Analyzation page fired');
+const Analyzation = ({ changePage, travelingStatus }) => {
+  let previous;
+  if (travelingStatus) {
+    previous = 'traveling';
+  } else {
+    previous = 'landmark';
+  }
   return (
     <div>
       <h3>
@@ -13,7 +18,7 @@ const Analyzation = ({ changePage }) => {
       <button type="button">SEARCH_FOR_RESOURCES</button>
       <button type="button">CHECK_MAP</button>
       <button type="button">CHECK_CREW_SUPPLIES</button>
-      <button type="button" onClick={() => { changePage('traveling'); }}>CONTINUE MISSION</button>
+      <button type="button" onClick={() => { changePage(previous); }}>CONTINUE MISSION</button>
     </div>
   );
 };

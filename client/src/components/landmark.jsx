@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import AlertWindow from './popUpAlert.jsx';
 import data from '../../dist/data.json';
 
-const Landmark = ({ changePage, landmark, changeLandmark }) => {
+const Landmark = ({
+  changePage,
+  landmark,
+  changeLandmark,
+  changeTravelingStatus,
+}) => {
   const { landmarkList } = data;
   const [showAlert, toggleAlert] = useState(false);
   const [alertMsg, changeAlertMsg] = useState('');
@@ -40,7 +45,7 @@ const Landmark = ({ changePage, landmark, changeLandmark }) => {
     );
   } else {
     continueBtn = (
-      <button type="button" onClick={(e) => { changeLandmark(e, nextLandmark); changePage('traveling'); }}>CONTINUE MISSION</button>
+      <button type="button" onClick={(e) => { changeLandmark(e, nextLandmark); changeTravelingStatus(e, true); changePage('traveling'); }}>CONTINUE MISSION</button>
     );
   }
   return (

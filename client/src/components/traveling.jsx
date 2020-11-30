@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import AlertWindow from './popUpAlert.jsx';
 // import data from '../../dist/data.json';
 
-const TravelingPage = ({ changePage }) => {
+const TravelingPage = ({ changePage, changeTravelingStatus }) => {
   // const { landmarkList } = data;
   const [showAlert, toggleAlert] = useState(false);
   const [alertMsg, changeAlertMsg] = useState('');
@@ -20,7 +20,7 @@ const TravelingPage = ({ changePage }) => {
       </h3>
       {alertPopUp}
       <button type="button" onClick={() => { changeAlertMsg('Someone died of dysentry.'); toggleAlert(true); }}>Someone Died</button>
-      <button type="button" onClick={() => { changePage('landmark'); }}>Arrive at Landmark</button>
+      <button type="button" onClick={(e) => { changeTravelingStatus(e, false); changePage('landmark'); }}>Arrive at Landmark</button>
     </div>
   );
 };
