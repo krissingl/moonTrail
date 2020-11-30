@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import AlertWindow from './popUpAlert.jsx';
+// import data from '../../dist/data.json';
 
 const TravelingPage = ({ changePage }) => {
+  // const { landmarkList } = data;
   const [showAlert, toggleAlert] = useState(false);
   const [alertMsg, changeAlertMsg] = useState('');
+
   let alertPopUp;
   if (showAlert) {
     alertPopUp = (
