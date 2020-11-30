@@ -11,6 +11,7 @@ import Landmark from './landmark.jsx';
 import Traveling from './traveling.jsx';
 import Fork from './fork.jsx';
 import StatusScreen from './statusScreen.jsx';
+import Gameover from './gameover.jsx';
 
 class App extends React.Component {
   constructor() {
@@ -129,6 +130,10 @@ class App extends React.Component {
           landmark={this.state.currentLandmark}
           changeLandmark={this.changeLandmark}
         />
+      );
+    } else if (this.state.page === 'gameover') {
+      level = (
+        <Gameover />
       );
     }
     return (
