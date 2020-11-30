@@ -30,7 +30,10 @@ const SupplyAdvice = ({ changePage }) => {
         DUST_PROOF_SPACE_SUIT.....safer alternative to the SPACE_SUIT (reccomend: 1+ per crewmember)
       </div>
       <br />
-      <div>AI_MAINTENANCE_KIT.....needed to maintain AI units (reccomend: 9+)</div>
+      <div>
+        CACAL_MAINTENANCE_KIT.....needed to maintain
+        Communications_Artifical_Companion_and_Analytical_Locator(reccomend: 9+)
+      </div>
       <br />
       <div>ROVER_TIRE_PATCH.....must-have in case of rover flat tire (reccomend: 5+)</div>
       <br />
