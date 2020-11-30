@@ -75,7 +75,11 @@ class App extends React.Component {
       level = (
         <div>
           <Landmark changePage={this.changePage} />
-          <StatusScreen crew={this.state.crew} />
+          <StatusScreen
+            crew={this.state.crew}
+            rover={this.state.rover}
+            supplyList={this.state.supplyList}
+          />
         </div>
       );
     } else if (this.state.page === 'traveling') {

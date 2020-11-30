@@ -92,3 +92,7 @@ button:hover {
   border-radius: 20px;
   background: white;
 }
+.statusScreen {
+  background-color: black;
+  color: rgb(133, 195, 250);
+}
