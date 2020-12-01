@@ -1,5 +1,6 @@
 body {
   font-family: Andale Mono;
+  background-image: url('../../dist/extras/stars.gif');
 }
 button {
   border-style: solid;
@@ -13,6 +14,12 @@ button:hover {
   cursor: pointer;
   background-color: rgb(15, 26, 77);
   color: aliceblue;
+}
+div {
+  background-color: white;
+}
+.alwaysMenu {
+  background-image: url('../../dist/extras/stars.gif');
 }
 .crewNames {
   display: flex;
@@ -44,6 +51,8 @@ button:hover {
 }
 .sWRoverImg {
   width: 300px;
+  background: transparent;
+  background-color: transparent;
 }
 @keyframes shake {
   0% { transform: translate(1px, 1px) rotate(0deg); }
@@ -95,4 +104,67 @@ button:hover {
 .statusScreen {
   background-color: black;
   color: rgb(133, 195, 250);
+}
+.statusScreenOpt {
+  background-color: black;
+  color: rgb(133, 195, 250);
+}
+.analyzeMenu {
+  display: flex;
+  flex-direction: column;
+}
+.analyzeMenuBtn {
+  border: none;
+}
+.travelSlide {
+  height: 240px;
+  max-width: 1550px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+}
+.travelingCanvas {
+  background-color: rgb(1, 8, 78);
+}
+.travelSlide > div {
+  height: 240px;
+  width: 4000px;
+  background: url('../../dist/extras/moonGround.png');
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  transform: translate3d(0, 0, 0);
+  background-color: rgb(1, 8, 78);
+}
+.travelSlide .mover1 {
+  animation: moveSlideshow 22s linear infinite;
+  animation-direction: reverse;
+}
+.travelSlide .mover2 {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+  background-position: 0 -200px;
+  animation: moveSlideshow 24s linear infinite;
+  animation-direction: reverse;
+}
+
+@keyframes moveSlideshow {
+  100% {
+    transform: translateX(-66.6666%);
+  }
+}
+.travelSky {
+  height: 300px;
+  width: 1430px;
+  padding: none;
+}
+.drivingRover {
+  background: transparent;
+  background-color: transparent;
+  padding: none;
+  position: absolute;
+  margin-left: 500px;
+  margin-top: 100px;
 }

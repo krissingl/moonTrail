@@ -4,7 +4,7 @@ const SupplyAdvice = ({ changePage }) => {
   console.log('Supply Advice page fired');
   return (
     <div>
-      <h3>RECOMMENDED SUPLLIES FOR THIS MISSION:</h3>
+      <h3>RECOMMENDED_SUPLLIES_FOR_THIS_MISSION:</h3>
       <br />
       <div>OXYGENTANK.....needed by crew constantly (reccomend: 2+ per crewmember)</div>
       <br />

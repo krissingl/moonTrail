@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import AlertWindow from './popUpAlert.jsx';
 import data from '../../dist/data.json';
 
-const Landmark = ({ changePage, landmark, changeLandmark }) => {
+const Landmark = ({
+  changePage,
+  landmark,
+  changeLandmark,
+  changeTravelingStatus,
+}) => {
   const { landmarkList } = data;
   const [showAlert, toggleAlert] = useState(false);
   const [alertMsg, changeAlertMsg] = useState('');
@@ -40,18 +45,18 @@ const Landmark = ({ changePage, landmark, changeLandmark }) => {
     );
   } else {
     continueBtn = (
-      <button type="button" onClick={(e) => { changeLandmark(e, nextLandmark); changePage('traveling'); }}>CONTINUE MISSION</button>
+      <button type="button" onClick={(e) => { changeLandmark(e, nextLandmark); changeTravelingStatus(e, true); changePage('traveling'); }}>CONTINUE MISSION</button>
     );
   }
   return (
     <div>
       <h3>
-        {`YOU HAVE ARRIVED AT ${landmark}`}
+        {`YOU_HAVE_ARRIVED_AT_${landmark}`}
       </h3>
       {alertPopUp}
       <button type="button">LOOK AROUND</button>
-      <button type="button">ATTEMPT CONTACT WITH GROUND CONTROL</button>
-      <button type="button" onClick={() => { changeAlertMsg('Cannot debug CACAL right now'); toggleAlert(true); }}>ATTEMPT CACAL DEBUG</button>
+      <button type="button" onClick={() => { changeAlertMsg('cannot contact GROUND_CONTROL right now'); toggleAlert(true); }}>ATTEMPT CONTACT WITH GROUND CONTROL</button>
+      <button type="button" onClick={() => { changeAlertMsg('cannot debug CACAL right now'); toggleAlert(true); }}>ATTEMPT CACAL DEBUG</button>
       {continueBtn}
     </div>
   );

@@ -51,7 +51,7 @@ const ChooseRover = ({ changePage, changeRover }) => {
   };
   return (
     <div>
-      <h3>CHOOSE A ROVER TO USE FOR THIS MISSION</h3>
+      <h3>CHOOSE_ROVER_FOR_MISSION</h3>
       <div>
         <span>Select Rover:</span>
         <select onChange={findRover}>

@@ -11,6 +11,7 @@ import Landmark from './landmark.jsx';
 import Traveling from './traveling.jsx';
 import Fork from './fork.jsx';
 import StatusScreen from './statusScreen.jsx';
+import Analyzation from './analyzeSituation.jsx';
 import Gameover from './gameover.jsx';
 
 class App extends React.Component {
@@ -22,12 +23,15 @@ class App extends React.Component {
       rover: 'rover',
       supplyList: [],
       currentLandmark: 'MARE_CRISIUM',
+      currentlyTraveling: false,
     };
     this.changePage = this.changePage.bind(this);
     this.changeCrew = this.changeCrew.bind(this);
     this.changeRover = this.changeRover.bind(this);
     this.changeFinalSupplies = this.changeFinalSupplies.bind(this);
     this.changeLandmark = this.changeLandmark.bind(this);
+    this.changeTravelingStatus = this.changeTravelingStatus.bind(this);
+    this.resetGame = this.resetGame.bind(this);
   }
 
   changePage(newPage) {
@@ -52,6 +56,15 @@ class App extends React.Component {
   changeLandmark(e, newLandmark) {
     e.preventDefault();
     this.setState({ currentLandmark: newLandmark });
+  }
+
+  changeTravelingStatus(e, newStatus) {
+    e.preventDefault();
+    this.setState({ currentlyTraveling: newStatus });
+  }
+
+  resetGame() {
+    this.setState({ currentLandmark: 'MARE_CRISIUM' });
   }
 
   render() {
@@ -87,26 +100,37 @@ class App extends React.Component {
             changePage={this.changePage}
             landmark={this.state.currentLandmark}
             changeLandmark={this.changeLandmark}
+            changeTravelingStatus={this.changeTravelingStatus}
           />
           <StatusScreen
+            changePage={this.changePage}
             crew={this.state.crew}
             rover={this.state.rover}
             supplyList={this.state.supplyList}
+            landmark={this.state.currentLandmark}
+            travelingStatus={this.state.currentlyTraveling}
           />
         </div>
+      );
+    } else if (this.state.page === 'analyzeSitch') {
+      level = (
+        <Analyzation changePage={this.changePage} travelingStatus={this.state.currentlyTraveling} />
       );
     } else if (this.state.page === 'traveling') {
       level = (
         <div>
           <Traveling
             changePage={this.changePage}
-            landmark={this.state.currentLandmark}
-            changeLandmark={this.changeLandmark}
+            rover={this.state.rover}
+            changeTravelingStatus={this.changeTravelingStatus}
           />
           <StatusScreen
+            changePage={this.changePage}
             crew={this.state.crew}
             rover={this.state.rover}
             supplyList={this.state.supplyList}
+            landmark={this.state.currentLandmark}
+            travelingStatus={this.state.currentlyTraveling}
           />
         </div>
       );
@@ -129,6 +153,7 @@ class App extends React.Component {
           changePage={this.changePage}
           landmark={this.state.currentLandmark}
           changeLandmark={this.changeLandmark}
+          changeTravelingStatus={this.changeTravelingStatus}
         />
       );
     } else if (this.state.page === 'gameover') {
@@ -138,7 +163,7 @@ class App extends React.Component {
     }
     return (
       <div>
-        <TitleMenu changePage={this.changePage} />
+        <TitleMenu changePage={this.changePage} reset={this.resetGame} />
         <div>
           {level}
         </div>

@@ -2,26 +2,16 @@ import React from 'react';
 // import data from '../../dist/data.json';
 import classes from '../css/styles.css';
 
-const StatusScreen = ({ crew, rover, supplyList }) => {
-  const crewList = crew.map((astro) => (
-    <li>{astro}</li>
-  ));
-  const roverStats = (
-    <div>
-      {`type: ${(rover.type).toUpperCase()} max-speed: ${rover.maxSpeed} max-storage: ${rover.storageCapacity}`}
-    </div>
-  );
-  const currentSupplies = supplyList.map((supply) => (
-    <div key={supply.type} className={classes.reviewItem}>
-      <div>{supply.type}</div>
-      <div>{`how-many: ${supply.amount}`}</div>
-    </div>
-  ));
+const StatusScreen = ({ changePage }) => {
+  console.log('this is the status screen');
   return (
     <div className={classes.statusScreen}>
-      <div>{crewList}</div>
-      <div>{roverStats}</div>
-      <div>{currentSupplies}</div>
+      <div className={classes.statusScreenOpt}>DISTANCE_TO_NEXT_LANDMARK:</div>
+      <div className={classes.statusScreenOpt}>WEATHER: mild</div>
+      <div className={classes.statusScreenOpt}>OXYGEN_REMAINING: 0</div>
+      <div className={classes.statusScreenOpt}>RATIONS_REMAINING: water__0 food__0</div>
+      <div className={classes.statusScreenOpt}>CREW_HEALTH: fair</div>
+      <button type="button" onClick={() => { changePage('analyzeSitch'); }}>ANALYZE SITUATION</button>
     </div>
   );
 };

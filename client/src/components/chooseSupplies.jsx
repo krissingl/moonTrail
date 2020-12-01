@@ -89,7 +89,7 @@ const ChooseSupplies = ({ changePage, changeFinalSupplies, maxStorage }) => {
   }
   return (
     <div className={classes.supplyPage}>
-      <h3>CHOOSE THE SUPPLIES TO TAKE ON THIS MISSION</h3>
+      <h3>CHOOSE_MISSION_SUPPLIES</h3>
       {alertPopUp}
       <div>
         current weight:
