@@ -121,8 +121,7 @@ class App extends React.Component {
         <div>
           <Traveling
             changePage={this.changePage}
-            landmark={this.state.currentLandmark}
-            changeLandmark={this.changeLandmark}
+            rover={this.state.rover}
             changeTravelingStatus={this.changeTravelingStatus}
           />
           <StatusScreen
