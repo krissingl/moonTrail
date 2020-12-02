@@ -28,7 +28,7 @@ const NameAstros = ({ changePage, changeCrew }) => {
   };
 
   return (
-    <div>
+    <div className={classes.noticePage}>
       <h3>IDENTIFY_THE_ASTRONAUTS_ON_THIS_MISSION</h3>
       <div>
         <form

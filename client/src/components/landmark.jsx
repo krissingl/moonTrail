@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import AlertWindow from './popUpAlert.jsx';
 import data from '../../dist/data.json';
+import classes from '../css/styles.css';
 
 const Landmark = ({
   changePage,
@@ -49,7 +50,7 @@ const Landmark = ({
     );
   }
   return (
-    <div>
+    <div className={classes.noticePage}>
       <h3>
         {`YOU_HAVE_ARRIVED_AT_${landmark}`}
       </h3>

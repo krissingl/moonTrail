@@ -1,9 +1,10 @@
 import React from 'react';
+import classes from '../css/styles.css';
 
 const SupplyAdvice = ({ changePage }) => {
   console.log('Supply Advice page fired');
   return (
-    <div>
+    <div className={classes.noticePage}>
       <h3>RECOMMENDED_SUPLLIES_FOR_THIS_MISSION:</h3>
       <br />
       <div>OXYGENTANK.....needed by crew constantly (reccomend: 2+ per crewmember)</div>

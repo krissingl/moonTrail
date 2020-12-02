@@ -102,14 +102,14 @@ class App extends React.Component {
             changeLandmark={this.changeLandmark}
             changeTravelingStatus={this.changeTravelingStatus}
           />
-          <StatusScreen
+          {/* <StatusScreen
             changePage={this.changePage}
             crew={this.state.crew}
             rover={this.state.rover}
             supplyList={this.state.supplyList}
             landmark={this.state.currentLandmark}
             travelingStatus={this.state.currentlyTraveling}
-          />
+          /> */}
         </div>
       );
     } else if (this.state.page === 'analyzeSitch') {

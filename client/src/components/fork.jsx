@@ -13,7 +13,7 @@ const Fork = ({
   const landmarkOption2 = landmarkList[landmark][1].next;
 
   return (
-    <div className={classes.forkPage}>
+    <div className={classes.noticePage}>
       <h3>
         FORK_DETECTED_IN_ROUTE/WHICH_DIRECTION_SHOULD_THE_CREW_TAKE?
       </h3>

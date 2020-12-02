@@ -77,6 +77,11 @@ div {
 .supplyItem:hover {
   background-color: rgb(146, 166, 253);
 }
+.supplyBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 .reviewItem {
   padding: 5px 15px 0px 15px;
 }
@@ -109,7 +114,7 @@ div {
   background-color: black;
   color: rgb(133, 195, 250);
 }
-.forkPage {
+.noticePage {
   position: absolute;
   left: 50%;
   top: 50%;

@@ -88,6 +88,8 @@ const ChooseSupplies = ({ changePage, changeFinalSupplies, maxStorage }) => {
     );
   }
   return (
+    <div className={classes.noticePage}>
+
     <div className={classes.supplyPage}>
       <h3>CHOOSE_MISSION_SUPPLIES</h3>
       {alertPopUp}
@@ -104,6 +106,7 @@ const ChooseSupplies = ({ changePage, changeFinalSupplies, maxStorage }) => {
       <br />
       <button type="button" onClick={() => { changePage('supplyAdvice'); }}>Any advice on what should I take?</button>
       <button type="button" onClick={(e) => { const finalSupplies = getFinalSupplies(); changeFinalSupplies(e, finalSupplies); changePage('review'); }}>Review Equiptment</button>
+    </div>
     </div>
   );
 };
