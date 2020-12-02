@@ -33,3 +33,7 @@ Using React and Javascript to create a text based adventure of survival. The app
   The theme of this game is strategy and planning. Choosing the correct supplies for the correct route will create a higher chance of success and higher score.
 
   ![](readmeIMGs/rover.png)
+
+  After naming the five crew members, the player must choose one of three rovers that each have varying levels of speed and storage capacity.
+
+  ![](readmeIMGs/supplies.png)
