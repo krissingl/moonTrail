@@ -129,7 +129,7 @@ div {
 }
 .travelSlide > div {
   height: 240px;
-  width: 4000px;
+  width: 8000px;
   background: url('../../dist/extras/moonGround.png');
   position: absolute;
   top: 0;
@@ -152,7 +152,7 @@ div {
 
 @keyframes moveSlideshow {
   100% {
-    transform: translateX(-66.6666%);
+    transform: translateX(-49.99%);
   }
 }
 .travelSky {
@@ -161,7 +161,6 @@ div {
   padding: none;
 }
 .drivingRover {
-  background: transparent;
   background-color: transparent;
   padding: none;
   position: absolute;

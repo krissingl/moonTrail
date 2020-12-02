@@ -15,21 +15,21 @@ const TravelingPage = ({ changePage, changeTravelingStatus, rover }) => {
   let roverImg;
   if (rover.type === 'StationWagon') {
     roverImg = (
-      <div>
+      <span>
         <img className={classes.sWRoverImg} src={stationWag} alt="roverGif" />
-      </div>
+      </span>
     );
   } else if (rover.type === 'MiddleMan') {
     roverImg = (
-      <div>
+      <span>
         <img className={classes.jeepRoverImg} src={jeep} alt="roverGif" />
-      </div>
+      </span>
     );
   } else {
     roverImg = (
-      <div>
+      <span>
         <img className={classes.bugRoverImg} src={bug} alt="roverGif" />
-      </div>
+      </span>
     );
   }
 
