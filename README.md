@@ -20,7 +20,7 @@ Using React and Javascript to create a text based adventure of survival. The app
 
   1. Clone this repository to your local machine and open it in your code editor.
   2. In the repository's root directory, run the following commands:
-    ```js
+    ```
     npm run react-dev
     npm run start
     ```
