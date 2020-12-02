@@ -50,7 +50,7 @@ const ChooseRover = ({ changePage, changeRover }) => {
     return roverObj;
   };
   return (
-    <div>
+    <div className={classes.noticePage}>
       <h3>CHOOSE_ROVER_FOR_MISSION</h3>
       <div>
         <span>Select Rover:</span>

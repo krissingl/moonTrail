@@ -1,11 +1,12 @@
 import React from 'react';
+import classes from '../css/styles.css';
 
 const Gameover = () => {
   let finalScreen;
   if (true) {
     finalScreen = (
-      <div>
-        <h3>CONGRAGULATIONS_YOU_ARE_ENROUTE_HOME!</h3>
+      <div className={classes.noticePage}>
+        <h3>CONGRATULATIONS_YOU_ARE_ENROUTE_HOME!</h3>
         <h5>FINAL SCORE COUNT HERE</h5>
       </div>
     );

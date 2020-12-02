@@ -77,6 +77,11 @@ div {
 .supplyItem:hover {
   background-color: rgb(146, 166, 253);
 }
+.supplyBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 .reviewItem {
   padding: 5px 15px 0px 15px;
 }
@@ -109,6 +114,27 @@ div {
   background-color: black;
   color: rgb(133, 195, 250);
 }
+.noticePage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 5px solid #FFFF00;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.forkOptions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding-bottom: 10px;
+}
+.forkOR {
+  padding-left: 20px;
+  padding-right: 20px;
+}
 .analyzeMenu {
   display: flex;
   flex-direction: column;
@@ -129,8 +155,8 @@ div {
 }
 .travelSlide > div {
   height: 240px;
-  width: 4000px;
-  background: url('../../dist/extras/moonGround.png');
+  width: 8000px;
+  background: url('../../dist/extras/moonGround2.png');
   position: absolute;
   top: 0;
   left: 0;
@@ -152,7 +178,7 @@ div {
 
 @keyframes moveSlideshow {
   100% {
-    transform: translateX(-66.6666%);
+    transform: translateX(-49.99%);
   }
 }
 .travelSky {
@@ -161,7 +187,6 @@ div {
   padding: none;
 }
 .drivingRover {
-  background: transparent;
   background-color: transparent;
   padding: none;
   position: absolute;

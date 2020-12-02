@@ -29,28 +29,36 @@ const ChoiceReview = ({
     </div>
   ));
   return (
-    <div>
+    <div className={classes.noticePage}>
       <h3>REVIEW_BEFORE_MISSION_LAUNCH</h3>
-      <div className={classes.reviewList}>
-        crew list:
-        {crewList}
-      </div>
-      <br />
-      <div className={classes.reviewList}>
-        rover:
-        <br />
-        <div className={classes.reviewItem}>
-          {chosenRover}
+      <div className={classes.supplyBox}>
+        <div>
+          <div className={classes.reviewList}>
+            crew list:
+            {crewList}
+          </div>
+          <br />
+          <div className={classes.reviewList}>
+            rover:
+            <br />
+            <div className={classes.reviewItem}>
+              {chosenRover}
+            </div>
+          </div>
+          <br />
+        </div>
+        <div>
+          <div className={classes.reviewList}>
+            supply list:
+            {chosenSupplies}
+          </div>
+          <br />
         </div>
       </div>
-      <br />
-      <div className={classes.reviewList}>
-        supply list:
-        {chosenSupplies}
+      <div className={classes.supplyBox}>
+        <button type="button" onClick={() => { changePage('main'); }}>Start Over</button>
+        <button type="button" onClick={() => { changePage('landmark'); }}>Launch Mission</button>
       </div>
-      <br />
-      <button type="button" onClick={() => { changePage('main'); }}>Start Over</button>
-      <button type="button" onClick={() => { changePage('landmark'); }}>Launch Mission</button>
     </div>
   );
 };
