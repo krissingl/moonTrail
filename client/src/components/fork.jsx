@@ -1,5 +1,6 @@
 import React from 'react';
 import data from '../../dist/data.json';
+import classes from '../css/styles.css';
 
 const Fork = ({
   changePage,
@@ -12,12 +13,15 @@ const Fork = ({
   const landmarkOption2 = landmarkList[landmark][1].next;
 
   return (
-    <div>
+    <div className={classes.forkPage}>
       <h3>
         FORK_DETECTED_IN_ROUTE/WHICH_DIRECTION_SHOULD_THE_CREW_TAKE?
       </h3>
-      <button type="button" onClick={(e) => { changeLandmark(e, landmarkOption1); changeTravelingStatus(e, true); changePage('traveling'); }}>{landmarkOption1}</button>
-      <button type="button" onClick={(e) => { changeLandmark(e, landmarkOption2); changeTravelingStatus(e, true); changePage('traveling'); }}>{landmarkOption2}</button>
+      <div className={classes.forkOptions}>
+        <button type="button" onClick={(e) => { changeLandmark(e, landmarkOption1); changeTravelingStatus(e, true); changePage('traveling'); }}>{landmarkOption1}</button>
+        <div className={classes.forkOR}>OR</div>
+        <button type="button" onClick={(e) => { changeLandmark(e, landmarkOption2); changeTravelingStatus(e, true); changePage('traveling'); }}>{landmarkOption2}</button>
+      </div>
     </div>
   );
 };

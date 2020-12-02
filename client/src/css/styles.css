@@ -109,6 +109,27 @@ div {
   background-color: black;
   color: rgb(133, 195, 250);
 }
+.forkPage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 5px solid #FFFF00;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.forkOptions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding-bottom: 10px;
+}
+.forkOR {
+  padding-left: 20px;
+  padding-right: 20px;
+}
 .analyzeMenu {
   display: flex;
   flex-direction: column;
@@ -130,7 +151,7 @@ div {
 .travelSlide > div {
   height: 240px;
   width: 8000px;
-  background: url('../../dist/extras/moonGround.png');
+  background: url('../../dist/extras/moonGround2.png');
   position: absolute;
   top: 0;
   left: 0;
