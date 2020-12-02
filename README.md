@@ -37,3 +37,13 @@ Using React and Javascript to create a text based adventure of survival. The app
   After naming the five crew members, the player must choose one of three rovers that each have varying levels of speed and storage capacity.
 
   ![](readmeIMGs/supplies.png)
+
+  The player must then choose which supplies to take (and how much) to get the crew through their mission. After the player has reviewed their choices, they began the journey at MARE_CRISIUM - the site of their crash landing.
+
+  ![](readmeIMGs/traveling.png)
+
+  While traveling, the player must avoid dangerous situations, monitor rations and crew well-being, and choose the best route for their mission.
+
+  ![](readmeImgs/pickRoute.png)
+
+ #### Only then will they find their way home!
