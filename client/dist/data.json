@@ -1,6 +1,6 @@
 {
   "landmarkList": {
-    "MARE_CRISIUM": [{"next": "TARUNTIUS", "distance": 14}],
+    "MARE_CRISIUM": [{"next": "TARUNTIUS", "distance": 15}],
     "TARUNTIUS": [{"next": "PLINIUS", "distance": 21}],
     "PLINIUS": [{"next": "MANILIUS", "distance": 17}, {"next": "ARISTILLUS", "distance": 32}],
     "MANILIUS": [{"next": "TRIESNECKER", "distance": 15}, {"next": "APENNINE_MTS", "distance": 20}],
