@@ -4,7 +4,7 @@ import classes from '../css/styles.css';
 
 const StatusScreen = ({
   changePage,
-  supplyList,
+  supplyObj,
   landmark,
   previousLandmark,
 }) => {
@@ -21,7 +21,6 @@ const StatusScreen = ({
   }
 
   const [counter, setCounter] = useState(landmarkDistance);
-
   useEffect(() => {
     const timer = counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
     if (counter === 0) {
@@ -37,7 +36,10 @@ const StatusScreen = ({
         {counter}
       </div>
       <div className={classes.statusScreenOpt}>WEATHER: mild</div>
-      <div className={classes.statusScreenOpt}>OXYGEN_REMAINING: 0</div>
+      <div className={classes.statusScreenOpt}>
+        OXYGEN_REMAINING:
+        {supplyObj.oxygen.amount}
+      </div>
       <div className={classes.statusScreenOpt}>RATIONS_REMAINING: water__0 food__0</div>
       <div className={classes.statusScreenOpt}>CREW_HEALTH: fair</div>
       <button type="button" onClick={() => { changePage('analyzeSitch'); }}>ANALYZE SITUATION</button>
