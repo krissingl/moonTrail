@@ -20,20 +20,20 @@ const StatusScreen = ({
     landmarkDistance = landmarkList[previousLandmark][0].distance;
   }
 
-  const [counter, setCounter] = useState(landmarkDistance);
+  const [distCounter, setDistCounter] = useState(landmarkDistance);
   useEffect(() => {
-    const timer = counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
-    if (counter === 0) {
+    const timer = distCounter > 0 && setInterval(() => setDistCounter(distCounter - 1), 1000);
+    if (distCounter === 0) {
       changePage('landmark');
     }
     return () => clearInterval(timer);
-  }, [counter]);
+  }, [distCounter]);
 
   return (
     <div className={classes.statusScreen}>
       <div className={classes.statusScreenOpt}>
         DISTANCE_TO_NEXT_LANDMARK:
-        {counter}
+        {distCounter}
       </div>
       <div className={classes.statusScreenOpt}>WEATHER: mild</div>
       <div className={classes.statusScreenOpt}>
