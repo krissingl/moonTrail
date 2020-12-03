@@ -5,10 +5,8 @@ import bug from '../../dist/extras/rovers/bug.gif';
 import jeep from '../../dist/extras/rovers/jeep.gif';
 import stationWag from '../../dist/extras/rovers/stationWagon.gif';
 import classes from '../css/styles.css';
-// import data from '../../dist/data.json';
 
 const TravelingPage = ({ changePage, changeTravelingStatus, rover }) => {
-  // const { landmarkList } = data;
   const [showAlert, toggleAlert] = useState(false);
   const [alertMsg, changeAlertMsg] = useState('');
 

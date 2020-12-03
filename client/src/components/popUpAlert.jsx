@@ -4,8 +4,6 @@ import classes from '../css/styles.css';
 const AlertWindow = ({
   message,
   toggleAlert,
-  // landmark,
-  // changeLandmark
 }) => (
   <div className={classes.popup}>
     <div className={classes.innerPopup}>

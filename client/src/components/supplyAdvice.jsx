@@ -41,7 +41,7 @@ const SupplyAdvice = ({ changePage }) => {
       <div>ROVER_MAINTENANCE_KIT.....must-have in case of rover breakdown (reccomend: 5+)</div>
       <br />
       <br />
-      <button type="button" onClick={() => { changePage('supplies'); }}>Back to Supplies</button>
+      <button type="button" onClick={() => { changePage('supplies'); }}>BACK TO SUPPLIES</button>
     </div>
   );
 };
