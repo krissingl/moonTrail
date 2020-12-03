@@ -22,6 +22,8 @@ class App extends React.Component {
       crew: [],
       rover: 'rover',
       supplyList: [],
+      supplyObj: {},
+      previousLandmark: 'spaceLOL',
       currentLandmark: 'MARE_CRISIUM',
       currentlyTraveling: false,
     };
@@ -29,6 +31,8 @@ class App extends React.Component {
     this.changeCrew = this.changeCrew.bind(this);
     this.changeRover = this.changeRover.bind(this);
     this.changeFinalSupplies = this.changeFinalSupplies.bind(this);
+    this.changeSupplyObj = this.changeSupplyObj.bind(this);
+    this.changePreviousLandmark = this.changePreviousLandmark.bind(this);
     this.changeLandmark = this.changeLandmark.bind(this);
     this.changeTravelingStatus = this.changeTravelingStatus.bind(this);
     this.resetGame = this.resetGame.bind(this);
@@ -51,6 +55,16 @@ class App extends React.Component {
   changeFinalSupplies(e, finalSupplies) {
     e.preventDefault();
     this.setState({ supplyList: finalSupplies });
+  }
+
+  changeSupplyObj(e, newSupplyObj) {
+    e.preventDefault();
+    this.setState({ supplyObj: newSupplyObj });
+  }
+
+  changePreviousLandmark(e, landmark) {
+    e.preventDefault();
+    this.setState({ previousLandmark: landmark });
   }
 
   changeLandmark(e, newLandmark) {
@@ -91,6 +105,7 @@ class App extends React.Component {
           maxStorage={this.state.rover.storageCapacity}
           changePage={this.changePage}
           changeFinalSupplies={this.changeFinalSupplies}
+          changeSupplyObj={this.changeSupplyObj}
         />
       );
     } else if (this.state.page === 'landmark') {
@@ -100,6 +115,7 @@ class App extends React.Component {
             changePage={this.changePage}
             landmark={this.state.currentLandmark}
             changeLandmark={this.changeLandmark}
+            changePreviousLandmark={this.changePreviousLandmark}
             changeTravelingStatus={this.changeTravelingStatus}
           />
           {/* <StatusScreen
@@ -128,8 +144,9 @@ class App extends React.Component {
             changePage={this.changePage}
             crew={this.state.crew}
             rover={this.state.rover}
-            supplyList={this.state.supplyList}
+            supplyObj={this.state.supplyObj}
             landmark={this.state.currentLandmark}
+            previousLandmark={this.state.previousLandmark}
             travelingStatus={this.state.currentlyTraveling}
           />
         </div>
@@ -154,6 +171,7 @@ class App extends React.Component {
           landmark={this.state.currentLandmark}
           changeLandmark={this.changeLandmark}
           changeTravelingStatus={this.changeTravelingStatus}
+          changePreviousLandmark={this.changePreviousLandmark}
         />
       );
     } else if (this.state.page === 'gameover') {

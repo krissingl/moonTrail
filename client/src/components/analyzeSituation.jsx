@@ -9,7 +9,7 @@ const Analyzation = ({ changePage, travelingStatus }) => {
     previous = 'landmark';
   }
   return (
-    <div>
+    <div className={classes.noticePage}>
       <h3>
         ANALYZATION_OPTIONS...
       </h3>
