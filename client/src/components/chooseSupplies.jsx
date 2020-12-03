@@ -4,7 +4,12 @@ import AlertWindow from './popUpAlert.jsx';
 import data from '../../dist/data.json';
 import classes from '../css/styles.css';
 
-const ChooseSupplies = ({ changePage, changeFinalSupplies, maxStorage }) => {
+const ChooseSupplies = ({
+  changePage,
+  changeFinalSupplies,
+  changeSupplyObj,
+  maxStorage,
+}) => {
   const [totalWeight, changeTotalWeight] = useState(0);
   const [oxyAmount, changeOxyAmount] = useState(0);
   const [foodAmount, changeFoodAmount] = useState(0);
@@ -68,6 +73,33 @@ const ChooseSupplies = ({ changePage, changeFinalSupplies, maxStorage }) => {
       </div>
     </div>
   ));
+
+  const getFinalSupplyObj = () => {
+    const supplyObj = {
+      oxygen:
+      { type: data.supplyList[0].type, weight: data.supplyList[0].weight, amount: oxyAmount },
+      food:
+      { type: data.supplyList[1].type, weight: data.supplyList[1].weight, amount: foodAmount },
+      water:
+      { type: data.supplyList[2].type, weight: data.supplyList[2].weight, amount: waterAmount },
+      clothes:
+      { type: data.supplyList[3].type, weight: data.supplyList[3].weight, amount: clothesAmount },
+      clothes2:
+      { type: data.supplyList[4].type, weight: data.supplyList[4].weight, amount: clothesAmount2 },
+      spaceSuit:
+      { type: data.supplyList[5].type, weight: data.supplyList[5].weight, amount: suitAmount },
+      spaceSuit2:
+      { type: data.supplyList[6].type, weight: data.supplyList[6].weight, amount: suitAmount2 },
+      aiKit:
+      { type: data.supplyList[7].type, weight: data.supplyList[7].weight, amount: AImainAmount },
+      tirePatch:
+      { type: data.supplyList[8].type, weight: data.supplyList[8].weight, amount: tirePatchAmount },
+      roverKit:
+      { type: data.supplyList[9].type, weight: data.supplyList[9].weight, amount: roverMainAmount },
+    };
+    return supplyObj;
+  };
+
   const getFinalSupplies = () => {
     const finalSupplyList = data.supplyList.map((supply, index) => {
       const finalSupply = {
@@ -89,24 +121,23 @@ const ChooseSupplies = ({ changePage, changeFinalSupplies, maxStorage }) => {
   }
   return (
     <div className={classes.noticePage}>
-
-    <div className={classes.supplyPage}>
-      <h3>CHOOSE_MISSION_SUPPLIES</h3>
-      {alertPopUp}
-      <div>
-        current weight:
-        {totalWeight}
+      <div className={classes.supplyPage}>
+        <h3>CHOOSE_MISSION_SUPPLIES</h3>
+        {alertPopUp}
+        <div>
+          current weight:
+          {totalWeight}
+        </div>
+        <div>
+          max weight:
+          {maxStorage}
+        </div>
+        <br />
+        <div>{supplyList}</div>
+        <br />
+        <button type="button" onClick={() => { changePage('supplyAdvice'); }}>Any advice on what should I take?</button>
+        <button type="button" onClick={(e) => { const finalSupplies = getFinalSupplies(); const finalSupplyObj = getFinalSupplyObj();   changeFinalSupplies(e, finalSupplies); changeSupplyObj(e, finalSupplyObj); changePage('review'); }}>Review Equiptment</button>
       </div>
-      <div>
-        max weight:
-        {maxStorage}
-      </div>
-      <br />
-      <div>{supplyList}</div>
-      <br />
-      <button type="button" onClick={() => { changePage('supplyAdvice'); }}>Any advice on what should I take?</button>
-      <button type="button" onClick={(e) => { const finalSupplies = getFinalSupplies(); changeFinalSupplies(e, finalSupplies); changePage('review'); }}>Review Equiptment</button>
-    </div>
     </div>
   );
 };
