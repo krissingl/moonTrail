@@ -7,6 +7,8 @@ const Landmark = ({
   changePage,
   landmark,
   changeLandmark,
+  previousLandmark,
+  changePreviousLandmark,
   changeTravelingStatus,
 }) => {
   const { landmarkList } = data;
@@ -14,12 +16,14 @@ const Landmark = ({
   const [alertMsg, changeAlertMsg] = useState('');
 
   let nextLandmark;
+  let currentLandmark;
   let isThereFork = false;
   if (landmark === 'HERODOTUS') {
     nextLandmark = null;
   } else if (landmarkList[landmark].length !== 1) {
     isThereFork = true;
   } else {
+    currentLandmark = landmark;
     nextLandmark = landmarkList[landmark][0].next;
   }
 
@@ -31,6 +35,7 @@ const Landmark = ({
         toggleAlert={toggleAlert}
         landmark={landmark}
         changeLandmark={changeLandmark}
+        changePreviousLandmark={changePreviousLandmark}
       />
     );
   }
@@ -46,15 +51,16 @@ const Landmark = ({
     );
   } else {
     continueBtn = (
-      <button type="button" onClick={(e) => { changeLandmark(e, nextLandmark); changeTravelingStatus(e, true); changePage('traveling'); }}>CONTINUE MISSION</button>
+      <button type="button" onClick={(e) => { changeLandmark(e, nextLandmark); changePreviousLandmark(e, currentLandmark); changeTravelingStatus(e, true); changePage('traveling'); }}>CONTINUE MISSION</button>
     );
   }
   return (
     <div className={classes.noticePage}>
-      <h3>
+      <h2>
         {`YOU_HAVE_ARRIVED_AT_${landmark}`}
-      </h3>
+      </h2>
       {alertPopUp}
+      <h3>WHAT_WOULD_YOU_LIKE_TO_DO?</h3>
       <button type="button">LOOK AROUND</button>
       <button type="button" onClick={() => { changeAlertMsg('cannot contact GROUND_CONTROL right now'); toggleAlert(true); }}>ATTEMPT CONTACT WITH GROUND CONTROL</button>
       <button type="button" onClick={() => { changeAlertMsg('cannot debug CACAL right now'); toggleAlert(true); }}>ATTEMPT CACAL DEBUG</button>

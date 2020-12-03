@@ -107,6 +107,8 @@ class App extends React.Component {
             changePage={this.changePage}
             landmark={this.state.currentLandmark}
             changeLandmark={this.changeLandmark}
+            previousLandmark={this.state.previousLandmark}
+            changePreviousLandmark={this.changePreviousLandmark}
             changeTravelingStatus={this.changeTravelingStatus}
           />
           {/* <StatusScreen
@@ -137,6 +139,7 @@ class App extends React.Component {
             rover={this.state.rover}
             supplyList={this.state.supplyList}
             landmark={this.state.currentLandmark}
+            previousLandmark={this.state.previousLandmark}
             travelingStatus={this.state.currentlyTraveling}
           />
         </div>
