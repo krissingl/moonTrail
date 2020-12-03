@@ -107,7 +107,6 @@ class App extends React.Component {
             changePage={this.changePage}
             landmark={this.state.currentLandmark}
             changeLandmark={this.changeLandmark}
-            previousLandmark={this.state.previousLandmark}
             changePreviousLandmark={this.changePreviousLandmark}
             changeTravelingStatus={this.changeTravelingStatus}
           />
@@ -164,6 +163,7 @@ class App extends React.Component {
           landmark={this.state.currentLandmark}
           changeLandmark={this.changeLandmark}
           changeTravelingStatus={this.changeTravelingStatus}
+          changePreviousLandmark={this.changePreviousLandmark}
         />
       );
     } else if (this.state.page === 'gameover') {

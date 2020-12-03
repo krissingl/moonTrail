@@ -7,7 +7,6 @@ const Landmark = ({
   changePage,
   landmark,
   changeLandmark,
-  previousLandmark,
   changePreviousLandmark,
   changeTravelingStatus,
 }) => {
