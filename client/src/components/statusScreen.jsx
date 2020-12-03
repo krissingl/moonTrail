@@ -19,11 +19,11 @@ const StatusScreen = ({
   } else {
     landmarkDistance = landmarkList[previousLandmark][0].distance;
   }
-  console.log(landmarkDistance);
+
   const [counter, setCounter] = useState(landmarkDistance);
 
   useEffect(() => {
-    const timer = counter > 0 && setInterval(() => setCounter(counter - 1), 5000);
+    const timer = counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
     if (counter === 0) {
       changePage('landmark');
     }
