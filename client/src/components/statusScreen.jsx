@@ -40,7 +40,9 @@ const StatusScreen = ({
         OXYGEN_REMAINING:
         {supplyObj.oxygen.amount}
       </div>
-      <div className={classes.statusScreenOpt}>RATIONS_REMAINING: water__0 food__0</div>
+      <div className={classes.statusScreenOpt}>
+        {`RATIONS_REMAINING: water__${supplyObj.water.amount} food__${supplyObj.food.amount}`}
+      </div>
       <div className={classes.statusScreenOpt}>CREW_HEALTH: fair</div>
       <button type="button" onClick={() => { changePage('analyzeSitch'); }}>ANALYZE SITUATION</button>
     </div>
