@@ -4,7 +4,6 @@ import classes from '../css/styles.css';
 
 const StatusScreen = ({
   changePage,
-  crew,
   supplyList,
   landmark,
 }) => {

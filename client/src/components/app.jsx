@@ -22,6 +22,7 @@ class App extends React.Component {
       crew: [],
       rover: 'rover',
       supplyList: [],
+      previousLandmark: 'spaceLOL',
       currentLandmark: 'MARE_CRISIUM',
       currentlyTraveling: false,
     };
@@ -29,6 +30,7 @@ class App extends React.Component {
     this.changeCrew = this.changeCrew.bind(this);
     this.changeRover = this.changeRover.bind(this);
     this.changeFinalSupplies = this.changeFinalSupplies.bind(this);
+    this.changePreviousLandmark = this.changePreviousLandmark.bind(this);
     this.changeLandmark = this.changeLandmark.bind(this);
     this.changeTravelingStatus = this.changeTravelingStatus.bind(this);
     this.resetGame = this.resetGame.bind(this);
@@ -51,6 +53,11 @@ class App extends React.Component {
   changeFinalSupplies(e, finalSupplies) {
     e.preventDefault();
     this.setState({ supplyList: finalSupplies });
+  }
+
+  changePreviousLandmark(e, landmark) {
+    e.preventDefault();
+    this.setState({ previousLandmark: landmark });
   }
 
   changeLandmark(e, newLandmark) {
