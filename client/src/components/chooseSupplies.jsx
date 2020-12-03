@@ -136,7 +136,7 @@ const ChooseSupplies = ({
         <div>{supplyList}</div>
         <br />
         <button type="button" onClick={() => { changePage('supplyAdvice'); }}>Any advice on what should I take?</button>
-        <button type="button" onClick={(e) => { const finalSupplies = getFinalSupplies(); const finalSupplyObj = getFinalSupplyObj();   changeFinalSupplies(e, finalSupplies); changeSupplyObj(e, finalSupplyObj); changePage('review'); }}>Review Equiptment</button>
+        <button type="button" onClick={(e) => { const finalSupplies = getFinalSupplies(); const finalSupplyObj = getFinalSupplyObj(); changeFinalSupplies(e, finalSupplies); changeSupplyObj(e, finalSupplyObj); changePage('review'); }}>Review Equiptment</button>
       </div>
     </div>
   );
