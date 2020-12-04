@@ -76,6 +76,7 @@ div {
 }
 .supplyItem:hover {
   background-color: rgb(146, 166, 253);
+  color: rgb(194, 194, 197);
 }
 .supplyBox {
   display: flex;
