@@ -32,7 +32,7 @@ Using React and Javascript to create a text based adventure of survival. The app
 
   The theme of this game is strategy and planning. Choosing the correct supplies for the correct route will create a higher chance of success and higher score.
 
-  ![](readmeIMGs/rover.png)
+  ![](readmeIMGs/roverGif.gif)
 
   After naming the five crew members, the player must choose one of three rovers that each have varying levels of speed and storage capacity.
 
@@ -40,7 +40,7 @@ Using React and Javascript to create a text based adventure of survival. The app
 
   The player must then choose which supplies to take (and how much) to get the crew through their mission. After the player has reviewed their choices, they began the journey at MARE_CRISIUM - the site of their crash landing.
 
-  ![](readmeIMGs/traveling.png)
+  ![](readmeIMGs/travelingGif.gif)
 
   While traveling, the player must avoid dangerous situations, monitor rations and crew well-being, and choose the best route for their mission.
 
