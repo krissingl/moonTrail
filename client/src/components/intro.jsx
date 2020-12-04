@@ -8,7 +8,7 @@ const Intro = ({ changePage }) => {
     <div className={classes.noticePage}>
       <h2>SITUATION_DEBRIEFING</h2>
       <p>{intro}</p>
-      <button type="button" onClick={() => { changePage('naming'); }}>Begin</button>
+      <button type="button" onClick={() => { changePage('naming'); }}>BEGIN</button>
     </div>
   );
 };
