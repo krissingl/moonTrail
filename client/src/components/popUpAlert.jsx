@@ -10,23 +10,30 @@ const AlertWindow = ({
   let popUpContent;
   if (type === 'map') {
     popUpContent = (
-      <span>
-        {/* <h5>{message}</h5> */}
-        <Map />
-      </span>
+      <div className={classes.popup}>
+        <div className={classes.mapInnerPopup}>
+          <div>
+            <h5>{message}</h5>
+            <Map />
+            <button type="button" onClick={() => { toggleAlert(false); }}>Close</button>
+          </div>
+        </div>
+      </div>
     );
   } else {
     popUpContent = (
-      <h5>{message}</h5>
+      <div className={classes.popup}>
+        <div className={classes.innerPopup}>
+          <h5>{message}</h5>
+          <button type="button" onClick={() => { toggleAlert(false); }}>Close</button>
+        </div>
+      </div>
     );
   }
   console.log('Ollo?');
   return (
-    <div className={classes.popup}>
-      <span className={classes.innerPopup}>
-        <span>{popUpContent}</span>
-        <button type="button" onClick={() => { toggleAlert(false); }}>Close</button>
-      </span>
+    <div>
+      { popUpContent }
     </div>
   );
 };

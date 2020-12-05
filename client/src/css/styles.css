@@ -107,6 +107,17 @@ div {
   border-radius: 20px;
   background: white;
 }
+.mapInnerPopup {
+  position: absolute;
+  left: 25%;
+  right: 25%;
+  top: -60%;
+  bottom: 0%;
+  margin: auto;
+  border-radius: 20px;
+  background: white;
+  text-align: center;
+}
 .statusScreen {
   background-color: black;
   color: rgb(133, 195, 250);
@@ -197,6 +208,6 @@ div {
   margin-top: 100px;
 }
 .mapImg {
-  width: 1000px;
+  width: 500px;
   height: auto;
 }
