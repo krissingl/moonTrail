@@ -1,5 +1,5 @@
 import React from 'react';
-import mapImg from '../../dist/extras/moonPathImgs/mp1.png';
+import mapImg from '../../dist/extras/moonPathImgs/download.png';
 import classes from '../css/styles.css';
 
 const Map = () => {
