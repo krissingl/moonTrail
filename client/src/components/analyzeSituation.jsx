@@ -12,11 +12,12 @@ const Analyzation = ({ changePage, travelingStatus }) => {
 
   const [showAlert, toggleAlert] = useState(false);
   const [alertMsg, changeAlertMsg] = useState('');
+  const [alertType, changeAlertType] = useState('');
 
   let alertPopUp;
   if (showAlert) {
     alertPopUp = (
-      <AlertWindow message={alertMsg} toggleAlert={toggleAlert} />
+      <AlertWindow message={alertMsg} toggleAlert={toggleAlert} type={alertType} />
     );
   }
   return (
@@ -32,7 +33,7 @@ const Analyzation = ({ changePage, travelingStatus }) => {
         <button type="button" className={classes.analyzeMenuBtn}>ALTER_CREW_RATIONS</button>
         <button type="button" className={classes.analyzeMenuBtn}>ALTER_ROVER_SPEED</button>
         <button type="button" className={classes.analyzeMenuBtn}>SEARCH_FOR_RESOURCES</button>
-        <button type="button" className={classes.analyzeMenuBtn}>CHECK_MAP</button>
+        <button type="button" className={classes.analyzeMenuBtn} onClick={() => { changeAlertType('map'); changeAlertMsg('ROUTE_MAP'); toggleAlert(true); }}>CHECK_MAP</button>
         <button type="button" className={classes.analyzeMenuBtn}>CHECK_CREW_SUPPLIES</button>
         <button type="button" onClick={() => { changePage(previous); }}>CONTINUE MISSION</button>
       </div>
