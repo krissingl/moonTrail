@@ -32,18 +32,20 @@ const Fork = ({
 
   return (
     <div className={classes.noticePage}>
-      <h3>
-        FORK_DETECTED_IN_ROUTE/WHICH_DIRECTION_SHOULD_THE_CREW_TAKE?
-      </h3>
-      <div>
-        {alertPopUp}
+      <div className={classes.forkContent}>
+        <h3>
+          FORK_DETECTED_IN_ROUTE/WHICH_DIRECTION_SHOULD_THE_CREW_TAKE?
+        </h3>
+        <div>
+          {alertPopUp}
+        </div>
+        <div className={classes.forkOptions}>
+          <button type="button" onClick={(e) => { changeLandmark(e, landmarkOption1); changePreviousLandmark(e, currentLandmark); changeTravelingStatus(e, true); changePage('traveling'); }}>{landmarkOption1}</button>
+          <div className={classes.forkOR}>OR</div>
+          <button type="button" onClick={(e) => { changeLandmark(e, landmarkOption2); changePreviousLandmark(e, currentLandmark); changeTravelingStatus(e, true); changePage('traveling'); }}>{landmarkOption2}</button>
+        </div>
+        <button type="button" onClick={() => { changeAlertType('map'); changeAlertMsg('ROUTE_MAP'); toggleAlert(true); }}>CHECK_MAP</button>
       </div>
-      <div className={classes.forkOptions}>
-        <button type="button" onClick={(e) => { changeLandmark(e, landmarkOption1); changePreviousLandmark(e, currentLandmark); changeTravelingStatus(e, true); changePage('traveling'); }}>{landmarkOption1}</button>
-        <div className={classes.forkOR}>OR</div>
-        <button type="button" onClick={(e) => { changeLandmark(e, landmarkOption2); changePreviousLandmark(e, currentLandmark); changeTravelingStatus(e, true); changePage('traveling'); }}>{landmarkOption2}</button>
-      </div>
-      <button type="button" className={classes.analyzeMenuBtn} onClick={() => { changeAlertType('map'); changeAlertMsg('ROUTE_MAP'); toggleAlert(true); }}>CHECK_MAP</button>
     </div>
   );
 };

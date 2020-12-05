@@ -137,10 +137,17 @@ div {
   flex-direction: column;
   align-items: center;
 }
+.forkContent {
+  display: flex;
+  flex-direction: column;
+  width: 1000px;
+  height: 200px;
+  text-align: center;
+}
 .forkOptions {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   padding-bottom: 10px;
 }
 .forkOR {
