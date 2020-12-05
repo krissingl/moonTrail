@@ -1,11 +1,13 @@
 import React from 'react';
 import Map from './map.jsx';
+import SupplyCheck from './supplyCheck.jsx';
 import classes from '../css/styles.css';
 
 const AlertWindow = ({
   message,
   toggleAlert,
   type,
+  extraData,
 }) => {
   let popUpContent;
   if (type === 'map') {
@@ -25,7 +27,7 @@ const AlertWindow = ({
       <div className={classes.popup}>
         <div className={classes.innerPopup}>
           <h5>{message}</h5>
-          <SupplyCheck />
+          <SupplyCheck supplies={extraData} />
           <button type="button" onClick={() => { toggleAlert(false); }}>Close</button>
         </div>
       </div>
