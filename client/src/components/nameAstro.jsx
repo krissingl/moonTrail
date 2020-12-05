@@ -56,7 +56,7 @@ const NameAstros = ({ changePage, changeCrew }) => {
             <input type="text" value={astro5} onChange={changeAstro5} />
           </label>
           <br />
-          <input type="submit" value="Choose Rover" className={classes.nameAstrosSubmitBtn} disabled={!isEnabled} />
+          <input type="submit" value="Choose Rover" className={classes.nameAstrosSubmitBtn} />
         </form>
       </div>
     </div>

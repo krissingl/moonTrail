@@ -76,6 +76,7 @@ div {
 }
 .supplyItem:hover {
   background-color: rgb(146, 166, 253);
+  color: rgb(194, 194, 197);
 }
 .supplyBox {
   display: flex;
@@ -105,6 +106,17 @@ div {
   margin: auto;
   border-radius: 20px;
   background: white;
+}
+.mapInnerPopup {
+  position: absolute;
+  left: 25%;
+  right: 25%;
+  top: -60%;
+  bottom: 0%;
+  margin: auto;
+  border-radius: 20px;
+  background: white;
+  text-align: center;
 }
 .statusScreen {
   background-color: black;
@@ -138,6 +150,8 @@ div {
 .analyzeMenu {
   display: flex;
   flex-direction: column;
+  width: 1000px;
+  height: auto;
 }
 .analyzeMenuBtn {
   border: none;
@@ -192,4 +206,8 @@ div {
   position: absolute;
   margin-left: 500px;
   margin-top: 100px;
+}
+.mapImg {
+  width: 500px;
+  height: auto;
 }
