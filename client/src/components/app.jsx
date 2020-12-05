@@ -122,7 +122,11 @@ class App extends React.Component {
       );
     } else if (this.state.page === 'analyzeSitch') {
       level = (
-        <Analyzation changePage={this.changePage} travelingStatus={this.state.currentlyTraveling} />
+        <Analyzation
+          changePage={this.changePage}
+          travelingStatus={this.state.currentlyTraveling}
+          supplyList={this.state.supplyList}
+        />
       );
     } else if (this.state.page === 'traveling') {
       level = (
