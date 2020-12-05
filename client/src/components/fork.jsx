@@ -44,7 +44,7 @@ const Fork = ({
           <div className={classes.forkOR}>OR</div>
           <button type="button" onClick={(e) => { changeLandmark(e, landmarkOption2); changePreviousLandmark(e, currentLandmark); changeTravelingStatus(e, true); changePage('traveling'); }}>{landmarkOption2}</button>
         </div>
-        <button type="button" onClick={() => { changeAlertType('map'); changeAlertMsg('ROUTE_MAP'); toggleAlert(true); }}>CHECK_MAP</button>
+        <button type="button" className={classes.forkMapBtn} onClick={() => { changeAlertType('map'); changeAlertMsg('ROUTE_MAP'); toggleAlert(true); }}>CHECK_MAP</button>
       </div>
     </div>
   );

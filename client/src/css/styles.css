@@ -142,6 +142,7 @@ div {
   flex-direction: column;
   width: 1000px;
   height: 200px;
+  justify-content: space-evenly;
   text-align: center;
 }
 .forkOptions {
@@ -153,6 +154,10 @@ div {
 .forkOR {
   padding-left: 20px;
   padding-right: 20px;
+}
+.forkMapBtn {
+  width: 100px;
+  margin-left: 45%;
 }
 .analyzeMenu {
   display: flex;
