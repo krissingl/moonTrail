@@ -3,7 +3,7 @@ import mapImg from '../../dist/extras/moonPathImgs/download.png';
 import classes from '../css/styles.css';
 
 const Map = () => {
-  console.log('Map fired');
+  console.log('Map fireed');
   return (
     <span>
       <img className={classes.mapImg} src={mapImg} alt="roverGif" />
