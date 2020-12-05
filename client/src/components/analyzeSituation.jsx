@@ -40,7 +40,7 @@ const Analyzation = ({ changePage, travelingStatus, supplyList }) => {
         <button type="button" className={classes.analyzeMenuBtn} onClick={() => { changeAlertMsg('Alter Rover Speed'); toggleAlert(true); }}>ALTER_ROVER_SPEED</button>
         <button type="button" className={classes.analyzeMenuBtn} onClick={() => { changeAlertMsg('You search for resources'); toggleAlert(true); }}>SEARCH_FOR_RESOURCES</button>
         <button type="button" className={classes.analyzeMenuBtn} onClick={() => { changeAlertType('map'); changeAlertMsg('ROUTE_MAP'); toggleAlert(true); }}>CHECK_MAP</button>
-        <button type="button" className={classes.analyzeMenuBtn} onClick={() => { changeExtraData(); changeAlertType('checkSupplies'); changeAlertMsg('CREW_SUPPLIES'); toggleAlert(true); }}>CHECK_CREW_SUPPLIES</button>
+        <button type="button" className={classes.analyzeMenuBtn} onClick={() => { changeExtraData(supplyList); changeAlertType('checkSupplies'); changeAlertMsg('CREW_SUPPLIES'); toggleAlert(true); }}>CHECK_CREW_SUPPLIES</button>
         <button type="button" onClick={() => { changePage(previous); }}>CONTINUE MISSION</button>
       </div>
     </div>

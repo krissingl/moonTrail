@@ -20,6 +20,16 @@ const AlertWindow = ({
         </div>
       </div>
     );
+  } else if (type === 'checkSupplies') {
+    popUpContent = (
+      <div className={classes.popup}>
+        <div className={classes.innerPopup}>
+          <h5>{message}</h5>
+          <SupplyCheck />
+          <button type="button" onClick={() => { toggleAlert(false); }}>Close</button>
+        </div>
+      </div>
+    );
   } else {
     popUpContent = (
       <div className={classes.popup}>
