@@ -139,6 +139,8 @@ div {
 .analyzeMenu {
   display: flex;
   flex-direction: column;
+  width: 1000px;
+  height: auto;
 }
 .analyzeMenuBtn {
   border: none;

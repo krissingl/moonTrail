@@ -10,10 +10,10 @@ const AlertWindow = ({
   let popUpContent;
   if (type === 'map') {
     popUpContent = (
-      <div>
-        <h5>{message}</h5>
+      <span>
+        {/* <h5>{message}</h5> */}
         <Map />
-      </div>
+      </span>
     );
   } else {
     popUpContent = (
@@ -23,10 +23,10 @@ const AlertWindow = ({
   console.log('Ollo?');
   return (
     <div className={classes.popup}>
-      <div className={classes.innerPopup}>
-        <div>{popUpContent}</div>
+      <span className={classes.innerPopup}>
+        <span>{popUpContent}</span>
         <button type="button" onClick={() => { toggleAlert(false); }}>Close</button>
-      </div>
+      </span>
     </div>
   );
 };
