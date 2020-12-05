@@ -1,10 +1,14 @@
 import React from 'react';
+import mapImg from '../../dist/extras/moonPathImgs/mp1.png';
+import classes from '../css/styles.css';
 
-const map = () => {
+const Map = () => {
   console.log('Map fired');
   return (
-    <div>MAP</div>
+    <span>
+      <img className={classes.mapImg} src={mapImg} alt="roverGif" />
+    </span>
   );
 };
 
-export default map;
+export default Map;
