@@ -30,7 +30,7 @@ const Analyzation = ({ changePage, travelingStatus }) => {
       </div>
       <div className={classes.analyzeMenu}>
         <button type="button" className={classes.analyzeMenuBtn} onClick={() => { changeAlertMsg('Crew is well-rested.'); toggleAlert(true); }}>STOP_TO_REST</button>
-        <button type="button" className={classes.analyzeMenuBtn}>ALTER_CREW_RATIONS</button>
+        <button type="button" className={classes.analyzeMenuBtn} onClick={() => { changeAlertMsg('Alter Crew Rations'); toggleAlert(true); }}>ALTER_CREW_RATIONS</button>
         <button type="button" className={classes.analyzeMenuBtn}>ALTER_ROVER_SPEED</button>
         <button type="button" className={classes.analyzeMenuBtn}>SEARCH_FOR_RESOURCES</button>
         <button type="button" className={classes.analyzeMenuBtn} onClick={() => { changeAlertType('map'); changeAlertMsg('ROUTE_MAP'); toggleAlert(true); }}>CHECK_MAP</button>
