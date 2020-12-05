@@ -30,7 +30,7 @@ const AlertWindow = ({
       </div>
     );
   }
-  console.log('Ollo?');
+
   return (
     <div>
       { popUpContent }
