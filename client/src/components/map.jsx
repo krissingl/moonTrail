@@ -6,7 +6,7 @@ const Map = () => {
   console.log('Map fireed');
   return (
     <span>
-      <img className={classes.mapImg} src={mapImg} alt="roverGif" />
+      <img className={classes.mapImg} src={mapImg} alt="map" />
     </span>
   );
 };
