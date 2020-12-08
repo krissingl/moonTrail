@@ -36,14 +36,6 @@ const StatusScreen = ({
     }
     return () => clearInterval(timer);
   }, [oxyCounter]);
-  const [waterCounter, setWaterCounter] = useState(supplyObj.oxygen.amount);
-  useEffect(() => {
-    const timer = waterCounter > 0 && setInterval(() => setWaterCounter(waterCounter - 1), 1000);
-    if (waterCounter === 0) {
-      changePage('gameover');
-    }
-    return () => clearInterval(timer);
-  }, [waterCounter]);
 
   return (
     <div className={classes.statusScreen}>
