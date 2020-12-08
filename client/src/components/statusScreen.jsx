@@ -28,14 +28,14 @@ const StatusScreen = ({
     }
     return () => clearInterval(timer);
   }, [distCounter]);
-  const [oxyCounter, setOxyCounter] = useState(supplyObj.oxygen.amount);
-  useEffect(() => {
-    const timer = oxyCounter > 0 && setInterval(() => setOxyCounter(oxyCounter - 1), 1000);
-    if (oxyCounter === 0) {
-      changePage('gameover');
-    }
-    return () => clearInterval(timer);
-  }, [oxyCounter]);
+  // const [oxyCounter, setOxyCounter] = useState(supplyObj.oxygen.amount);
+  // useEffect(() => {
+  //   const timer = oxyCounter > 0 && setInterval(() => {setOxyCounter(oxyCounter - 1); supplyObj.oxygen.amount = oxyCounter; }, 1000);
+  //   if (oxyCounter === 0) {
+  //     changePage('gameover');
+  //   }
+  //   return () => clearInterval(timer);
+  // }, [oxyCounter]);
 
   return (
     <div className={classes.statusScreen}>
@@ -46,7 +46,7 @@ const StatusScreen = ({
       <div className={classes.statusScreenOpt}>WEATHER: mild</div>
       <div className={classes.statusScreenOpt}>
         OXYGEN_REMAINING:
-        {supplyObj.oxygen.amount}
+        {oxyCounter}
       </div>
       <div className={classes.statusScreenOpt}>
         {`RATIONS_REMAINING: water__${supplyObj.water.amount} food__${supplyObj.food.amount}`}
