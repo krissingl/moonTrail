@@ -1,8 +1,9 @@
 import React from 'react';
+import data from '../../dist/data.json';
 import classes from '../css/styles.css';
 
 const SupplyAdvice = ({ changePage }) => {
-  console.log('Supply Advice page fired');
+  const advice = data.introVerbiage;
   return (
     <div className={classes.noticePage}>
       <h3>RECOMMENDED_SUPLLIES_FOR_THIS_MISSION:</h3>

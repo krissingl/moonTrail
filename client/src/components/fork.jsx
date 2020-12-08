@@ -29,7 +29,6 @@ const Fork = ({
       />
     );
   }
-
   return (
     <div className={classes.noticePage}>
       <div className={classes.forkContent}>
