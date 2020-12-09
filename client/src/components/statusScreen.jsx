@@ -5,6 +5,7 @@ import classes from '../css/styles.css';
 const StatusScreen = ({
   changePage,
   supplyObj,
+  changeSupplyObj,
   landmark,
   previousLandmark,
 }) => {
@@ -30,7 +31,9 @@ const StatusScreen = ({
   }, [distCounter]);
   const [oxyCounter, setOxyCounter] = useState(supplyObj.oxygen.amount);
   useEffect(() => {
-    const timer = oxyCounter > 0 && setInterval(() => setOxyCounter(oxyCounter - 1), 1000);
+    const timer = oxyCounter > 0 && setInterval(() => {
+      setOxyCounter(oxyCounter - 1);
+    }, 1000);
     if (oxyCounter === 0) {
       changePage('gameover');
     }
@@ -46,7 +49,7 @@ const StatusScreen = ({
       <div className={classes.statusScreenOpt}>WEATHER: mild</div>
       <div className={classes.statusScreenOpt}>
         OXYGEN_REMAINING:
-        {supplyObj.oxygen.amount}
+        {oxyAmount}
       </div>
       <div className={classes.statusScreenOpt}>
         {`RATIONS_REMAINING: water__${supplyObj.water.amount} food__${supplyObj.food.amount}`}
