@@ -5,6 +5,7 @@ import classes from '../css/styles.css';
 const StatusScreen = ({
   changePage,
   supplyObj,
+  changeSupplyObj,
   landmark,
   previousLandmark,
 }) => {
@@ -29,11 +30,9 @@ const StatusScreen = ({
     return () => clearInterval(timer);
   }, [distCounter]);
   const [oxyCounter, setOxyCounter] = useState(supplyObj.oxygen.amount);
-  const [oxyAmount, changeOxyAmount] = useState(supplyObj.oxygen.amount);
   useEffect(() => {
     const timer = oxyCounter > 0 && setInterval(() => {
       setOxyCounter(oxyCounter - 1);
-      changeOxyAmount(oxyCounter);
     }, 1000);
     if (oxyCounter === 0) {
       changePage('gameover');
