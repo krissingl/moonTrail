@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import AlertWindow from './popUpAlert.jsx';
+import SupplyList from './supplyList.jsx';
 import data from '../../dist/data.json';
 import classes from '../css/styles.css';
 
@@ -47,32 +48,6 @@ const ChooseSupplies = ({
     changeTirePatchAmount,
     changeRoverMainAmount,
   ];
-
-  const addOneSupply = (e, callback, value) => {
-    if ((totalWeight + Number(e.target.value)) <= maxStorage) {
-      changeTotalWeight(totalWeight + Number(e.target.value));
-      callback(value + 1);
-    } else {
-      toggleAlert(true);
-    }
-  };
-  const minusOneSupply = (e, callback, value) => {
-    changeTotalWeight(totalWeight - Number(e.target.value));
-    callback(value - 1);
-  };
-  const supplyList = data.supplyList.map((supply, index) => (
-    <div className={classes.supplyItem} key={supply.type}>
-      <label>
-        {`${supply.type} (WEIGHT: ${supply.weight})`}
-        <br />
-        {`how many: ${supplyAmountList[index]}`}
-      </label>
-      <div>
-        <button type="button" value={supply.weight} onClick={(e) => minusOneSupply(e, supplyAmountFuncList[index], supplyAmountList[index])}>--</button>
-        <button type="button" value={supply.weight} onClick={(e) => addOneSupply(e, supplyAmountFuncList[index], supplyAmountList[index])}>+</button>
-      </div>
-    </div>
-  ));
 
   const getFinalSupplyObj = () => {
     const supplyObj = {
@@ -133,7 +108,16 @@ const ChooseSupplies = ({
           {maxStorage}
         </div>
         <br />
-        <div>{supplyList}</div>
+        <div>
+          <SupplyList
+            maxStorage={maxStorage}
+            totalWeight={totalWeight}
+            toggleAlert={toggleAlert}
+            changeTotalWeight={changeTotalWeight}
+            supplyAmountList={supplyAmountList}
+            supplyAmountFuncList={supplyAmountFuncList}
+          />
+        </div>
         <br />
         <button type="button" onClick={() => { changePage('supplyAdvice'); }}>Any advice on what should I take?</button>
         <button type="button" onClick={(e) => { const finalSupplies = getFinalSupplies(); const finalSupplyObj = getFinalSupplyObj(); changeFinalSupplies(e, finalSupplies); changeSupplyObj(e, finalSupplyObj); changePage('review'); }}>Review Equiptment</button>
