@@ -1,6 +1,7 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import AlertWindow from './popUpAlert.jsx';
+import SupplyList from './supplyList.jsx';
+import GetFinalSupplyObj from './getsupplyObj.jsx';
 import data from '../../dist/data.json';
 import classes from '../css/styles.css';
 
@@ -48,58 +49,6 @@ const ChooseSupplies = ({
     changeRoverMainAmount,
   ];
 
-  const addOneSupply = (e, callback, value) => {
-    if ((totalWeight + Number(e.target.value)) <= maxStorage) {
-      changeTotalWeight(totalWeight + Number(e.target.value));
-      callback(value + 1);
-    } else {
-      toggleAlert(true);
-    }
-  };
-  const minusOneSupply = (e, callback, value) => {
-    changeTotalWeight(totalWeight - Number(e.target.value));
-    callback(value - 1);
-  };
-  const supplyList = data.supplyList.map((supply, index) => (
-    <div className={classes.supplyItem} key={supply.type}>
-      <label>
-        {`${supply.type} (WEIGHT: ${supply.weight})`}
-        <br />
-        {`how many: ${supplyAmountList[index]}`}
-      </label>
-      <div>
-        <button type="button" value={supply.weight} onClick={(e) => minusOneSupply(e, supplyAmountFuncList[index], supplyAmountList[index])}>--</button>
-        <button type="button" value={supply.weight} onClick={(e) => addOneSupply(e, supplyAmountFuncList[index], supplyAmountList[index])}>+</button>
-      </div>
-    </div>
-  ));
-
-  const getFinalSupplyObj = () => {
-    const supplyObj = {
-      oxygen:
-      { type: data.supplyList[0].type, weight: data.supplyList[0].weight, amount: oxyAmount },
-      food:
-      { type: data.supplyList[1].type, weight: data.supplyList[1].weight, amount: foodAmount },
-      water:
-      { type: data.supplyList[2].type, weight: data.supplyList[2].weight, amount: waterAmount },
-      clothes:
-      { type: data.supplyList[3].type, weight: data.supplyList[3].weight, amount: clothesAmount },
-      clothes2:
-      { type: data.supplyList[4].type, weight: data.supplyList[4].weight, amount: clothesAmount2 },
-      spaceSuit:
-      { type: data.supplyList[5].type, weight: data.supplyList[5].weight, amount: suitAmount },
-      spaceSuit2:
-      { type: data.supplyList[6].type, weight: data.supplyList[6].weight, amount: suitAmount2 },
-      aiKit:
-      { type: data.supplyList[7].type, weight: data.supplyList[7].weight, amount: AImainAmount },
-      tirePatch:
-      { type: data.supplyList[8].type, weight: data.supplyList[8].weight, amount: tirePatchAmount },
-      roverKit:
-      { type: data.supplyList[9].type, weight: data.supplyList[9].weight, amount: roverMainAmount },
-    };
-    return supplyObj;
-  };
-
   const getFinalSupplies = () => {
     const finalSupplyList = data.supplyList.map((supply, index) => {
       const finalSupply = {
@@ -133,10 +82,19 @@ const ChooseSupplies = ({
           {maxStorage}
         </div>
         <br />
-        <div>{supplyList}</div>
+        <div>
+          <SupplyList
+            maxStorage={maxStorage}
+            totalWeight={totalWeight}
+            toggleAlert={toggleAlert}
+            changeTotalWeight={changeTotalWeight}
+            supplyAmountList={supplyAmountList}
+            supplyAmountFuncList={supplyAmountFuncList}
+          />
+        </div>
         <br />
         <button type="button" onClick={() => { changePage('supplyAdvice'); }}>Any advice on what should I take?</button>
-        <button type="button" onClick={(e) => { const finalSupplies = getFinalSupplies(); const finalSupplyObj = getFinalSupplyObj(); changeFinalSupplies(e, finalSupplies); changeSupplyObj(e, finalSupplyObj); changePage('review'); }}>Review Equiptment</button>
+        <button type="button" onClick={(e) => { const finalSupplies = getFinalSupplies(); const finalSupplyObj = GetFinalSupplyObj(supplyAmountList); changeFinalSupplies(e, finalSupplies); changeSupplyObj(e, finalSupplyObj); changePage('review'); }}>Review Equiptment</button>
       </div>
     </div>
   );
