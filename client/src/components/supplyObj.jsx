@@ -26,6 +26,7 @@ const SupplyObj = () => {
     };
     return supplyObj;
   };
+
   return (
     <div>SupplyObj</div>
   );
