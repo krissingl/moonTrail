@@ -140,7 +140,7 @@ class App extends React.Component {
             changePage={this.changePage}
             crew={this.state.crew}
             rover={this.state.rover}
-            changeSupplyObj={this.changeSupplyObj}
+            supplyObj={this.state.supplyObj}
             landmark={this.state.currentLandmark}
             previousLandmark={this.state.previousLandmark}
             travelingStatus={this.state.currentlyTraveling}
