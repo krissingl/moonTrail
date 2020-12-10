@@ -1,7 +1,6 @@
 import React from 'react';
 
 const SupplyObj = () => {
-  console.log('supplyObj fired');
   const getFinalSupplyObj = (supplyList, amountList) => {
     const supplyObj = {
       oxygen:
