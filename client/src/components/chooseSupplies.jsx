@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import AlertWindow from './popUpAlert.jsx';
 import SupplyList from './supplyList.jsx';
+// import { supplyAmountList, supplyAmountFuncList } from './supplyStates.jsx';
 import GetFinalSupplyObj from './getsupplyObj.jsx';
 import data from '../../dist/data.json';
 import classes from '../css/styles.css';
