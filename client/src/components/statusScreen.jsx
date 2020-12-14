@@ -28,16 +28,16 @@ const StatusScreen = ({
     }
     return () => clearInterval(timer);
   }, [distCounter]);
-  const [oxyCounter, setOxyCounter] = useState(supplyObj.oxygen.amount);
-  useEffect(() => {
-    const timer = oxyCounter > 0 && setInterval(() => {
-      setOxyCounter(oxyCounter - 1);
-    }, 1000);
-    if (oxyCounter === 0) {
-      changePage('gameover');
-    }
-    return () => clearInterval(timer);
-  }, [oxyCounter]);
+  // const [oxyCounter, setOxyCounter] = useState(supplyObj.oxygen.amount);
+  // useEffect(() => {
+  //   const timer = oxyCounter > 0 && setInterval(() => {
+  //     setOxyCounter(oxyCounter - 1);
+  //   }, 1000);
+  //   if (oxyCounter === 0) {
+  //     changePage('gameover');
+  //   }
+  //   return () => clearInterval(timer);
+  // }, [oxyCounter]);
 
   return (
     <div className={classes.statusScreen}>
