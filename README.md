@@ -1,6 +1,6 @@
 # Moon Trail
 
-> Oregon Trail on the Moon- This app is currently under developement.
+> Oregon Trail on the Moon- This game is currently under developement.
 
 ### Game Summary
 
