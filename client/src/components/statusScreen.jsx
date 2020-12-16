@@ -48,7 +48,7 @@ const StatusScreen = ({
       <div className={classes.statusScreenOpt}>WEATHER: mild</div>
       <div className={classes.statusScreenOpt}>
         OXYGEN_REMAINING:
-        {oxyCounter}
+        {supplyObj.oxygen.amount}
       </div>
       <div className={classes.statusScreenOpt}>
         {`RATIONS_REMAINING: water__${supplyObj.water.amount} food__${supplyObj.food.amount}`}

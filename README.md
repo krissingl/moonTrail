@@ -1,6 +1,6 @@
 # Moon Trail
 
-> Oregon Trail on the Moon- This game is currently under developement.
+> Homage to the classic game, Oregon Trail- but on the Moon! This game is currently under developement.
 
 ### Game Summary
 
