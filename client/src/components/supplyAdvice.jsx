@@ -5,8 +5,10 @@ import classes from '../css/styles.css';
 const SupplyAdvice = ({ changePage }) => {
   const advice = (
     <div>
-      <p>OXYGENTANK...needed by crew constantly (reccomend: 2+ per crewmember)</p>
-      <p>FREEZE-DRIED FOOD...needed by the crew constantly to maintain health</p>
+      <p>OXYGENTANK</p>
+      <p>needed by crew constantly (reccomend: 2+ per crewmember)</p>
+      <p>FREEZE-DRIED FOOD</p>
+      <p>needed by the crew constantly to maintain health</p>
       <p>WATER-POUCH...needed by the crew constantly to maintain health</p>
       <p>
         REGULAR_CLOTHES_SET...needed to maintain crew health (reccomend: 2+ sets per crewmember)
