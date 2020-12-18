@@ -83,6 +83,9 @@ div {
   flex-direction: row;
   justify-content: space-between;
 }
+.supplyAdvice {
+  font-size: small;
+}
 .reviewItem {
   padding: 5px 15px 0px 15px;
 }

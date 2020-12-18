@@ -11,4 +11,4 @@ app.use(express.static(`${__dirname}/../client/dist`));
 
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
-})
+});
