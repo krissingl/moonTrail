@@ -1,13 +1,13 @@
 import { createStore } from 'redux';
 
 const initialState = {
-  page: 'main',
+  test: 'We are Testing REDUX store (initial store)',
 };
 
 const reducer = (state = initialState, action) => {
-  if (action.type === 'changePage') {
+  if (action.type === 'test') {
     return Object.assign({}, state, {
-      page: action.payload
+      test: action.payload
     });
   }
   return state;
