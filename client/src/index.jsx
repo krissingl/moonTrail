@@ -5,6 +5,8 @@ import store from './store/index.js';
 import App from './components/app.jsx';
 
 ReactDOM.render(
-  <App />,
-  document.getElementById('app')
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('app'),
 );
