@@ -1,11 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import classes from '../css/styles.css';
 
-const Main = ({ changePage }) => (
+const Main = ({ changePage, test }) => (
   <div className={classes.noticePage}>
     <h1>WELCOME_TO_MOON_TRAIL</h1>
+    <h3>{test}</h3>
     <button type="button" className={classes.startBtn} onClick={() => { changePage('intro'); }}>START</button>
   </div>
 );
 
-export default Main;
+const mapStateToProps = (state) => ({ test: state.test });
+
+export default connect(mapStateToProps)(Main);
