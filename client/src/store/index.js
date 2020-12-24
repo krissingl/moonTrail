@@ -6,9 +6,7 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   if (action.type === 'test') {
-    return Object.assign({}, state, {
-      test: action.payload
-    });
+    return { ...state, test: action.payload };
   }
   return state;
 };
