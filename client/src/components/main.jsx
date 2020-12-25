@@ -11,5 +11,11 @@ const Main = ({ changePage, test }) => (
 );
 
 const mapStateToProps = (state) => ({ test: state.test });
+const mapDispatchToProps = (dispatch) => ({
+  dispatch,
+});
 
-export default connect(mapStateToProps)(Main);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Main);
