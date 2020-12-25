@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import AlertWindow from './popUpAlert.jsx';
 import SupplyList from './supplyList.jsx';
-// import { supplyAmountList, supplyAmountFuncList } from './supplyStates.jsx';
 import GetFinalSupplyObj from './getsupplyObj.jsx';
 import data from '../../dist/data.json';
 import classes from '../css/styles.css';
@@ -101,4 +101,12 @@ const ChooseSupplies = ({
   );
 };
 
-export default ChooseSupplies;
+const mapStateToProps = (state) => ({ supplyObj: state.supplyObj });
+const mapDispatchToProps = (dispatch) => ({
+  dispatch,
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ChooseSupplies);
