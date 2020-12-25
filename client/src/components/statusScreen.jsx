@@ -4,6 +4,7 @@ import data from '../../dist/data.json';
 import classes from '../css/styles.css';
 
 const StatusScreen = ({
+  dispatch,
   changePage,
   supplyObj,
   landmark,
@@ -61,5 +62,11 @@ const StatusScreen = ({
 };
 
 const mapStateToProps = (state) => ({ supplyObj: state.supplyObj });
+const mapDispatchToProps = (dispatch) => ({
+  dispatch,
+});
 
-export default connect(mapStateToProps)(StatusScreen);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(StatusScreen);
