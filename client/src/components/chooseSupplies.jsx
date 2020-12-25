@@ -50,7 +50,7 @@ const ChooseSupplies = ({
     changeRoverMainAmount,
   ];
 
-  const getFinalSupplies = () => {
+  const getSupplyList = () => {
     const finalSupplyList = data.supplyList.map((supply, index) => {
       const finalSupply = {
         type: supply.type,
@@ -103,7 +103,7 @@ const ChooseSupplies = ({
         </div>
         <br />
         <button type="button" onClick={() => { changePage('supplyAdvice'); }}>Any advice on what should I take?</button>
-        <button type="button" onClick={(e) => { const finalSupplies = getFinalSupplies(); const finalSupplyObj = GetFinalSupplyObj(supplyAmountList); changeFinalSupplies(e, finalSupplies); changeGlobalSupplyObj(e, finalSupplyObj); changePage('review'); }}>Review Equiptment</button>
+        <button type="button" onClick={(e) => { const finalSupplyList = getSupplyList(); const finalSupplyObj = GetFinalSupplyObj(supplyAmountList); changeFinalSupplies(e, finalSupplyList); changeGlobalSupplyObj(e, finalSupplyObj); changePage('review'); }}>Review Equiptment</button>
       </div>
     </div>
   );
