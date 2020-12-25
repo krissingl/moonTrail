@@ -9,8 +9,8 @@ import classes from '../css/styles.css';
 const ChooseSupplies = ({
   changePage,
   changeFinalSupplies,
-  changeSupplyObj,
   maxStorage,
+  dispatch,
 }) => {
   const [totalWeight, changeTotalWeight] = useState(0);
   const [oxyAmount, changeOxyAmount] = useState(0);
@@ -69,6 +69,14 @@ const ChooseSupplies = ({
       <AlertWindow message={alertMsg} toggleAlert={toggleAlert} />
     );
   }
+  const changeGlobalSupplyObj = (e, supplies) => {
+    e.preventDefault();
+    dispatch({
+      type: 'supplyObjChange',
+      payload: supplies,
+    });
+  };
+
   return (
     <div className={classes.noticePage}>
       <div className={classes.supplyPage}>
@@ -95,7 +103,7 @@ const ChooseSupplies = ({
         </div>
         <br />
         <button type="button" onClick={() => { changePage('supplyAdvice'); }}>Any advice on what should I take?</button>
-        <button type="button" onClick={(e) => { const finalSupplies = getFinalSupplies(); const finalSupplyObj = GetFinalSupplyObj(supplyAmountList); changeFinalSupplies(e, finalSupplies); changeSupplyObj(e, finalSupplyObj); changePage('review'); }}>Review Equiptment</button>
+        <button type="button" onClick={(e) => { const finalSupplies = getFinalSupplies(); const finalSupplyObj = GetFinalSupplyObj(supplyAmountList); changeFinalSupplies(e, finalSupplies); changeGlobalSupplyObj(e, finalSupplyObj); changePage('review'); }}>Review Equiptment</button>
       </div>
     </div>
   );
