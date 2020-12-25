@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import data from '../../dist/data.json';
 import classes from '../css/styles.css';
 
@@ -59,4 +60,6 @@ const StatusScreen = ({
   );
 };
 
-export default StatusScreen;
+const mapStateToProps = (state) => ({ supplyObj: state.supplyObj });
+
+export default connect(mapStateToProps)(StatusScreen);
