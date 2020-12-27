@@ -7,7 +7,6 @@ const AlertWindow = ({
   message,
   toggleAlert,
   type,
-  extraData,
 }) => {
   let popUpContent;
   if (type === 'map') {
@@ -27,7 +26,7 @@ const AlertWindow = ({
       <div className={classes.popup}>
         <div className={classes.mapInnerPopup}>
           <h5>{message}</h5>
-          <SupplyCheck supplies={extraData} />
+          <SupplyCheck />
           <button type="button" onClick={() => { toggleAlert(false); }}>Close</button>
         </div>
       </div>

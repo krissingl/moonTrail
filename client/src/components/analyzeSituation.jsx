@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import AlertWindow from './popUpAlert.jsx';
 import classes from '../css/styles.css';
 
-const Analyzation = ({ changePage, travelingStatus, supplyList }) => {
+const Analyzation = ({ changePage, travelingStatus }) => {
   let previous;
   if (travelingStatus) {
     previous = 'traveling';
@@ -13,7 +13,6 @@ const Analyzation = ({ changePage, travelingStatus, supplyList }) => {
   const [showAlert, toggleAlert] = useState(false);
   const [alertMsg, changeAlertMsg] = useState('');
   const [alertType, changeAlertType] = useState('');
-  const [extraData, changeExtraData] = useState('');
 
   let alertPopUp;
   if (showAlert) {
@@ -22,7 +21,6 @@ const Analyzation = ({ changePage, travelingStatus, supplyList }) => {
         message={alertMsg}
         toggleAlert={toggleAlert}
         type={alertType}
-        extraData={extraData}
       />
     );
   }
@@ -40,7 +38,7 @@ const Analyzation = ({ changePage, travelingStatus, supplyList }) => {
         <button type="button" className={classes.analyzeMenuBtn} onClick={() => { changeAlertMsg('Alter Rover Speed'); toggleAlert(true); }}>ALTER_ROVER_SPEED</button>
         <button type="button" className={classes.analyzeMenuBtn} onClick={() => { changeAlertMsg('You search for resources'); toggleAlert(true); }}>SEARCH_FOR_RESOURCES</button>
         <button type="button" className={classes.analyzeMenuBtn} onClick={() => { changeAlertType('map'); changeAlertMsg('ROUTE_MAP'); toggleAlert(true); }}>CHECK_MAP</button>
-        <button type="button" className={classes.analyzeMenuBtn} onClick={() => { changeExtraData(supplyList); changeAlertType('checkSupplies'); changeAlertMsg('CREW_SUPPLIES'); toggleAlert(true); }}>CHECK_CREW_SUPPLIES</button>
+        <button type="button" className={classes.analyzeMenuBtn} onClick={() => { changeAlertType('checkSupplies'); changeAlertMsg('CREW_SUPPLIES'); toggleAlert(true); }}>CHECK_CREW_SUPPLIES</button>
         <button type="button" onClick={() => { changePage(previous); }}>CONTINUE MISSION</button>
       </div>
     </div>
