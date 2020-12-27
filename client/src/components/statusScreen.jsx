@@ -4,13 +4,17 @@ import data from '../../dist/data.json';
 import classes from '../css/styles.css';
 
 const StatusScreen = ({
-  dispatch,
   changePage,
   supplyObj,
   landmark,
   previousLandmark,
 }) => {
+  const [oxyObj, changeOxyObj] = useState(supplyObj.oxygen);
+  const [foodObj, changeFoodObj] = useState(supplyObj.food);
+  const [waterObj, changeWaterObj] = useState(supplyObj.water);
+
   const { landmarkList } = data;
+
   let landmarkDistance;
   if (landmarkList[previousLandmark].length !== 1) {
     if (landmarkList[previousLandmark][1].next === landmark) {
@@ -50,7 +54,7 @@ const StatusScreen = ({
       <div className={classes.statusScreenOpt}>WEATHER: mild</div>
       <div className={classes.statusScreenOpt}>
         OXYGEN_REMAINING:
-        {supplyObj.oxygen.amount}
+        {oxyObj.amount}
       </div>
       <div className={classes.statusScreenOpt}>
         {`RATIONS_REMAINING: water__${supplyObj.water.amount} food__${supplyObj.food.amount}`}
