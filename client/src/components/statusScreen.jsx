@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import GetFinalSupplyObj from './getsupplyObj.jsx';
 import data from '../../dist/data.json';
 import classes from '../css/styles.css';
 
@@ -12,6 +13,13 @@ const StatusScreen = ({
   const [oxyObj, changeOxyObj] = useState(supplyObj.oxygen);
   const [foodObj, changeFoodObj] = useState(supplyObj.food);
   const [waterObj, changeWaterObj] = useState(supplyObj.water);
+  const [clothesObj, changeClothesObj] = useState(supplyObj.clothes);
+  const [clothes2Obj, changeClothes2Obj] = useState(supplyObj.oxygen);
+  const [suitObj, changeSuitObj] = useState(supplyObj.food);
+  const [suit2Obj, changeSuit2Obj] = useState(supplyObj.water);
+  const [AImainObj, changeAIObj] = useState(supplyObj.clothes);
+  const [tirePatchObj, changeTirePatchObj] = useState(supplyObj.food);
+  const [roverMaintObj, changeRoverMaintObj] = useState(supplyObj.water);
 
   const { landmarkList } = data;
 
@@ -45,6 +53,22 @@ const StatusScreen = ({
   //   return () => clearInterval(timer);
   // }, [oxyCounter]);
 
+  const getNewSupplyAmountList = () => {
+    const supplyAmountList = [
+      oxyObj.amount,
+      foodObj.amount,
+      waterObj.amount,
+      clothesObj.amount,
+      clothes2Obj.amount,
+      suitObj.amount,
+      suit2Obj.amount,
+      AImainObj.amount,
+      tirePatchObj.amount,
+      roverMaintObj.amount,
+    ];
+    return supplyAmountList;
+  };
+
   return (
     <div className={classes.statusScreen}>
       <div className={classes.statusScreenOpt}>
@@ -57,7 +81,7 @@ const StatusScreen = ({
         {oxyObj.amount}
       </div>
       <div className={classes.statusScreenOpt}>
-        {`RATIONS_REMAINING: water__${supplyObj.water.amount} food__${supplyObj.food.amount}`}
+        {`RATIONS_REMAINING: water__${waterObj.amount} food__${foodObj.amount}`}
       </div>
       <div className={classes.statusScreenOpt}>CREW_HEALTH: fair</div>
       <button type="button" onClick={() => { changePage('analyzeSitch'); }}>ANALYZE SITUATION</button>
