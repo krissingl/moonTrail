@@ -110,7 +110,7 @@ const StatusScreen = ({
         {`RATIONS_REMAINING: water__${waterAmount} food__${foodAmount}`}
       </div>
       <div className={classes.statusScreenOpt}>CREW_HEALTH: fair</div>
-      <button type="button" onClick={() => { const supplyList = getNewSupplyAmountList(); const finalSupplyObj = GetFinalSupplyObj(supplyList); {/*changeGlobalSupplyObj(finalSupplyObj);*/} saveDistanceTraveled(distCounter); changePage('analyzeSitch'); }}>ANALYZE SITUATION</button>
+      <button type="button" onClick={() => { const supplyList = getNewSupplyAmountList(); const finalSupplyObj = GetFinalSupplyObj(supplyList); changeGlobalSupplyObj(finalSupplyObj); saveDistanceTraveled(distCounter); changePage('analyzeSitch'); }}>ANALYZE SITUATION</button>
     </div>
   );
 };
