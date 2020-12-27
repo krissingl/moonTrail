@@ -1,15 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import GetFinalSupplyObj from './getsupplyObj.jsx';
 import data from '../../dist/data.json';
 import classes from '../css/styles.css';
 
 const StatusScreen = ({
+  dispatch,
   changePage,
   supplyObj,
   landmark,
   previousLandmark,
 }) => {
+  // Local supply amount states
+  const [oxyAmount, changeOxyAmount] = useState(supplyObj.oxygen.amount);
+  const [foodAmount, changeFoodAmount] = useState(supplyObj.food.amount);
+  const [waterAmount, changeWaterAmount] = useState(supplyObj.water.amount);
+  const [clothesAmount, changeClothesAmount] = useState(supplyObj.clothes.amount);
+  const [clothes2Amount, changeClothes2Amount] = useState(supplyObj.clothes2.amount);
+  const [suitAmount, changeSuitAmount] = useState(supplyObj.spaceSuit.amount);
+  const [suit2Amount, changeSuit2Amount] = useState(supplyObj.spaceSuit2.amount);
+  const [aiKitAmount, changeAImainAmount] = useState(supplyObj.aiKit.amount);
+  const [tirePatchAmount, changeTirePatchAmount] = useState(supplyObj.tirePatch.amount);
+  const [roverKitAmount, changeRoverMainAmount] = useState(supplyObj.roverKit.amount);
+
+  // Getting landmark data for route
   const { landmarkList } = data;
+
   let landmarkDistance;
   if (landmarkList[previousLandmark].length !== 1) {
     if (landmarkList[previousLandmark][1].next === landmark) {
@@ -21,6 +37,7 @@ const StatusScreen = ({
     landmarkDistance = landmarkList[previousLandmark][0].distance;
   }
 
+  // Landmark distance calculator
   const [distCounter, setDistCounter] = useState(landmarkDistance);
   useEffect(() => {
     const timer = distCounter > 0 && setInterval(() => setDistCounter(distCounter - 1), 1000);
@@ -29,16 +46,41 @@ const StatusScreen = ({
     }
     return () => clearInterval(timer);
   }, [distCounter]);
-  // const [oxyCounter, setOxyCounter] = useState(supplyObj.oxygen.amount);
-  // useEffect(() => {
-  //   const timer = oxyCounter > 0 && setInterval(() => {
-  //     setOxyCounter(oxyCounter - 1);
-  //   }, 1000);
-  //   if (oxyCounter === 0) {
-  //     changePage('gameover');
-  //   }
-  //   return () => clearInterval(timer);
-  // }, [oxyCounter]);
+
+  // Test Oxygen depletion function
+  useEffect(() => {
+    const timer = oxyAmount > 0 && setInterval(() => {
+      changeOxyAmount(oxyAmount - 1);
+    }, 10000);
+    if (oxyAmount === 0) {
+      // Need to add a message receiver for gameover page to tell player why they lost
+      changePage('gameover');
+    }
+    return () => clearInterval(timer);
+  }, [oxyAmount]);
+
+  // Global Supply State manipulation functions
+  const getNewSupplyAmountList = () => {
+    const supplyAmountList = [
+      oxyAmount,
+      foodAmount,
+      waterAmount,
+      clothesAmount,
+      clothes2Amount,
+      suitAmount,
+      suit2Amount,
+      aiKitAmount,
+      tirePatchAmount,
+      roverKitAmount,
+    ];
+    return supplyAmountList;
+  };
+  const changeGlobalSupplyObj = (supplies) => {
+    dispatch({
+      type: 'supplyObjChange',
+      payload: supplies,
+    });
+  };
 
   return (
     <div className={classes.statusScreen}>
@@ -49,17 +91,23 @@ const StatusScreen = ({
       <div className={classes.statusScreenOpt}>WEATHER: mild</div>
       <div className={classes.statusScreenOpt}>
         OXYGEN_REMAINING:
-        {supplyObj.oxygen.amount}
+        {oxyAmount}
       </div>
       <div className={classes.statusScreenOpt}>
-        {`RATIONS_REMAINING: water__${supplyObj.water.amount} food__${supplyObj.food.amount}`}
+        {`RATIONS_REMAINING: water__${waterAmount} food__${foodAmount}`}
       </div>
       <div className={classes.statusScreenOpt}>CREW_HEALTH: fair</div>
-      <button type="button" onClick={() => { changePage('analyzeSitch'); }}>ANALYZE SITUATION</button>
+      <button type="button" onClick={(e) => { changePage('analyzeSitch'); const supplyList = getNewSupplyAmountList(); const finalSupplyObj = GetFinalSupplyObj(supplyList); changeGlobalSupplyObj(finalSupplyObj); }}>ANALYZE SITUATION</button>
     </div>
   );
 };
 
 const mapStateToProps = (state) => ({ supplyObj: state.supplyObj });
+const mapDispatchToProps = (dispatch) => ({
+  dispatch,
+});
 
-export default connect(mapStateToProps)(StatusScreen);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(StatusScreen);
