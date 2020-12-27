@@ -5,6 +5,7 @@ import data from '../../dist/data.json';
 import classes from '../css/styles.css';
 
 const StatusScreen = ({
+  dispatch,
   changePage,
   supplyObj,
   landmark,
@@ -68,6 +69,13 @@ const StatusScreen = ({
     ];
     return supplyAmountList;
   };
+  const changeGlobalSupplyObj = (e, supplies) => {
+    e.preventDefault();
+    dispatch({
+      type: 'supplyObjChange',
+      payload: supplies,
+    });
+  };
 
   return (
     <div className={classes.statusScreen}>
@@ -84,7 +92,7 @@ const StatusScreen = ({
         {`RATIONS_REMAINING: water__${waterObj.amount} food__${foodObj.amount}`}
       </div>
       <div className={classes.statusScreenOpt}>CREW_HEALTH: fair</div>
-      <button type="button" onClick={() => { changePage('analyzeSitch'); }}>ANALYZE SITUATION</button>
+      <button type="button" onClick={(e) => { changePage('analyzeSitch'); const supplyList = getNewSupplyAmountList(); const finalSupplyObj = GetFinalSupplyObj(supplyList); changeGlobalSupplyObj(e, finalSupplyObj); }}>ANALYZE SITUATION</button>
     </div>
   );
 };
