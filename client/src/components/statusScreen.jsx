@@ -53,6 +53,7 @@ const StatusScreen = ({
       changeOxyAmount(oxyAmount - 1);
     }, 10000);
     if (oxyAmount === 0) {
+      // Need to add a message receiver for gameover page to tell player why they lost
       changePage('gameover');
     }
     return () => clearInterval(timer);
@@ -74,8 +75,7 @@ const StatusScreen = ({
     ];
     return supplyAmountList;
   };
-  const changeGlobalSupplyObj = (e, supplies) => {
-    e.preventDefault();
+  const changeGlobalSupplyObj = (supplies) => {
     dispatch({
       type: 'supplyObjChange',
       payload: supplies,
@@ -97,7 +97,7 @@ const StatusScreen = ({
         {`RATIONS_REMAINING: water__${waterAmount} food__${foodAmount}`}
       </div>
       <div className={classes.statusScreenOpt}>CREW_HEALTH: fair</div>
-      <button type="button" onClick={(e) => { changePage('analyzeSitch'); const supplyList = getNewSupplyAmountList(); const finalSupplyObj = GetFinalSupplyObj(supplyList); changeGlobalSupplyObj(e, finalSupplyObj); }}>ANALYZE SITUATION</button>
+      <button type="button" onClick={(e) => { changePage('analyzeSitch'); const supplyList = getNewSupplyAmountList(); const finalSupplyObj = GetFinalSupplyObj(supplyList); changeGlobalSupplyObj(finalSupplyObj); }}>ANALYZE SITUATION</button>
     </div>
   );
 };
