@@ -14,12 +14,12 @@ const StatusScreen = ({
   const [foodObj, changeFoodObj] = useState(supplyObj.food);
   const [waterObj, changeWaterObj] = useState(supplyObj.water);
   const [clothesObj, changeClothesObj] = useState(supplyObj.clothes);
-  const [clothes2Obj, changeClothes2Obj] = useState(supplyObj.oxygen);
-  const [suitObj, changeSuitObj] = useState(supplyObj.food);
-  const [suit2Obj, changeSuit2Obj] = useState(supplyObj.water);
-  const [AImainObj, changeAIObj] = useState(supplyObj.clothes);
-  const [tirePatchObj, changeTirePatchObj] = useState(supplyObj.food);
-  const [roverMaintObj, changeRoverMaintObj] = useState(supplyObj.water);
+  const [clothes2Obj, changeClothes2Obj] = useState(supplyObj.clothes2);
+  const [suitObj, changeSuitObj] = useState(supplyObj.spaceSuit);
+  const [suit2Obj, changeSuit2Obj] = useState(supplyObj.spaceSuit2);
+  const [aiKitObj, changeAIKitObj] = useState(supplyObj.aiKit);
+  const [tirePatchObj, changeTirePatchObj] = useState(supplyObj.tirePatch);
+  const [roverKitObj, changeRoverKitObj] = useState(supplyObj.roverKit);
 
   const { landmarkList } = data;
 
@@ -62,9 +62,9 @@ const StatusScreen = ({
       clothes2Obj.amount,
       suitObj.amount,
       suit2Obj.amount,
-      AImainObj.amount,
+      aiKitObj.amount,
       tirePatchObj.amount,
-      roverMaintObj.amount,
+      roverKitObj.amount,
     ];
     return supplyAmountList;
   };
