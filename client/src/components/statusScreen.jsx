@@ -11,7 +11,6 @@ const StatusScreen = ({
   savedDistance,
   landmark,
   previousLandmark,
-  test,
 }) => {
   // Local supply amount states
   const [oxyAmount, changeOxyAmount] = useState(supplyObj.oxygen.amount);
