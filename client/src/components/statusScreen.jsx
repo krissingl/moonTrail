@@ -44,15 +44,15 @@ const StatusScreen = ({
     return () => clearInterval(timer);
   }, [distCounter]);
   // const [oxyCounter, setOxyCounter] = useState(supplyObj.oxygen.amount);
-  // useEffect(() => {
-  //   const timer = oxyCounter > 0 && setInterval(() => {
-  //     setOxyCounter(oxyCounter - 1);
-  //   }, 1000);
-  //   if (oxyCounter === 0) {
-  //     changePage('gameover');
-  //   }
-  //   return () => clearInterval(timer);
-  // }, [oxyCounter]);
+  useEffect(() => {
+    const timer = oxyObj.amount > 0 && setInterval(() => {
+      changeOxyObj.amount(oxyObj.amount - 1);
+    }, 10000);
+    if (oxyObj.amount === 0) {
+      changePage('gameover');
+    }
+    return () => clearInterval(timer);
+  }, [oxyObj.amount]);
 
   const getNewSupplyAmountList = () => {
     const supplyAmountList = [
