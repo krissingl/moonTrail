@@ -12,7 +12,7 @@ const reducer = (state = initialState, action) => {
   } if (action.type === 'supplyObjChange') {
     return { ...state, supplyObj: action.payload };
   } if (action.type === 'landmarkDistanceChange') {
-    return { ...state, distance: action.payload };
+    return { ...state, savedDistance: action.payload };
   }
   return state;
 };
