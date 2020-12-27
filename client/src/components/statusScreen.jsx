@@ -11,6 +11,7 @@ const StatusScreen = ({
   savedDistance,
   landmark,
   previousLandmark,
+  test,
 }) => {
   // Local supply amount states
   const [oxyAmount, changeOxyAmount] = useState(supplyObj.oxygen.amount);
@@ -27,9 +28,8 @@ const StatusScreen = ({
   // Getting landmark data for route
   const { landmarkList } = data;
 
-  console.log(savedDistance);
   let landmarkDistance;
-  if (savedDistance) {
+  if (savedDistance !== null) {
     landmarkDistance = savedDistance;
   } else if (landmarkList[previousLandmark].length !== 1) {
     if (landmarkList[previousLandmark][1].next === landmark) {
@@ -41,23 +41,24 @@ const StatusScreen = ({
     landmarkDistance = landmarkList[previousLandmark][0].distance;
   }
 
-  // Landmark distance calculator
-
-  const [distCounter, setDistCounter] = useState(landmarkDistance);
-  useEffect(() => {
-    const timer = distCounter > 0 && setInterval(() => setDistCounter(distCounter - 1), 1000);
-    if (distCounter === 0) {
-      changePage('landmark');
-    }
-    return () => clearInterval(timer);
-  }, [distCounter]);
-
+  // Save distance traveled to redux store in case of page change
   const saveDistanceTraveled = (currentDistance) => {
     dispatch({
       type: 'landmarkDistanceChange',
       payload: currentDistance,
     });
   };
+
+  // Landmark distance calculator
+  const [distCounter, setDistCounter] = useState(landmarkDistance);
+  useEffect(() => {
+    const timer = distCounter > 0 && setInterval(() => setDistCounter(distCounter - 1), 1000);
+    if (distCounter === 0) {
+      saveDistanceTraveled(null);
+      changePage('landmark');
+    }
+    return () => clearInterval(timer);
+  }, [distCounter]);
 
   // Test Oxygen depletion function
   useEffect(() => {
@@ -109,12 +110,15 @@ const StatusScreen = ({
         {`RATIONS_REMAINING: water__${waterAmount} food__${foodAmount}`}
       </div>
       <div className={classes.statusScreenOpt}>CREW_HEALTH: fair</div>
-      <button type="button" onClick={() => { changePage('analyzeSitch'); const supplyList = getNewSupplyAmountList(); const finalSupplyObj = GetFinalSupplyObj(supplyList); changeGlobalSupplyObj(finalSupplyObj); saveDistanceTraveled(distCounter); }}>ANALYZE SITUATION</button>
+      <button type="button" onClick={() => { const supplyList = getNewSupplyAmountList(); const finalSupplyObj = GetFinalSupplyObj(supplyList); {/*changeGlobalSupplyObj(finalSupplyObj);*/} saveDistanceTraveled(distCounter); changePage('analyzeSitch'); }}>ANALYZE SITUATION</button>
     </div>
   );
 };
 
-const mapStateToProps = (state) => ({ supplyObj: state.supplyObj });
+const mapStateToProps = (state) => ({
+  supplyObj: state.supplyObj,
+  savedDistance: state.savedDistance,
+});
 const mapDispatchToProps = (dispatch) => ({
   dispatch,
 });
