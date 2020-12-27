@@ -11,17 +11,19 @@ const StatusScreen = ({
   landmark,
   previousLandmark,
 }) => {
-  const [oxyObj, changeOxyObj] = useState(supplyObj.oxygen);
-  const [foodObj, changeFoodObj] = useState(supplyObj.food);
-  const [waterObj, changeWaterObj] = useState(supplyObj.water);
-  const [clothesObj, changeClothesObj] = useState(supplyObj.clothes);
-  const [clothes2Obj, changeClothes2Obj] = useState(supplyObj.clothes2);
-  const [suitObj, changeSuitObj] = useState(supplyObj.spaceSuit);
-  const [suit2Obj, changeSuit2Obj] = useState(supplyObj.spaceSuit2);
-  const [aiKitObj, changeAIKitObj] = useState(supplyObj.aiKit);
-  const [tirePatchObj, changeTirePatchObj] = useState(supplyObj.tirePatch);
-  const [roverKitObj, changeRoverKitObj] = useState(supplyObj.roverKit);
+  // Local supply amount states
+  const [oxyAmount, changeOxyAmount] = useState(supplyObj.oxygen.amount);
+  const [foodAmount, changeFoodAmount] = useState(supplyObj.food.amount);
+  const [waterAmount, changeWaterAmount] = useState(supplyObj.water.amount);
+  const [clothesAmount, changeClothesAmount] = useState(supplyObj.clothes.amount);
+  const [clothes2Amount, changeClothes2Amount] = useState(supplyObj.clothes2.amount);
+  const [suitAmount, changeSuitAmount] = useState(supplyObj.spaceSuit.amount);
+  const [suit2Amount, changeSuit2Amount] = useState(supplyObj.spaceSuit2.amount);
+  const [aiKitAmount, changeAImainAmount] = useState(supplyObj.aiKit.amount);
+  const [tirePatchAmount, changeTirePatchAmount] = useState(supplyObj.tirePatch.amount);
+  const [roverKitAmount, changeRoverMainAmount] = useState(supplyObj.roverKit.amount);
 
+  // Getting landmark data for route
   const { landmarkList } = data;
 
   let landmarkDistance;
@@ -35,6 +37,7 @@ const StatusScreen = ({
     landmarkDistance = landmarkList[previousLandmark][0].distance;
   }
 
+  // Landmark distance calculator
   const [distCounter, setDistCounter] = useState(landmarkDistance);
   useEffect(() => {
     const timer = distCounter > 0 && setInterval(() => setDistCounter(distCounter - 1), 1000);
@@ -43,29 +46,31 @@ const StatusScreen = ({
     }
     return () => clearInterval(timer);
   }, [distCounter]);
-  // const [oxyCounter, setOxyCounter] = useState(supplyObj.oxygen.amount);
+
+  // Test Oxygen depletion function
   useEffect(() => {
-    const timer = oxyObj.amount > 0 && setInterval(() => {
-      changeOxyObj.amount(oxyObj.amount - 1);
+    const timer = oxyAmount > 0 && setInterval(() => {
+      changeOxyAmount(oxyAmount - 1);
     }, 10000);
-    if (oxyObj.amount === 0) {
+    if (oxyAmount === 0) {
       changePage('gameover');
     }
     return () => clearInterval(timer);
-  }, [oxyObj.amount]);
+  }, [oxyAmount]);
 
+  // Global Supply State manipulation functions
   const getNewSupplyAmountList = () => {
     const supplyAmountList = [
-      oxyObj.amount,
-      foodObj.amount,
-      waterObj.amount,
-      clothesObj.amount,
-      clothes2Obj.amount,
-      suitObj.amount,
-      suit2Obj.amount,
-      aiKitObj.amount,
-      tirePatchObj.amount,
-      roverKitObj.amount,
+      oxyAmount,
+      foodAmount,
+      waterAmount,
+      clothesAmount,
+      clothes2Amount,
+      suitAmount,
+      suit2Amount,
+      aiKitAmount,
+      tirePatchAmount,
+      roverKitAmount,
     ];
     return supplyAmountList;
   };
@@ -86,10 +91,10 @@ const StatusScreen = ({
       <div className={classes.statusScreenOpt}>WEATHER: mild</div>
       <div className={classes.statusScreenOpt}>
         OXYGEN_REMAINING:
-        {oxyObj.amount}
+        {oxyAmount}
       </div>
       <div className={classes.statusScreenOpt}>
-        {`RATIONS_REMAINING: water__${waterObj.amount} food__${foodObj.amount}`}
+        {`RATIONS_REMAINING: water__${waterAmount} food__${foodAmount}`}
       </div>
       <div className={classes.statusScreenOpt}>CREW_HEALTH: fair</div>
       <button type="button" onClick={(e) => { changePage('analyzeSitch'); const supplyList = getNewSupplyAmountList(); const finalSupplyObj = GetFinalSupplyObj(supplyList); changeGlobalSupplyObj(e, finalSupplyObj); }}>ANALYZE SITUATION</button>
