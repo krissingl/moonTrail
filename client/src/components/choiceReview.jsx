@@ -8,9 +8,12 @@ const ChoiceReview = ({
   rover,
   supplyList,
 }) => {
+  // CREW LIST
   const crewList = crew.map((astro) => (
     <div key={astro} className={classes.reviewItem}>{astro}</div>
   ));
+
+  // ROVER INFO
   const chosenRover = (
     <div>
       type:
@@ -23,12 +26,15 @@ const ChoiceReview = ({
       {rover.storageCapacity}
     </div>
   );
+
+  // SUPPLY LIST
   const chosenSupplies = supplyList.map((supply) => (
     <div key={supply.type} className={classes.reviewItem}>
       <div>{supply.type}</div>
       <div>{`how-many: ${supply.amount}`}</div>
     </div>
   ));
+
   return (
     <div className={classes.noticePage}>
       <h3>REVIEW_BEFORE_MISSION_LAUNCH</h3>

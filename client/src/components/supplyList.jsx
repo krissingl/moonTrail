@@ -11,6 +11,7 @@ const SupplyList = ({
   supplyAmountList,
   supplyAmountFuncList,
 }) => {
+  // Add and Subtract Supply Functions
   const addOneSupply = (e, callback, value) => {
     if ((totalWeight + Number(e.target.value)) <= maxStorage) {
       changeTotalWeight(totalWeight + Number(e.target.value));
@@ -23,6 +24,8 @@ const SupplyList = ({
     changeTotalWeight(totalWeight - Number(e.target.value));
     callback(value - 1);
   };
+
+  // Supply List Builder
   const supplyList = data.supplyList.map((supply, index) => (
     <div className={classes.supplyItem} key={supply.type}>
       <label>
@@ -36,6 +39,7 @@ const SupplyList = ({
       </div>
     </div>
   ));
+
   return (
     <div>{supplyList}</div>
   );

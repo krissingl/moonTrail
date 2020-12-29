@@ -7,6 +7,7 @@ const initialState = {
   supplyObj: {},
   supplyList: [],
   savedDistance: null,
+  currentlyTraveling: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -22,6 +23,8 @@ const reducer = (state = initialState, action) => {
     return { ...state, supplyList: action.payload };
   } if (action.type === 'landmarkDistanceChange') {
     return { ...state, savedDistance: action.payload };
+  } if (action.type === 'changeTravelingStatus') {
+    return { ...state, currentlyTraveling: action.payload };
   }
   return state;
 };
