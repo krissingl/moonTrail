@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import AlertWindow from './popUpAlert.jsx';
 import classes from '../css/styles.css';
 
-const Analyzation = ({ changePage, travelingStatus }) => {
+const Analyzation = ({ changePage, currentlyTraveling }) => {
   let previous;
-  if (travelingStatus) {
+  if (currentlyTraveling) {
     previous = 'traveling';
   } else {
     previous = 'landmark';
@@ -45,4 +46,6 @@ const Analyzation = ({ changePage, travelingStatus }) => {
   );
 };
 
-export default Analyzation;
+const mapStateToProps = (state) => ({ currentlyTraveling: state.currentlyTraveling });
+
+export default connect(mapStateToProps)(Analyzation);

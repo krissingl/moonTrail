@@ -1,8 +1,9 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import classes from '../css/styles.css';
 
-const NameAstros = ({ changePage, changeCrew }) => {
+const NameAstros = ({ changePage, dispatch }) => {
   const useInput = (initialValue) => {
     const [value, setValue] = useState(initialValue);
     const handleChange = (e) => {
@@ -27,13 +28,20 @@ const NameAstros = ({ changePage, changeCrew }) => {
     return crewList;
   };
 
+  const addCrewToGlobalState = (newCrewList) => {
+    dispatch({
+      type: 'changeCrew',
+      payload: newCrewList,
+    });
+  };
+
   return (
     <div className={classes.noticePage}>
       <h3>IDENTIFY_THE_ASTRONAUTS_ON_THIS_MISSION</h3>
       <div>
         <form
           className={classes.crewNames}
-          onSubmit={(e) => { const crewList = createCrewList(); changeCrew(e, crewList); changePage('rover'); }}
+          onSubmit={() => { addCrewToGlobalState(createCrewList()); changePage('rover'); }}
         >
           <label>
             Crew Member 1:
@@ -65,4 +73,12 @@ const NameAstros = ({ changePage, changeCrew }) => {
 
 // disabled={!isEnabled} <-- THIS GOES ON SUBMIT INPUT
 
-export default NameAstros;
+const mapStateToProps = (state) => ({ crew: state.crew });
+const mapDispatchToProps = (dispatch) => ({
+  dispatch,
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(NameAstros);

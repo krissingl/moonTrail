@@ -19,33 +19,17 @@ class App extends React.Component {
     super();
     this.state = {
       page: 'main',
-      crew: [],
-      supplyList: [],
       previousLandmark: 'spaceLOL',
       currentLandmark: 'MARE_CRISIUM',
-      currentlyTraveling: false,
     };
     this.changePage = this.changePage.bind(this);
-    this.changeCrew = this.changeCrew.bind(this);
-    this.changeFinalSupplies = this.changeFinalSupplies.bind(this);
     this.changePreviousLandmark = this.changePreviousLandmark.bind(this);
     this.changeLandmark = this.changeLandmark.bind(this);
-    this.changeTravelingStatus = this.changeTravelingStatus.bind(this);
     this.resetGame = this.resetGame.bind(this);
   }
 
   changePage(newPage) {
     this.setState({ page: newPage });
-  }
-
-  changeCrew(e, crewList) {
-    e.preventDefault();
-    this.setState({ crew: crewList });
-  }
-
-  changeFinalSupplies(e, finalSupplies) {
-    e.preventDefault();
-    this.setState({ supplyList: finalSupplies });
   }
 
   changePreviousLandmark(e, landmark) {
@@ -56,11 +40,6 @@ class App extends React.Component {
   changeLandmark(e, newLandmark) {
     e.preventDefault();
     this.setState({ currentLandmark: newLandmark });
-  }
-
-  changeTravelingStatus(e, newStatus) {
-    e.preventDefault();
-    this.setState({ currentlyTraveling: newStatus });
   }
 
   resetGame() {
@@ -79,7 +58,7 @@ class App extends React.Component {
       );
     } else if (this.state.page === 'naming') {
       level = (
-        <NameAstros changePage={this.changePage} changeCrew={this.changeCrew} />
+        <NameAstros changePage={this.changePage} />
       );
     } else if (this.state.page === 'rover') {
       level = (
@@ -89,7 +68,6 @@ class App extends React.Component {
       level = (
         <ChooseSupplies
           changePage={this.changePage}
-          changeFinalSupplies={this.changeFinalSupplies}
         />
       );
     } else if (this.state.page === 'landmark') {
@@ -100,7 +78,6 @@ class App extends React.Component {
             landmark={this.state.currentLandmark}
             changeLandmark={this.changeLandmark}
             changePreviousLandmark={this.changePreviousLandmark}
-            changeTravelingStatus={this.changeTravelingStatus}
           />
         </div>
       );
@@ -108,8 +85,6 @@ class App extends React.Component {
       level = (
         <Analyzation
           changePage={this.changePage}
-          travelingStatus={this.state.currentlyTraveling}
-          supplyList={this.state.supplyList}
         />
       );
     } else if (this.state.page === 'traveling') {
@@ -117,14 +92,11 @@ class App extends React.Component {
         <div>
           <Traveling
             changePage={this.changePage}
-            changeTravelingStatus={this.changeTravelingStatus}
           />
           <StatusScreen
             changePage={this.changePage}
-            crew={this.state.crew}
             landmark={this.state.currentLandmark}
             previousLandmark={this.state.previousLandmark}
-            travelingStatus={this.state.currentlyTraveling}
           />
         </div>
       );
@@ -132,8 +104,6 @@ class App extends React.Component {
       level = (
         <ChoiceReview
           changePage={this.changePage}
-          crew={this.state.crew}
-          supplyList={this.state.supplyList}
         />
       );
     } else if (this.state.page === 'supplyAdvice') {
@@ -146,7 +116,6 @@ class App extends React.Component {
           changePage={this.changePage}
           landmark={this.state.currentLandmark}
           changeLandmark={this.changeLandmark}
-          changeTravelingStatus={this.changeTravelingStatus}
           changePreviousLandmark={this.changePreviousLandmark}
         />
       );

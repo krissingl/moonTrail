@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import AlertWindow from './popUpAlert.jsx';
 import data from '../../dist/data.json';
 import classes from '../css/styles.css';
 
 const Landmark = ({
+  dispatch,
   changePage,
   landmark,
   changeLandmark,
   changePreviousLandmark,
-  changeTravelingStatus,
 }) => {
   const { landmarkList } = data;
   const [showAlert, toggleAlert] = useState(false);
   const [alertMsg, changeAlertMsg] = useState('');
 
+  // Checking for a Fork and Setting the Landmarks
   let nextLandmark;
   let currentLandmark;
   let isThereFork = false;
@@ -26,6 +28,7 @@ const Landmark = ({
     nextLandmark = landmarkList[landmark][0].next;
   }
 
+  // Alert Window Function
   let alertPopUp;
   if (showAlert) {
     alertPopUp = (
@@ -39,6 +42,15 @@ const Landmark = ({
     );
   }
 
+  // Change Global Traveling Status
+  const changeTravelingStatus = (status) => {
+    dispatch({
+      type: 'changeTravelingStatus',
+      payload: status,
+    });
+  };
+
+  // Different functionalities based off forks and landmarks
   let continueBtn;
   if (isThereFork) {
     continueBtn = (
@@ -50,9 +62,10 @@ const Landmark = ({
     );
   } else {
     continueBtn = (
-      <button type="button" onClick={(e) => { changeLandmark(e, nextLandmark); changePreviousLandmark(e, currentLandmark); changeTravelingStatus(e, true); changePage('traveling'); }}>CONTINUE MISSION</button>
+      <button type="button" onClick={(e) => { changeLandmark(e, nextLandmark); changePreviousLandmark(e, currentLandmark); changeTravelingStatus(true); changePage('traveling'); }}>CONTINUE MISSION</button>
     );
   }
+
   return (
     <div className={classes.noticePage}>
       <h2>
@@ -68,4 +81,8 @@ const Landmark = ({
   );
 };
 
-export default Landmark;
+const mapDispatchToProps = (dispatch) => ({
+  dispatch,
+});
+
+export default connect(mapDispatchToProps)(Landmark);
