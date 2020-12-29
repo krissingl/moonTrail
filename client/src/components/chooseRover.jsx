@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import classes from '../css/styles.css';
 import bug from '../../dist/extras/rovers/bug.gif';
 import jeep from '../../dist/extras/rovers/jeep.gif';
@@ -70,4 +71,4 @@ const ChooseRover = ({ changePage, changeRover }) => {
   );
 };
 
-export default ChooseRover;
+export default connect(mapStateToProps)(ChooseRover);
