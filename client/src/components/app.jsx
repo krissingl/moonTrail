@@ -118,13 +118,11 @@ class App extends React.Component {
         <div>
           <Traveling
             changePage={this.changePage}
-            rover={this.state.rover}
             changeTravelingStatus={this.changeTravelingStatus}
           />
           <StatusScreen
             changePage={this.changePage}
             crew={this.state.crew}
-            rover={this.state.rover}
             landmark={this.state.currentLandmark}
             previousLandmark={this.state.previousLandmark}
             travelingStatus={this.state.currentlyTraveling}
@@ -136,7 +134,6 @@ class App extends React.Component {
         <ChoiceReview
           changePage={this.changePage}
           crew={this.state.crew}
-          rover={this.state.rover}
           supplyList={this.state.supplyList}
         />
       );
