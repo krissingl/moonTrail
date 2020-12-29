@@ -19,14 +19,12 @@ class App extends React.Component {
     super();
     this.state = {
       page: 'main',
-      crew: [],
       supplyList: [],
       previousLandmark: 'spaceLOL',
       currentLandmark: 'MARE_CRISIUM',
       currentlyTraveling: false,
     };
     this.changePage = this.changePage.bind(this);
-    this.changeCrew = this.changeCrew.bind(this);
     this.changeFinalSupplies = this.changeFinalSupplies.bind(this);
     this.changePreviousLandmark = this.changePreviousLandmark.bind(this);
     this.changeLandmark = this.changeLandmark.bind(this);
@@ -36,11 +34,6 @@ class App extends React.Component {
 
   changePage(newPage) {
     this.setState({ page: newPage });
-  }
-
-  changeCrew(e, crewList) {
-    e.preventDefault();
-    this.setState({ crew: crewList });
   }
 
   changeFinalSupplies(e, finalSupplies) {
@@ -79,7 +72,7 @@ class App extends React.Component {
       );
     } else if (this.state.page === 'naming') {
       level = (
-        <NameAstros changePage={this.changePage} changeCrew={this.changeCrew} />
+        <NameAstros changePage={this.changePage} />
       );
     } else if (this.state.page === 'rover') {
       level = (
@@ -121,7 +114,6 @@ class App extends React.Component {
           />
           <StatusScreen
             changePage={this.changePage}
-            crew={this.state.crew}
             landmark={this.state.currentLandmark}
             previousLandmark={this.state.previousLandmark}
             travelingStatus={this.state.currentlyTraveling}
@@ -132,7 +124,6 @@ class App extends React.Component {
       level = (
         <ChoiceReview
           changePage={this.changePage}
-          crew={this.state.crew}
           supplyList={this.state.supplyList}
         />
       );

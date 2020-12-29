@@ -64,6 +64,9 @@ const ChoiceReview = ({
   );
 };
 
-const mapStateToProps = (state) => ({ rover: state.rover });
+const mapStateToProps = (state) => ({
+  crew: state.crew,
+  rover: state.rover,
+});
 
 export default connect(mapStateToProps)(ChoiceReview);
