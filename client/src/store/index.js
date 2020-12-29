@@ -2,6 +2,7 @@ import { createStore } from 'redux';
 
 const initialState = {
   test: 'We are Testing REDUX store (initial store)',
+  rover: 'rover',
   supplyObj: {},
   savedDistance: null,
 };
