@@ -5,7 +5,7 @@ import bug from '../../dist/extras/rovers/bug.gif';
 import jeep from '../../dist/extras/rovers/jeep.gif';
 import stationWag from '../../dist/extras/rovers/stationWagon.gif';
 
-const ChooseRover = ({ changePage, changeRover }) => {
+const ChooseRover = ({ dispatch, changePage, changeRover, rover }) => {
   const rovers = ['StationWagon', 'MiddleMan', 'MiniCoup'];
   const roverList = rovers.map((rover) => (
     <option key={rover} value={rover}>{rover}</option>
@@ -71,4 +71,8 @@ const ChooseRover = ({ changePage, changeRover }) => {
   );
 };
 
+const mapStateToProps = (state) => ({ rover: state.rover });
+const mapDispatchToProps = (dispatch) => ({
+  dispatch,
+})
 export default connect(mapStateToProps)(ChooseRover);
