@@ -1,22 +1,25 @@
 import React, { useState } from 'react';
-import classes from '../css/styles.css';
+import { connect } from 'react-redux';
 import bug from '../../dist/extras/rovers/bug.gif';
 import jeep from '../../dist/extras/rovers/jeep.gif';
 import stationWag from '../../dist/extras/rovers/stationWagon.gif';
+import classes from '../css/styles.css';
 
-const ChooseRover = ({ changePage, changeRover }) => {
+const ChooseRover = ({ dispatch, changePage, rover }) => {
+  // List function for drop-menu
   const rovers = ['StationWagon', 'MiddleMan', 'MiniCoup'];
-  const roverList = rovers.map((rover) => (
-    <option key={rover} value={rover}>{rover}</option>
+  const roverList = rovers.map((roverType) => (
+    <option key={roverType} value={roverType}>{roverType}</option>
   ));
-  const [rover, handleRoverChange] = useState('StationWagon');
+  // Getting rover from user chose from drop menu and setting speed and storage properties
+  const [localRover, handleLocalRoverChange] = useState('StationWagon');
   const findRover = (e) => {
-    handleRoverChange(e.target.value);
+    handleLocalRoverChange(e.target.value);
   };
   let storageCapacity;
   let maxSpeed;
   let roverImg;
-  if (rover === 'MiniCoup') {
+  if (localRover === 'MiniCoup') {
     storageCapacity = 400;
     maxSpeed = 10;
     roverImg = (
@@ -24,7 +27,7 @@ const ChooseRover = ({ changePage, changeRover }) => {
         <img className={classes.bugRoverImg} src={bug} alt="roverGif" />
       </div>
     );
-  } else if (rover === 'MiddleMan') {
+  } else if (localRover === 'MiddleMan') {
     storageCapacity = 500;
     maxSpeed = 7;
     roverImg = (
@@ -32,7 +35,7 @@ const ChooseRover = ({ changePage, changeRover }) => {
         <img className={classes.jeepRoverImg} src={jeep} alt="roverGif" />
       </div>
     );
-  } else if (rover === 'StationWagon') {
+  } else if (localRover === 'StationWagon') {
     storageCapacity = 700;
     maxSpeed = 5;
     roverImg = (
@@ -41,6 +44,7 @@ const ChooseRover = ({ changePage, changeRover }) => {
       </div>
     );
   }
+  // Tying it all together to make a rover Object
   const getRoverObject = () => {
     const roverObj = {
       type: rover,
@@ -49,6 +53,15 @@ const ChooseRover = ({ changePage, changeRover }) => {
     };
     return roverObj;
   };
+
+  // Change rover in redux store dispatch
+  const changeGlobalRover = (newGlobalRover) => {
+    dispatch({
+      type: 'changeRover',
+      payload: newGlobalRover,
+    });
+  };
+
   return (
     <div className={classes.noticePage}>
       <h3>CHOOSE_ROVER_FOR_MISSION</h3>
@@ -65,9 +78,16 @@ const ChooseRover = ({ changePage, changeRover }) => {
         <div>{`MAXIMUM STORAGE CAPACITY: ${storageCapacity}`}</div>
       </div>
       <br />
-      <button type="button" onClick={(e) => { const finalRover = getRoverObject(); changeRover(e, finalRover); changePage('supplies'); }}>Choose Supplies</button>
+      <button type="button" onClick={() => { changeGlobalRover(getRoverObject()); changePage('supplies'); }}>Choose Supplies</button>
     </div>
   );
 };
 
-export default ChooseRover;
+const mapStateToProps = (state) => ({ rover: state.rover });
+const mapDispatchToProps = (dispatch) => ({
+  dispatch,
+});
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ChooseRover);

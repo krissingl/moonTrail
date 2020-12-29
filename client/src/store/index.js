@@ -2,6 +2,7 @@ import { createStore } from 'redux';
 
 const initialState = {
   test: 'We are Testing REDUX store (initial store)',
+  rover: {},
   supplyObj: {},
   savedDistance: null,
 };
@@ -13,6 +14,8 @@ const reducer = (state = initialState, action) => {
     return { ...state, supplyObj: action.payload };
   } if (action.type === 'landmarkDistanceChange') {
     return { ...state, savedDistance: action.payload };
+  } if (action.type === 'changeRover') {
+    return { ...state, rover: action.payload };
   }
   return state;
 };
