@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import AlertWindow from './popUpAlert.jsx';
 import sky from '../../dist/extras/moonSky.png';
 import bug from '../../dist/extras/rovers/bug.gif';
@@ -56,4 +57,6 @@ const TravelingPage = ({ changePage, changeTravelingStatus, rover }) => {
   );
 };
 
-export default TravelingPage;
+const mapStateToProps = (state) => ({ rover: state.rover });
+
+export default connect(mapStateToProps)(TravelingPage);

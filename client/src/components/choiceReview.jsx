@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import classes from '../css/styles.css';
 
 const ChoiceReview = ({
@@ -63,4 +64,6 @@ const ChoiceReview = ({
   );
 };
 
-export default ChoiceReview;
+const mapStateToProps = (state) => ({ rover: state.rover });
+
+export default connect(mapStateToProps)(ChoiceReview);
