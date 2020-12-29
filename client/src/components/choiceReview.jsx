@@ -8,6 +8,7 @@ const ChoiceReview = ({
   rover,
   supplyList,
 }) => {
+  console.log(rover);
   const crewList = crew.map((astro) => (
     <div key={astro} className={classes.reviewItem}>{astro}</div>
   ));

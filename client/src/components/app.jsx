@@ -88,7 +88,6 @@ class App extends React.Component {
     } else if (this.state.page === 'supplies') {
       level = (
         <ChooseSupplies
-          maxStorage={this.state.rover.storageCapacity}
           changePage={this.changePage}
           changeFinalSupplies={this.changeFinalSupplies}
         />
