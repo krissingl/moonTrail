@@ -57,4 +57,6 @@ const TravelingPage = ({ changePage, changeTravelingStatus, rover }) => {
   );
 };
 
+const mapStateToProps = (state) => ({ rover: state.rover });
+
 export default connect(mapStateToProps)(TravelingPage);
