@@ -48,29 +48,6 @@ const StatusScreen = ({
     });
   };
 
-  // Landmark distance calculator
-  const [distCounter, setDistCounter] = useState(landmarkDistance);
-  useEffect(() => {
-    const timer = distCounter > 0 && setInterval(() => setDistCounter(distCounter - 1), 1000);
-    if (distCounter === 0) {
-      saveDistanceTraveled(null);
-      changePage('landmark');
-    }
-    return () => clearInterval(timer);
-  }, [distCounter]);
-
-  // Test Oxygen depletion function
-  useEffect(() => {
-    const timer = oxyAmount > 0 && setInterval(() => {
-      changeOxyAmount(oxyAmount - 1);
-    }, 10000);
-    if (oxyAmount === 0) {
-      // Need to add a message receiver for gameover page to tell player why they lost
-      changePage('gameover');
-    }
-    return () => clearInterval(timer);
-  }, [oxyAmount]);
-
   // Global Supply State manipulation functions
   const getNewSupplyAmountList = () => {
     const supplyAmountList = [
@@ -93,6 +70,30 @@ const StatusScreen = ({
       payload: supplies,
     });
   };
+
+  // Landmark distance calculator
+  const [distCounter, setDistCounter] = useState(landmarkDistance);
+  useEffect(() => {
+    const timer = distCounter > 0 && setInterval(() => setDistCounter(distCounter - 1), 1000);
+    if (distCounter === 0) {
+      changeGlobalSupplyObj(GetFinalSupplyObj(getNewSupplyAmountList()));
+      saveDistanceTraveled(null);
+      changePage('landmark');
+    }
+    return () => clearInterval(timer);
+  }, [distCounter]);
+
+  // Test Oxygen depletion function
+  useEffect(() => {
+    const timer = oxyAmount > 0 && setInterval(() => {
+      changeOxyAmount(oxyAmount - 1);
+    }, 10000);
+    if (oxyAmount === 0) {
+      // Need to add a message receiver for gameover page to tell player why they lost
+      changePage('gameover');
+    }
+    return () => clearInterval(timer);
+  }, [oxyAmount]);
 
   return (
     <div className={classes.statusScreen}>

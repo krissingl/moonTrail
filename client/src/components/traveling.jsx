@@ -7,10 +7,20 @@ import jeep from '../../dist/extras/rovers/jeep.gif';
 import stationWag from '../../dist/extras/rovers/stationWagon.gif';
 import classes from '../css/styles.css';
 
-const TravelingPage = ({ changePage, changeTravelingStatus, rover }) => {
+const TravelingPage = ({ changePage, dispatch, rover }) => {
+  // Local State Hooks
   const [showAlert, toggleAlert] = useState(false);
   const [alertMsg, changeAlertMsg] = useState('');
 
+  // Change the Global Traveling Status State
+  const changeTravelingStatus = (status) => {
+    dispatch({
+      type: 'changeTravelingStatus',
+      payload: status,
+    });
+  };
+
+  // Change the Rover Image
   let roverImg;
   if (rover.type === 'StationWagon') {
     roverImg = (
@@ -32,6 +42,7 @@ const TravelingPage = ({ changePage, changeTravelingStatus, rover }) => {
     );
   }
 
+  // Alert Window Function
   let alertPopUp;
   if (showAlert) {
     alertPopUp = (
@@ -58,5 +69,11 @@ const TravelingPage = ({ changePage, changeTravelingStatus, rover }) => {
 };
 
 const mapStateToProps = (state) => ({ rover: state.rover });
+const mapDispatchToProps = (dispatch) => ({
+  dispatch,
+});
 
-export default connect(mapStateToProps)(TravelingPage);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(TravelingPage);

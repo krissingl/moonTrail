@@ -21,12 +21,10 @@ class App extends React.Component {
       page: 'main',
       previousLandmark: 'spaceLOL',
       currentLandmark: 'MARE_CRISIUM',
-      currentlyTraveling: false,
     };
     this.changePage = this.changePage.bind(this);
     this.changePreviousLandmark = this.changePreviousLandmark.bind(this);
     this.changeLandmark = this.changeLandmark.bind(this);
-    this.changeTravelingStatus = this.changeTravelingStatus.bind(this);
     this.resetGame = this.resetGame.bind(this);
   }
 
@@ -42,11 +40,6 @@ class App extends React.Component {
   changeLandmark(e, newLandmark) {
     e.preventDefault();
     this.setState({ currentLandmark: newLandmark });
-  }
-
-  changeTravelingStatus(e, newStatus) {
-    e.preventDefault();
-    this.setState({ currentlyTraveling: newStatus });
   }
 
   resetGame() {
@@ -85,7 +78,6 @@ class App extends React.Component {
             landmark={this.state.currentLandmark}
             changeLandmark={this.changeLandmark}
             changePreviousLandmark={this.changePreviousLandmark}
-            changeTravelingStatus={this.changeTravelingStatus}
           />
         </div>
       );
@@ -93,7 +85,6 @@ class App extends React.Component {
       level = (
         <Analyzation
           changePage={this.changePage}
-          travelingStatus={this.state.currentlyTraveling}
         />
       );
     } else if (this.state.page === 'traveling') {
@@ -101,13 +92,11 @@ class App extends React.Component {
         <div>
           <Traveling
             changePage={this.changePage}
-            changeTravelingStatus={this.changeTravelingStatus}
           />
           <StatusScreen
             changePage={this.changePage}
             landmark={this.state.currentLandmark}
             previousLandmark={this.state.previousLandmark}
-            travelingStatus={this.state.currentlyTraveling}
           />
         </div>
       );
@@ -127,7 +116,6 @@ class App extends React.Component {
           changePage={this.changePage}
           landmark={this.state.currentLandmark}
           changeLandmark={this.changeLandmark}
-          changeTravelingStatus={this.changeTravelingStatus}
           changePreviousLandmark={this.changePreviousLandmark}
         />
       );
