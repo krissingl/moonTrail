@@ -19,13 +19,11 @@ class App extends React.Component {
     super();
     this.state = {
       page: 'main',
-      supplyList: [],
       previousLandmark: 'spaceLOL',
       currentLandmark: 'MARE_CRISIUM',
       currentlyTraveling: false,
     };
     this.changePage = this.changePage.bind(this);
-    this.changeFinalSupplies = this.changeFinalSupplies.bind(this);
     this.changePreviousLandmark = this.changePreviousLandmark.bind(this);
     this.changeLandmark = this.changeLandmark.bind(this);
     this.changeTravelingStatus = this.changeTravelingStatus.bind(this);
@@ -34,11 +32,6 @@ class App extends React.Component {
 
   changePage(newPage) {
     this.setState({ page: newPage });
-  }
-
-  changeFinalSupplies(e, finalSupplies) {
-    e.preventDefault();
-    this.setState({ supplyList: finalSupplies });
   }
 
   changePreviousLandmark(e, landmark) {
@@ -82,7 +75,6 @@ class App extends React.Component {
       level = (
         <ChooseSupplies
           changePage={this.changePage}
-          changeFinalSupplies={this.changeFinalSupplies}
         />
       );
     } else if (this.state.page === 'landmark') {
@@ -102,7 +94,6 @@ class App extends React.Component {
         <Analyzation
           changePage={this.changePage}
           travelingStatus={this.state.currentlyTraveling}
-          supplyList={this.state.supplyList}
         />
       );
     } else if (this.state.page === 'traveling') {
@@ -124,7 +115,6 @@ class App extends React.Component {
       level = (
         <ChoiceReview
           changePage={this.changePage}
-          supplyList={this.state.supplyList}
         />
       );
     } else if (this.state.page === 'supplyAdvice') {

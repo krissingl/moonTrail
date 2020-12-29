@@ -67,6 +67,7 @@ const ChoiceReview = ({
 const mapStateToProps = (state) => ({
   crew: state.crew,
   rover: state.rover,
+  supplyList: state.supplyList,
 });
 
 export default connect(mapStateToProps)(ChoiceReview);
