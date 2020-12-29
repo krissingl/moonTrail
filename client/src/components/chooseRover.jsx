@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import classes from '../css/styles.css';
 import bug from '../../dist/extras/rovers/bug.gif';
 import jeep from '../../dist/extras/rovers/jeep.gif';
 import stationWag from '../../dist/extras/rovers/stationWagon.gif';
+import classes from '../css/styles.css';
 
 const ChooseRover = ({ dispatch, changePage, rover }) => {
+  // List function for drop-menu
   const rovers = ['StationWagon', 'MiddleMan', 'MiniCoup'];
   const roverList = rovers.map((roverType) => (
     <option key={roverType} value={roverType}>{roverType}</option>
   ));
-  const [localRover, handleRoverChange] = useState('StationWagon');
+  // Getting rover from user chose from drop menu and setting speed and storage properties
+  const [localRover, handleLocalRoverChange] = useState('StationWagon');
   const findRover = (e) => {
-    handleRoverChange(e.target.value);
+    handleLocalRoverChange(e.target.value);
   };
   let storageCapacity;
   let maxSpeed;
@@ -42,6 +44,7 @@ const ChooseRover = ({ dispatch, changePage, rover }) => {
       </div>
     );
   }
+  // Tying it all together to make a rover Object
   const getRoverObject = () => {
     const roverObj = {
       type: rover,
