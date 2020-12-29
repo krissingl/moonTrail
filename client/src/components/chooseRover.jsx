@@ -5,7 +5,7 @@ import jeep from '../../dist/extras/rovers/jeep.gif';
 import stationWag from '../../dist/extras/rovers/stationWagon.gif';
 import classes from '../css/styles.css';
 
-const ChooseRover = ({ dispatch, changePage, rover }) => {
+const ChooseRover = ({ dispatch, changePage }) => {
   // List function for drop-menu
   const rovers = ['StationWagon', 'MiddleMan', 'MiniCoup'];
   const roverList = rovers.map((roverType) => (
@@ -47,7 +47,7 @@ const ChooseRover = ({ dispatch, changePage, rover }) => {
   // Tying it all together to make a rover Object
   const getRoverObject = () => {
     const roverObj = {
-      type: rover,
+      type: localRover,
       maxSpeed,
       storageCapacity,
     };
@@ -72,7 +72,7 @@ const ChooseRover = ({ dispatch, changePage, rover }) => {
         </select>
       </div>
       <div>
-        <h5>{rover}</h5>
+        <h5>{localRover}</h5>
         {roverImg}
         <div>{`MAXIMUM SPEED: ${maxSpeed}`}</div>
         <div>{`MAXIMUM STORAGE CAPACITY: ${storageCapacity}`}</div>

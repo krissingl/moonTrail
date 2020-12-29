@@ -9,9 +9,11 @@ import classes from '../css/styles.css';
 const ChooseSupplies = ({
   changePage,
   changeFinalSupplies,
-  maxStorage,
+  rover,
   dispatch,
 }) => {
+  const maxStorage = rover.storageCapacity;
+
   const [totalWeight, changeTotalWeight] = useState(0);
   const [oxyAmount, changeOxyAmount] = useState(0);
   const [foodAmount, changeFoodAmount] = useState(0);
@@ -109,7 +111,10 @@ const ChooseSupplies = ({
   );
 };
 
-const mapStateToProps = (state) => ({ supplyObj: state.supplyObj });
+const mapStateToProps = (state) => ({
+  rover: state.rover,
+  supplyObj: state.supplyObj,
+});
 const mapDispatchToProps = (dispatch) => ({
   dispatch,
 });
