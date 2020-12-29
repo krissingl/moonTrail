@@ -8,7 +8,6 @@ import classes from '../css/styles.css';
 
 const ChooseSupplies = ({
   changePage,
-  changeFinalSupplies,
   rover,
   dispatch,
 }) => {
@@ -52,6 +51,16 @@ const ChooseSupplies = ({
     changeRoverMainAmount,
   ];
 
+  // Alert Window Function
+  let alertPopUp;
+  if (showAlert) {
+    const alertMsg = 'There is not enough storage!';
+    alertPopUp = (
+      <AlertWindow message={alertMsg} toggleAlert={toggleAlert} />
+    );
+  }
+
+  // Build SupplyList Function
   const getSupplyList = () => {
     const finalSupplyList = data.supplyList.map((supply, index) => {
       const finalSupply = {
@@ -64,18 +73,18 @@ const ChooseSupplies = ({
     });
     return finalSupplyList;
   };
-  let alertPopUp;
-  if (showAlert) {
-    const alertMsg = 'There is not enough storage!';
-    alertPopUp = (
-      <AlertWindow message={alertMsg} toggleAlert={toggleAlert} />
-    );
-  }
-  const changeGlobalSupplyObj = (e, supplies) => {
-    e.preventDefault();
+
+  // Global State Manipulation Functions
+  const changeGlobalSupplyObj = (supplyObj) => {
     dispatch({
       type: 'supplyObjChange',
-      payload: supplies,
+      payload: supplyObj,
+    });
+  };
+  const changeGlobalSupplyList = (supplyList) => {
+    dispatch({
+      type: 'changeSupplyList',
+      payload: supplyList,
     });
   };
 
@@ -105,7 +114,7 @@ const ChooseSupplies = ({
         </div>
         <br />
         <button type="button" onClick={() => { changePage('supplyAdvice'); }}>Any advice on what should I take?</button>
-        <button type="button" onClick={(e) => { const finalSupplyList = getSupplyList(); const finalSupplyObj = GetFinalSupplyObj(supplyAmountList); changeFinalSupplies(e, finalSupplyList); changeGlobalSupplyObj(e, finalSupplyObj); changePage('review'); }}>Review Equiptment</button>
+        <button type="button" onClick={() => { changeGlobalSupplyList(getSupplyList()); changeGlobalSupplyObj(GetFinalSupplyObj(supplyAmountList)); changePage('review'); }}>Review Equiptment</button>
       </div>
     </div>
   );
@@ -114,6 +123,7 @@ const ChooseSupplies = ({
 const mapStateToProps = (state) => ({
   rover: state.rover,
   supplyObj: state.supplyObj,
+  supplyList: state.supplyList,
 });
 const mapDispatchToProps = (dispatch) => ({
   dispatch,

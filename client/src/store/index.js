@@ -5,6 +5,7 @@ const initialState = {
   crew: [],
   rover: {},
   supplyObj: {},
+  supplyList: [],
   savedDistance: null,
 };
 
@@ -17,6 +18,8 @@ const reducer = (state = initialState, action) => {
     return { ...state, rover: action.payload };
   } if (action.type === 'supplyObjChange') {
     return { ...state, supplyObj: action.payload };
+  } if (action.type === 'changeSupplyList') {
+    return { ...state, supplyList: action.payload };
   } if (action.type === 'landmarkDistanceChange') {
     return { ...state, savedDistance: action.payload };
   }
