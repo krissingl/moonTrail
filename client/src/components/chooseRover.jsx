@@ -78,7 +78,7 @@ const ChooseRover = ({ dispatch, changePage, rover }) => {
         <div>{`MAXIMUM STORAGE CAPACITY: ${storageCapacity}`}</div>
       </div>
       <br />
-      <button type="button" onClick={() => { const finalRover = getRoverObject(); changePage('supplies'); }}>Choose Supplies</button>
+      <button type="button" onClick={() => { changeGlobalRover(getRoverObject()); changePage('supplies'); }}>Choose Supplies</button>
     </div>
   );
 };
