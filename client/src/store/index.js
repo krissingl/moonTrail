@@ -27,6 +27,10 @@ const reducer = (state = initialState, action) => {
     return { ...state, savedDistance: action.payload };
   } if (action.type === 'changeTravelingStatus') {
     return { ...state, currentlyTraveling: action.payload };
+  } if (action.type === 'changePreviousLandmark') {
+    return { ...state, previousLandmark: action.payload };
+  } if (action.type === 'changeCurrentLandmark') {
+    return { ...state, currentLandmark: action.payload };
   }
   return state;
 };
