@@ -81,8 +81,12 @@ const Landmark = ({
   );
 };
 
+const mapStateToProps = (state) => ({ landmark: state.currentLandmark });
 const mapDispatchToProps = (dispatch) => ({
   dispatch,
 });
 
-export default connect(mapDispatchToProps)(Landmark);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Landmark);
