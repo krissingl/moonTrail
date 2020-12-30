@@ -8,6 +8,8 @@ const initialState = {
   supplyList: [],
   savedDistance: null,
   currentlyTraveling: false,
+  previousLandmark: 'spaceLOL',
+  currentLandmark: 'MARE_CRISIUM',
 };
 
 const reducer = (state = initialState, action) => {
