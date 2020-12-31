@@ -118,6 +118,8 @@ const StatusScreen = ({
 const mapStateToProps = (state) => ({
   supplyObj: state.supplyObj,
   savedDistance: state.savedDistance,
+  landmark: state.currentDistance,
+  previousLandmark: state.previousLandmark,
 });
 const mapDispatchToProps = (dispatch) => ({
   dispatch,
