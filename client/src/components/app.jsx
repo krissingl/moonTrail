@@ -19,27 +19,13 @@ class App extends React.Component {
     super();
     this.state = {
       page: 'main',
-      previousLandmark: 'spaceLOL',
-      currentLandmark: 'MARE_CRISIUM',
     };
     this.changePage = this.changePage.bind(this);
-    this.changePreviousLandmark = this.changePreviousLandmark.bind(this);
-    this.changeLandmark = this.changeLandmark.bind(this);
     this.resetGame = this.resetGame.bind(this);
   }
 
   changePage(newPage) {
     this.setState({ page: newPage });
-  }
-
-  changePreviousLandmark(e, landmark) {
-    e.preventDefault();
-    this.setState({ previousLandmark: landmark });
-  }
-
-  changeLandmark(e, newLandmark) {
-    e.preventDefault();
-    this.setState({ currentLandmark: newLandmark });
   }
 
   resetGame() {
@@ -66,33 +52,22 @@ class App extends React.Component {
       );
     } else if (this.state.page === 'supplies') {
       level = (
-        <ChooseSupplies
-          changePage={this.changePage}
-        />
+        <ChooseSupplies changePage={this.changePage} />
       );
     } else if (this.state.page === 'landmark') {
       level = (
         <div>
-          <Landmark
-            changePage={this.changePage}
-            landmark={this.state.currentLandmark}
-            changeLandmark={this.changeLandmark}
-            changePreviousLandmark={this.changePreviousLandmark}
-          />
+          <Landmark changePage={this.changePage} />
         </div>
       );
     } else if (this.state.page === 'analyzeSitch') {
       level = (
-        <Analyzation
-          changePage={this.changePage}
-        />
+        <Analyzation changePage={this.changePage} />
       );
     } else if (this.state.page === 'traveling') {
       level = (
         <div>
-          <Traveling
-            changePage={this.changePage}
-          />
+          <Traveling changePage={this.changePage} />
           <StatusScreen
             changePage={this.changePage}
             landmark={this.state.currentLandmark}

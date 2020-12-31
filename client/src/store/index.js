@@ -8,6 +8,8 @@ const initialState = {
   supplyList: [],
   savedDistance: null,
   currentlyTraveling: false,
+  previousLandmark: 'spaceLOL',
+  currentLandmark: 'MARE_CRISIUM',
 };
 
 const reducer = (state = initialState, action) => {
@@ -25,6 +27,10 @@ const reducer = (state = initialState, action) => {
     return { ...state, savedDistance: action.payload };
   } if (action.type === 'changeTravelingStatus') {
     return { ...state, currentlyTraveling: action.payload };
+  } if (action.type === 'changePreviousLandmark') {
+    return { ...state, previousLandmark: action.payload };
+  } if (action.type === 'changeCurrentLandmark') {
+    return { ...state, currentLandmark: action.payload };
   }
   return state;
 };
