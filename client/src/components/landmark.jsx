@@ -8,8 +8,6 @@ const Landmark = ({
   dispatch,
   changePage,
   landmark,
-  changeLandmark,
-  changePreviousLandmark,
 }) => {
   const { landmarkList } = data;
   const [showAlert, toggleAlert] = useState(false);
@@ -28,6 +26,28 @@ const Landmark = ({
     nextLandmark = landmarkList[landmark][0].next;
   }
 
+  // Change Global Traveling Status
+  const changeTravelingStatus = (status) => {
+    dispatch({
+      type: 'changeTravelingStatus',
+      payload: status,
+    });
+  };
+
+  const changeCurrentGlobalLandmark = (newLandmark) => {
+    dispatch({
+      type: 'changeCurrentLandmark',
+      payload: newLandmark,
+    });
+  };
+
+  const changePreviousGlobalLandmark = (prevLandmark) => {
+    dispatch({
+      type: 'changePreviousLandmark',
+      payload: prevLandmark,
+    });
+  };
+
   // Alert Window Function
   let alertPopUp;
   if (showAlert) {
@@ -36,19 +56,11 @@ const Landmark = ({
         message={alertMsg}
         toggleAlert={toggleAlert}
         landmark={landmark}
-        changeLandmark={changeLandmark}
-        changePreviousLandmark={changePreviousLandmark}
+        changeLandmark={changeCurrentGlobalLandmark}
+        changePreviousLandmark={changePreviousGlobalLandmark}
       />
     );
   }
-
-  // Change Global Traveling Status
-  const changeTravelingStatus = (status) => {
-    dispatch({
-      type: 'changeTravelingStatus',
-      payload: status,
-    });
-  };
 
   // Different functionalities based off forks and landmarks
   let continueBtn;
@@ -62,7 +74,7 @@ const Landmark = ({
     );
   } else {
     continueBtn = (
-      <button type="button" onClick={(e) => { changeLandmark(e, nextLandmark); changePreviousLandmark(e, currentLandmark); changeTravelingStatus(true); changePage('traveling'); }}>CONTINUE MISSION</button>
+      <button type="button" onClick={() => { changeCurrentGlobalLandmark(currentLandmark); changePreviousGlobalLandmark(nextLandmark); changeTravelingStatus(true); changePage('traveling'); }}>CONTINUE MISSION</button>
     );
   }
 
