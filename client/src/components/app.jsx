@@ -62,16 +62,12 @@ class App extends React.Component {
       );
     } else if (this.state.page === 'analyzeSitch') {
       level = (
-        <Analyzation
-          changePage={this.changePage}
-        />
+        <Analyzation changePage={this.changePage} />
       );
     } else if (this.state.page === 'traveling') {
       level = (
         <div>
-          <Traveling
-            changePage={this.changePage}
-          />
+          <Traveling changePage={this.changePage} />
           <StatusScreen
             changePage={this.changePage}
             landmark={this.state.currentLandmark}
