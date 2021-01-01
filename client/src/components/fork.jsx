@@ -40,8 +40,8 @@ const Fork = ({
     dispatch({
       type: 'changeLandmark',
       payload: newLandmark,
-    })
-  }
+    });
+  };
 
   return (
     <div className={classes.noticePage}>
