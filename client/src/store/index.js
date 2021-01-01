@@ -1,7 +1,6 @@
 import { createStore } from 'redux';
 
 const initialState = {
-  page: 'main',
   crew: [],
   rover: {},
   supplyObj: {},
@@ -13,9 +12,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  if (action.type === 'changePage') {
-    return { ...state, test: action.payload };
-  } if (action.type === 'changeCrew') {
+  if (action.type === 'changeCrew') {
     return { ...state, crew: action.payload };
   } if (action.type === 'changeRover') {
     return { ...state, rover: action.payload };
