@@ -8,8 +8,6 @@ const Fork = ({
   dispatch,
   changePage,
   landmark,
-  changeLandmark,
-  changePreviousLandmark,
 }) => {
   const { landmarkList } = data;
   const currentLandmark = landmark;
@@ -38,6 +36,13 @@ const Fork = ({
     });
   };
 
+  const changeGlobalCurrentLandmark = (newLandmark) => {
+    dispatch({
+      type: 'changeLandmark',
+      payload: newLandmark,
+    })
+  }
+
   return (
     <div className={classes.noticePage}>
       <div className={classes.forkContent}>
@@ -58,8 +63,12 @@ const Fork = ({
   );
 };
 
+const mapStateToProps = (state) => ({ landmark: state.landmark });
 const mapDispatchToProps = (dispatch) => ({
   dispatch,
 });
 
-export default connect(mapDispatchToProps)(Fork);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Fork);

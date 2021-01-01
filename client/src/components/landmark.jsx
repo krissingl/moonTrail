@@ -13,17 +13,19 @@ const Landmark = ({
   const [showAlert, toggleAlert] = useState(false);
   const [alertMsg, changeAlertMsg] = useState('');
 
+  console.log(landmark);
+
   // Checking for a Fork and Setting the Landmarks
-  let nextLandmark;
-  let currentLandmark;
+  let localNextLandmark;
+  let localCurrentLandmark;
   let isThereFork = false;
   if (landmark === 'HERODOTUS') {
-    nextLandmark = null;
+    localNextLandmark = null;
   } else if (landmarkList[landmark].length !== 1) {
     isThereFork = true;
   } else {
-    currentLandmark = landmark;
-    nextLandmark = landmarkList[landmark][0].next;
+    localCurrentLandmark = landmark;
+    localNextLandmark = landmarkList[landmark][0].next;
   }
 
   // Change Global Traveling Status
@@ -35,15 +37,17 @@ const Landmark = ({
   };
 
   const changeCurrentGlobalLandmark = (newLandmark) => {
+    console.log(newLandmark);
     dispatch({
-      type: 'changeCurrentLandmark',
+      type: 'changeLandmark',
       payload: newLandmark,
     });
   };
 
   const changePreviousGlobalLandmark = (prevLandmark) => {
+    console.log(prevLandmark);
     dispatch({
-      type: 'changePreviousLandmark',
+      type: 'changePrevLandmark',
       payload: prevLandmark,
     });
   };
@@ -55,9 +59,6 @@ const Landmark = ({
       <AlertWindow
         message={alertMsg}
         toggleAlert={toggleAlert}
-        landmark={landmark}
-        changeLandmark={changeCurrentGlobalLandmark}
-        changePreviousLandmark={changePreviousGlobalLandmark}
       />
     );
   }
@@ -68,20 +69,20 @@ const Landmark = ({
     continueBtn = (
       <button type="button" onClick={() => { changePage('fork'); }}>CONTINUE MISSION</button>
     );
-  } else if (landmark === 'HERODOTUS') {
+  } else if (localCurrentLandmark === 'HERODOTUS') {
     continueBtn = (
       <button type="button" onClick={() => { changePage('gameover'); }}>MISSION COMPLETION</button>
     );
   } else {
     continueBtn = (
-      <button type="button" onClick={() => { changeCurrentGlobalLandmark(currentLandmark); changePreviousGlobalLandmark(nextLandmark); changeTravelingStatus(true); changePage('traveling'); }}>CONTINUE MISSION</button>
+      <button type="button" onClick={() => { changeCurrentGlobalLandmark(localNextLandmark); changePreviousGlobalLandmark(localCurrentLandmark); changeTravelingStatus(true); changePage('traveling'); }}>CONTINUE MISSION</button>
     );
   }
 
   return (
     <div className={classes.noticePage}>
       <h2>
-        {`YOU_HAVE_ARRIVED_AT_${landmark}`}
+        {`YOU_HAVE_ARRIVED_AT_${localCurrentLandmark}`}
       </h2>
       {alertPopUp}
       <h3>WHAT_WOULD_YOU_LIKE_TO_DO?</h3>
@@ -93,7 +94,7 @@ const Landmark = ({
   );
 };
 
-const mapStateToProps = (state) => ({ landmark: state.currentLandmark });
+const mapStateToProps = (state) => ({ landmark: state.landmark });
 const mapDispatchToProps = (dispatch) => ({
   dispatch,
 });

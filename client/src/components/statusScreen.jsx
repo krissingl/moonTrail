@@ -9,7 +9,7 @@ const StatusScreen = ({
   changePage,
   supplyObj,
   savedDistance,
-  landmark,
+  nextLandmark,
   previousLandmark,
 }) => {
   // Local supply amount states
@@ -31,7 +31,7 @@ const StatusScreen = ({
   if (savedDistance !== null) {
     landmarkDistance = savedDistance;
   } else if (landmarkList[previousLandmark].length !== 1) {
-    if (landmarkList[previousLandmark][1].next === landmark) {
+    if (landmarkList[previousLandmark][1].next === nextLandmark) {
       landmarkDistance = landmarkList[previousLandmark][1].distance;
     } else {
       landmarkDistance = landmarkList[previousLandmark][0].distance;
@@ -118,7 +118,7 @@ const StatusScreen = ({
 const mapStateToProps = (state) => ({
   supplyObj: state.supplyObj,
   savedDistance: state.savedDistance,
-  landmark: state.currentDistance,
+  nextLandmark: state.nextLandmark,
   previousLandmark: state.previousLandmark,
 });
 const mapDispatchToProps = (dispatch) => ({

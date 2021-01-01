@@ -9,7 +9,7 @@ const initialState = {
   savedDistance: null,
   currentlyTraveling: false,
   previousLandmark: 'spaceLOL',
-  currentLandmark: 'MARE_CRISIUM',
+  landmark: 'MARE_CRISIUM',
 };
 
 const reducer = (state = initialState, action) => {
@@ -27,10 +27,10 @@ const reducer = (state = initialState, action) => {
     return { ...state, savedDistance: action.payload };
   } if (action.type === 'changeTravelingStatus') {
     return { ...state, currentlyTraveling: action.payload };
-  } if (action.type === 'changePreviousLandmark') {
+  } if (action.type === 'changePrevLandmark') {
     return { ...state, previousLandmark: action.payload };
-  } if (action.type === 'changeCurrentLandmark') {
-    return { ...state, currentLandmark: action.payload };
+  } if (action.type === 'changeLandmark') {
+    return { ...state, landmark: action.payload };
   }
   return state;
 };

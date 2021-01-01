@@ -68,11 +68,7 @@ class App extends React.Component {
       level = (
         <div>
           <Traveling changePage={this.changePage} />
-          <StatusScreen
-            changePage={this.changePage}
-            landmark={this.state.currentLandmark}
-            previousLandmark={this.state.previousLandmark}
-          />
+          <StatusScreen changePage={this.changePage} />
         </div>
       );
     } else if (this.state.page === 'review') {
