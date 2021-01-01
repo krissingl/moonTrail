@@ -9,6 +9,8 @@ const Fork = ({
   changePage,
   landmark,
 }) => {
+  console.log('FORK COMPONENT FIRED');
+
   const { landmarkList } = data;
   const currentLandmark = landmark;
   const landmarkOption1 = landmarkList[landmark][0].next;
@@ -60,9 +62,9 @@ const Fork = ({
           {alertPopUp}
         </div>
         <div className={classes.forkOptions}>
-          <button type="button" onClick={(e) => { changeLandmark(e, landmarkOption1); changePreviousLandmark(e, currentLandmark); changeGlobalTravelingStatus(true); changePage('traveling'); }}>{landmarkOption1}</button>
+          <button type="button" onClick={() => { changeGlobalCurrentLandmark(landmarkOption1); changeGlobalPrevLandmark(currentLandmark); changeGlobalTravelingStatus(true); changePage('traveling'); }}>{landmarkOption1}</button>
           <div className={classes.forkOR}>OR</div>
-          <button type="button" onClick={(e) => { changeLandmark(e, landmarkOption2); changePreviousLandmark(e, currentLandmark); changeGlobalTravelingStatus(true); changePage('traveling'); }}>{landmarkOption2}</button>
+          <button type="button" onClick={() => { changeGlobalCurrentLandmark(landmarkOption2); changeGlobalPrevLandmark(currentLandmark); changeGlobalTravelingStatus(true); changePage('traveling'); }}>{landmarkOption2}</button>
         </div>
         <button type="button" className={classes.forkMapBtn} onClick={() => { changeAlertType('map'); changeAlertMsg('ROUTE_MAP'); toggleAlert(true); }}>CHECK_MAP</button>
       </div>

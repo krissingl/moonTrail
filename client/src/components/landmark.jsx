@@ -13,8 +13,6 @@ const Landmark = ({
   const [showAlert, toggleAlert] = useState(false);
   const [alertMsg, changeAlertMsg] = useState('');
 
-  console.log(landmark);
-
   // Checking for a Fork and Setting the Landmarks
   let localNextLandmark;
   let localCurrentLandmark;
@@ -69,7 +67,7 @@ const Landmark = ({
     continueBtn = (
       <button type="button" onClick={() => { changePage('fork'); }}>CONTINUE MISSION</button>
     );
-  } else if (localCurrentLandmark === 'HERODOTUS') {
+  } else if (landmark === 'HERODOTUS') {
     continueBtn = (
       <button type="button" onClick={() => { changePage('gameover'); }}>MISSION COMPLETION</button>
     );
@@ -82,7 +80,7 @@ const Landmark = ({
   return (
     <div className={classes.noticePage}>
       <h2>
-        {`YOU_HAVE_ARRIVED_AT_${localCurrentLandmark}`}
+        {`YOU_HAVE_ARRIVED_AT_${landmark}`}
       </h2>
       {alertPopUp}
       <h3>WHAT_WOULD_YOU_LIKE_TO_DO?</h3>
