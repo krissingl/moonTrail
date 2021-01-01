@@ -43,6 +43,13 @@ const Fork = ({
     });
   };
 
+  const changeGlobalPrevLandmark = (prevLandmark) => {
+    dispatch({
+      type: 'changePrevLandmark',
+      payload: prevLandmark,
+    });
+  };
+
   return (
     <div className={classes.noticePage}>
       <div className={classes.forkContent}>
