@@ -14,16 +14,16 @@ const Landmark = ({
   const [alertMsg, changeAlertMsg] = useState('');
 
   // Checking for a Fork and Setting the Landmarks
-  let nextLandmark;
-  let currentLandmark;
+  let localNextLandmark;
+  let localCurrentLandmark;
   let isThereFork = false;
   if (landmark === 'HERODOTUS') {
-    nextLandmark = null;
+    localNextLandmark = null;
   } else if (landmarkList[landmark].length !== 1) {
     isThereFork = true;
   } else {
-    currentLandmark = landmark;
-    nextLandmark = landmarkList[landmark][0].next;
+    localCurrentLandmark = landmark;
+    localNextLandmark = landmarkList[landmark][0].next;
   }
 
   // Change Global Traveling Status
@@ -35,15 +35,17 @@ const Landmark = ({
   };
 
   const changeCurrentGlobalLandmark = (newLandmark) => {
+    console.log(newLandmark);
     dispatch({
-      type: 'changeCurrentLandmark',
+      type: 'changeLandmark',
       payload: newLandmark,
     });
   };
 
   const changePreviousGlobalLandmark = (prevLandmark) => {
+    console.log(prevLandmark);
     dispatch({
-      type: 'changePreviousLandmark',
+      type: 'changePrevLandmark',
       payload: prevLandmark,
     });
   };
@@ -55,9 +57,6 @@ const Landmark = ({
       <AlertWindow
         message={alertMsg}
         toggleAlert={toggleAlert}
-        landmark={landmark}
-        changeLandmark={changeCurrentGlobalLandmark}
-        changePreviousLandmark={changePreviousGlobalLandmark}
       />
     );
   }
@@ -74,7 +73,7 @@ const Landmark = ({
     );
   } else {
     continueBtn = (
-      <button type="button" onClick={() => { changeCurrentGlobalLandmark(currentLandmark); changePreviousGlobalLandmark(nextLandmark); changeTravelingStatus(true); changePage('traveling'); }}>CONTINUE MISSION</button>
+      <button type="button" onClick={() => { changeCurrentGlobalLandmark(localNextLandmark); changePreviousGlobalLandmark(localCurrentLandmark); changeTravelingStatus(true); changePage('traveling'); }}>CONTINUE MISSION</button>
     );
   }
 
@@ -93,7 +92,7 @@ const Landmark = ({
   );
 };
 
-const mapStateToProps = (state) => ({ landmark: state.currentLandmark });
+const mapStateToProps = (state) => ({ landmark: state.landmark });
 const mapDispatchToProps = (dispatch) => ({
   dispatch,
 });
