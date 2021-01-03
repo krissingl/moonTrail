@@ -2,11 +2,19 @@ import React from 'react';
 import { connect } from 'react-redux';
 import classes from '../css/styles.css';
 
-const TitleMenu = ({ changePage, reset }) => (
+const TitleMenu = ({ changePage, dispatch }) => {
+  const resetGlobalState = () => {
+    dispatch({
+      type: 'reset',
+      payload: 'blah',
+    });
+  };
+  return (
   <div className={classes.alwaysMenu}>
-    <button type="button" onClick={() => { reset(); changePage('main'); }}>MAIN MENU</button>
+    <button type="button" onClick={() => { resetGlobalState(); changePage('main'); }}>MAIN MENU</button>
   </div>
-);
+  );
+}
 
 const mapDispatchToProps = (dispatch) => ({
   dispatch,
