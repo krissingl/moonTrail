@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import classes from '../css/styles.css';
 
 const TitleMenu = ({ changePage, reset }) => (
@@ -8,4 +8,8 @@ const TitleMenu = ({ changePage, reset }) => (
   </div>
 );
 
-export default TitleMenu;
+const mapDispatchToProps = (dispatch) => ({
+  dispatch,
+});
+
+export default connect(mapDispatchToProps)(TitleMenu);
