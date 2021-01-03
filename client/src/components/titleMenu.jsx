@@ -10,11 +10,11 @@ const TitleMenu = ({ changePage, dispatch }) => {
     });
   };
   return (
-  <div className={classes.alwaysMenu}>
-    <button type="button" onClick={() => { resetGlobalState(); changePage('main'); }}>MAIN MENU</button>
-  </div>
+    <div className={classes.alwaysMenu}>
+      <button type="button" onClick={() => { resetGlobalState(); changePage('main'); }}>MAIN MENU</button>
+    </div>
   );
-}
+};
 
 const mapDispatchToProps = (dispatch) => ({
   dispatch,
