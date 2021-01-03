@@ -28,6 +28,8 @@ const reducer = (state = initialState, action) => {
     return { ...state, previousLandmark: action.payload };
   } if (action.type === 'changeLandmark') {
     return { ...state, landmark: action.payload };
+  } if (action.type === 'reset') {
+    return { ...state, ...initialState };
   }
   return state;
 };
