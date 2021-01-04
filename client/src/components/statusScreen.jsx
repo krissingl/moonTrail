@@ -24,8 +24,11 @@ const StatusScreen = ({
   const [tirePatchAmount, changeTirePatchAmount] = useState(supplyObj.tirePatch.amount);
   const [roverKitAmount, changeRoverMainAmount] = useState(supplyObj.roverKit.amount);
 
+  const [randomEvent, changeRandomEvent] = useState('');
+
   // Getting landmark data for route
   const { landmarkList } = data;
+  const { randomEvents } = data;
 
   let landmarkDistance;
   if (savedDistance !== null) {
@@ -95,6 +98,9 @@ const StatusScreen = ({
     return () => clearInterval(timer);
   }, [oxyAmount]);
 
+  useEffect(() => {
+    const randomEvent =
+  })
   return (
     <div className={classes.statusScreen}>
       <div className={classes.statusScreenOpt}>
