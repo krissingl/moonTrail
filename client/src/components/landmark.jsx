@@ -35,7 +35,6 @@ const Landmark = ({
   };
 
   const changeCurrentGlobalLandmark = (newLandmark) => {
-    console.log(newLandmark);
     dispatch({
       type: 'changeLandmark',
       payload: newLandmark,
@@ -43,7 +42,6 @@ const Landmark = ({
   };
 
   const changePreviousGlobalLandmark = (prevLandmark) => {
-    console.log(prevLandmark);
     dispatch({
       type: 'changePrevLandmark',
       payload: prevLandmark,

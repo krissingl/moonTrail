@@ -115,9 +115,10 @@ const StatusScreen = ({
   useEffect(() => {
     const randomEventGeneration = randomEvent !== '' && setInterval(() => {
       const randomIndex = Math.floor((Math.random() * randomEventsList.length) + 1);
-      changeAlertMsg(changeRandomEvent(randomEventsList[randomIndex]));
-      toggleAlert(true);
-    }, 8000);
+      changeRandomEvent(randomEventsList[randomIndex]);
+      console.log(randomEvent);
+      // toggleAlert(true);
+    }, 5000);
     return () => clearInterval(randomEventGeneration);
   }, [randomEvent]);
 
