@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import AlertWindow from './popUpALert.jsx';
 import GetFinalSupplyObj from './getsupplyObj.jsx';
 import data from '../../dist/data.json';
 import classes from '../css/styles.css';
@@ -25,10 +26,12 @@ const StatusScreen = ({
   const [roverKitAmount, changeRoverMainAmount] = useState(supplyObj.roverKit.amount);
 
   const [randomEvent, changeRandomEvent] = useState('');
+  const [showAlert, toggleAlert] = useState(false);
+  const [alertMsg, changeAlertMsg] = useState('');
 
   // Getting landmark data for route
   const { landmarkList } = data;
-  const { randomEvents } = data;
+  const { randomEventsList } = data;
 
   let landmarkDistance;
   if (savedDistance !== null) {
@@ -98,11 +101,28 @@ const StatusScreen = ({
     return () => clearInterval(timer);
   }, [oxyAmount]);
 
-  useEffect(() => {
-    const randomEvent =
-  })
+  // Alert Window Function
+  let alertPopUp;
+  if (showAlert) {
+    alertPopUp = (
+      <AlertWindow
+        message={alertMsg}
+        toggleAlert={toggleAlert}
+      />
+    );
+  }
+
+  // useEffect(() => {
+  //   const randomEventGeneration = randomEvent > '' && setInterval(() => {
+  //     const randomIndex = Math.floor((Math.random() * randomEventsList.length) + 1);
+  //     changeAlertMsg(changeRandomEvent(randomEventsList[randomIndex]));
+  //     toggleAlert(true);
+  //   }, 8000);
+  // }, [randomEvent]);
+
   return (
     <div className={classes.statusScreen}>
+      {alertPopUp}
       <div className={classes.statusScreenOpt}>
         DISTANCE_TO_NEXT_LANDMARK:
         {distCounter}
