@@ -112,13 +112,14 @@ const StatusScreen = ({
     );
   }
 
-  // useEffect(() => {
-  //   const randomEventGeneration = randomEvent > '' && setInterval(() => {
-  //     const randomIndex = Math.floor((Math.random() * randomEventsList.length) + 1);
-  //     changeAlertMsg(changeRandomEvent(randomEventsList[randomIndex]));
-  //     toggleAlert(true);
-  //   }, 8000);
-  // }, [randomEvent]);
+  useEffect(() => {
+    const randomEventGeneration = randomEvent !== '' && setInterval(() => {
+      const randomIndex = Math.floor((Math.random() * randomEventsList.length) + 1);
+      changeAlertMsg(changeRandomEvent(randomEventsList[randomIndex]));
+      toggleAlert(true);
+    }, 8000);
+    return () => clearInterval(randomEventGeneration);
+  }, [randomEvent]);
 
   return (
     <div className={classes.statusScreen}>
