@@ -9,8 +9,6 @@ const Fork = ({
   changePage,
   landmark,
 }) => {
-  console.log('FORK COMPONENT FIRED');
-
   const { landmarkList } = data;
   const currentLandmark = landmark;
   const landmarkOption1 = landmarkList[landmark][0].next;
