@@ -25,6 +25,7 @@ const StatusScreen = ({
   const [tirePatchAmount, changeTirePatchAmount] = useState(supplyObj.tirePatch.amount);
   const [roverKitAmount, changeRoverMainAmount] = useState(supplyObj.roverKit.amount);
 
+  const [isTraveling, toggleTraveling] = useState(true);
   const [randomEvent, changeRandomEvent] = useState('');
   const [showAlert, toggleAlert] = useState(false);
   const [alertMsg, changeAlertMsg] = useState('');
@@ -80,7 +81,7 @@ const StatusScreen = ({
   // Landmark distance calculator
   const [distCounter, setDistCounter] = useState(landmarkDistance);
   useEffect(() => {
-    const timer = distCounter > 0 && setInterval(() => setDistCounter(distCounter - 1), 1000);
+    const timer = distCounter > 0 && isTraveling === true && setInterval(() => setDistCounter(distCounter - 1), 1000);
     if (distCounter === 0) {
       changeGlobalSupplyObj(GetFinalSupplyObj(getNewSupplyAmountList()));
       saveDistanceTraveled(null);
@@ -91,7 +92,7 @@ const StatusScreen = ({
 
   // Test Oxygen depletion function
   useEffect(() => {
-    const timer = oxyAmount > 0 && setInterval(() => {
+    const timer = oxyAmount > 0 && isTraveling === true && setInterval(() => {
       changeOxyAmount(oxyAmount - 1);
     }, 10000);
     if (oxyAmount === 0) {
@@ -108,16 +109,17 @@ const StatusScreen = ({
       <AlertWindow
         message={alertMsg}
         toggleAlert={toggleAlert}
+        toggleTraveling={toggleTraveling}
       />
     );
   }
 
   useEffect(() => {
     const randomEventGeneration = randomEvent === '' && setInterval(() => {
-      const randomIndex = Math.floor((Math.random() * randomEventsList.length) - 1);
-      console.log(randomEventsList[randomIndex].type);
-      // changeAlertMsg(randomEvent);
-      // toggleAlert(true);
+      const randomIndex = Math.floor((Math.random() * randomEventsList.length));
+      changeRandomEvent(randomEventsList[randomIndex].type);
+      changeAlertMsg(randomEventsList[randomIndex].type);
+      toggleAlert(true);
     }, 5000);
     return () => clearInterval(randomEventGeneration);
   }, [randomEvent]);
