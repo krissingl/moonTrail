@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import AlertWindow from './popUpALert.jsx';
+import AlertWindow from './popUpAlert.jsx';
 import GetFinalSupplyObj from './getsupplyObj.jsx';
 import data from '../../dist/data.json';
 import classes from '../css/styles.css';
@@ -117,10 +117,11 @@ const StatusScreen = ({
   useEffect(() => {
     const randomEventGeneration = randomEvent === '' && setInterval(() => {
       const randomIndex = Math.floor((Math.random() * randomEventsList.length));
-      changeRandomEvent(randomEventsList[randomIndex].type);
-      changeAlertMsg(randomEventsList[randomIndex].type);
+      // changeRandomEvent(randomEventsList[randomIndex].type);
+      changeAlertMsg(randomEventsList[randomIndex].message);
+      toggleTraveling(false);
       toggleAlert(true);
-    }, 5000);
+    }, 11000);
     return () => clearInterval(randomEventGeneration);
   }, [randomEvent]);
 
