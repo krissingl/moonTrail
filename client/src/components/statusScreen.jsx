@@ -27,8 +27,11 @@ const StatusScreen = ({
 
   const [isTraveling, toggleTraveling] = useState(true);
   const [randomEvent, changeRandomEvent] = useState('');
+  const [eventCounterTest, changeEventCountTest] = useState(0);
   const [showAlert, toggleAlert] = useState(false);
   const [alertMsg, changeAlertMsg] = useState('');
+
+  console.log(isTraveling);
 
   // Getting landmark data for route
   const { landmarkList } = data;
@@ -81,11 +84,17 @@ const StatusScreen = ({
   // Landmark distance calculator
   const [distCounter, setDistCounter] = useState(landmarkDistance);
   useEffect(() => {
-    const timer = distCounter > 0 && isTraveling === true && setInterval(() => setDistCounter(distCounter - 1), 1000);
+    console.log('Is this function firing?');
+    const timer = distCounter > 0 && isTraveling === true && setInterval(() => {
+      setDistCounter(distCounter - 1);
+    }, 1000);
     if (distCounter === 0) {
       changeGlobalSupplyObj(GetFinalSupplyObj(getNewSupplyAmountList()));
       saveDistanceTraveled(null);
       changePage('landmark');
+    }
+    if (!isTraveling) {
+      console.log('Second function test check');
     }
     return () => clearInterval(timer);
   }, [distCounter]);
