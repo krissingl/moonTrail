@@ -12,6 +12,7 @@ import Traveling from './traveling.jsx';
 import Fork from './fork.jsx';
 import StatusScreen from './statusScreen.jsx';
 import Analyzation from './analyzeSituation.jsx';
+import Event from './event.jsx';
 import Gameover from './gameover.jsx';
 
 class App extends React.Component {
@@ -89,6 +90,12 @@ class App extends React.Component {
           changeLandmark={this.changeLandmark}
           changePreviousLandmark={this.changePreviousLandmark}
         />
+      );
+    } else if (this.state.page === 'event') {
+      level = (
+        <div>
+          <Event changePage={this.changePage} />
+        </div>
       );
     } else if (this.state.page === 'gameover') {
       level = (

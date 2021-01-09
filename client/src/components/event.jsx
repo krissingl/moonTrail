@@ -1,6 +1,6 @@
 import React from 'react';
 
-const event = () => {
+const Event = () => {
   console.log('event component fired');
   return (
     <div>
@@ -10,4 +10,4 @@ const event = () => {
   );
 };
 
-export default event;
+export default Event;
