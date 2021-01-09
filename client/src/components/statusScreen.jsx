@@ -85,7 +85,7 @@ const StatusScreen = ({
   const [distCounter, setDistCounter] = useState(landmarkDistance);
   useEffect(() => {
     console.log('Is this function firing?');
-    const timer = distCounter > 0 && isTraveling === true && setInterval(() => {
+    const timer = distCounter > 0 && isTraveling && setInterval(() => {
       setDistCounter(distCounter - 1);
     }, 1000);
     if (distCounter === 0) {
@@ -93,7 +93,7 @@ const StatusScreen = ({
       saveDistanceTraveled(null);
       changePage('landmark');
     }
-    if (!isTraveling) {
+    if (isTraveling === false) {
       console.log('Second function test check');
     }
     return () => clearInterval(timer);
