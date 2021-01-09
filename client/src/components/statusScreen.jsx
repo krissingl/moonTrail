@@ -25,17 +25,10 @@ const StatusScreen = ({
   const [tirePatchAmount, changeTirePatchAmount] = useState(supplyObj.tirePatch.amount);
   const [roverKitAmount, changeRoverMainAmount] = useState(supplyObj.roverKit.amount);
 
-  const [isTraveling, toggleTraveling] = useState(true);
   const [randomEvent, changeRandomEvent] = useState('');
-  const [eventCounterTest, changeEventCountTest] = useState(0);
-  const [showAlert, toggleAlert] = useState(false);
-  const [alertMsg, changeAlertMsg] = useState('');
-
-  console.log(isTraveling);
 
   // Getting landmark data for route
   const { landmarkList } = data;
-  const { randomEventsList } = data;
 
   let landmarkDistance;
   if (savedDistance !== null) {
@@ -84,8 +77,7 @@ const StatusScreen = ({
   // Landmark distance calculator
   const [distCounter, setDistCounter] = useState(landmarkDistance);
   useEffect(() => {
-    console.log('Is this function firing?');
-    const timer = distCounter > 0 && isTraveling === true && setInterval(() => {
+    const timer = distCounter > 0 && setInterval(() => {
       setDistCounter(distCounter - 1);
     }, 1000);
     if (distCounter === 0) {
@@ -93,15 +85,12 @@ const StatusScreen = ({
       saveDistanceTraveled(null);
       changePage('landmark');
     }
-    if (!isTraveling) {
-      console.log('Second function test check');
-    }
     return () => clearInterval(timer);
   }, [distCounter]);
 
   // Test Oxygen depletion function
   useEffect(() => {
-    const timer = oxyAmount > 0 && isTraveling === true && setInterval(() => {
+    const timer = oxyAmount > 0 && setInterval(() => {
       changeOxyAmount(oxyAmount - 1);
     }, 10000);
     if (oxyAmount === 0) {
@@ -111,32 +100,20 @@ const StatusScreen = ({
     return () => clearInterval(timer);
   }, [oxyAmount]);
 
-  // Alert Window Function
-  let alertPopUp;
-  if (showAlert) {
-    alertPopUp = (
-      <AlertWindow
-        message={alertMsg}
-        toggleAlert={toggleAlert}
-        toggleTraveling={toggleTraveling}
-      />
-    );
-  }
-
   useEffect(() => {
     const randomEventGeneration = randomEvent === '' && setInterval(() => {
-      const randomIndex = Math.floor((Math.random() * randomEventsList.length));
-      // changeRandomEvent(randomEventsList[randomIndex].type);
-      changeAlertMsg(randomEventsList[randomIndex].message);
-      toggleTraveling(false);
-      toggleAlert(true);
-    }, 11000);
+      changeRandomEvent('Fired');
+      console.log(randomEvent);
+      const finalSupplyObj = GetFinalSupplyObj(getNewSupplyAmountList());
+      changeGlobalSupplyObj(finalSupplyObj);
+      saveDistanceTraveled(distCounter);
+      changePage('event');
+    }, 5000);
     return () => clearInterval(randomEventGeneration);
   }, [randomEvent]);
 
   return (
     <div className={classes.statusScreen}>
-      {alertPopUp}
       <div className={classes.statusScreenOpt}>
         DISTANCE_TO_NEXT_LANDMARK:
         {distCounter}
