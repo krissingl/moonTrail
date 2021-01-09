@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
+import data from '../../dist/data.json';
+// import classes from '../css/styles.css';
 
-const Event = () => {
-  console.log('event component fired');
+const Event = ({ changePage }) => {
+  const [randomEvent, changeRandomEvent] = useState('');
+
+  const { randomEventsList } = data;
+  const randomIndex = Math.floor((Math.random() * randomEventsList.length));
+  changeRandomEvent(randomEventsList[randomIndex].type);
+
   return (
     <div>
-      <h1>Event Page</h1>
-      <button type="button">Back to Travel</button>
+      <h1>{randomEvent}</h1>
+      <button type="button" onClick={() => { changePage('traveling'); }}>Back to Travel</button>
     </div>
   );
 };
