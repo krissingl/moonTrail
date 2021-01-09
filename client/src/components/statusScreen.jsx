@@ -31,7 +31,6 @@ const StatusScreen = ({
 
   // Getting landmark data for route
   const { landmarkList } = data;
-  const { randomEventsList } = data;
 
   let landmarkDistance;
   if (savedDistance !== null) {
@@ -116,13 +115,13 @@ const StatusScreen = ({
 
   useEffect(() => {
     const randomEventGeneration = randomEvent === '' && setInterval(() => {
-      const randomIndex = Math.floor((Math.random() * randomEventsList.length));
-      changeRandomEvent(randomEventsList[randomIndex].type);
+      changeRandomEvent('Fired');
+      console.log(randomEvent);
       const finalSupplyObj = GetFinalSupplyObj(getNewSupplyAmountList());
       changeGlobalSupplyObj(finalSupplyObj);
       saveDistanceTraveled(distCounter);
       changePage('event');
-    }, 11000);
+    }, 5000);
     return () => clearInterval(randomEventGeneration);
   }, [randomEvent]);
 
