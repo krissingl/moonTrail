@@ -6,7 +6,7 @@ const Event = ({ changePage }) => {
   const { randomEventsList } = data;
   const randomIndex = Math.floor((Math.random() * randomEventsList.length));
 
-  const [randomEvent, changeRandomEvent] = useState(randomEventsList[randomIndex].message);
+  const [randomEvent] = useState(randomEventsList[randomIndex].message);
 
   // changeRandomEvent(newEvent);
 

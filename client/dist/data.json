@@ -36,8 +36,8 @@
     {"type": "mysteriousCreature", "message": "A Mysterious Creature stole supplies in the night."},
     {"type": "moonMadness", "message": "A crewmate developed a sudden case of Moon Madness and disappeared for a short time."},
     {"type": "fallenAndCantGetUp", "message": "A crewmate mistook a cliff for a benign shadow and tumbled several hundred feet into a crator."},
-    {"type": "metorShower", "message": "A sudden onslaught of meteor showers force the crew to take cover for some time."},
-    {"type": "alien...?", "message": "A crewmate thinks they saw someone waving in weird slow-motion to the rover several miles away. He is now not okay."},
+    {"type": "metorShower", "message": "A sudden onslaught of meteor showers forced the crew to take cover for some time."},
+    {"type": "alien...?", "message": "A crewmate thinks they saw someone waving in weird slow-motion fashion several miles away. He is now not okay."},
     {"type": "iSpy", "message": "The crew's latest game of 'I-Spy' ended in bloodshed."}
   ]
 }

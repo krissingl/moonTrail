@@ -26,8 +26,6 @@ const StatusScreen = ({
   const [roverKitAmount, changeRoverMainAmount] = useState(supplyObj.roverKit.amount);
 
   const [randomEvent, changeRandomEvent] = useState('');
-  const [showAlert, toggleAlert] = useState(false);
-  const [alertMsg, changeAlertMsg] = useState('');
 
   // Getting landmark data for route
   const { landmarkList } = data;
@@ -102,17 +100,6 @@ const StatusScreen = ({
     return () => clearInterval(timer);
   }, [oxyAmount]);
 
-  // Alert Window Function
-  let alertPopUp;
-  if (showAlert) {
-    alertPopUp = (
-      <AlertWindow
-        message={alertMsg}
-        toggleAlert={toggleAlert}
-      />
-    );
-  }
-
   useEffect(() => {
     const randomEventGeneration = randomEvent === '' && setInterval(() => {
       changeRandomEvent('Fired');
@@ -127,7 +114,6 @@ const StatusScreen = ({
 
   return (
     <div className={classes.statusScreen}>
-      {alertPopUp}
       <div className={classes.statusScreenOpt}>
         DISTANCE_TO_NEXT_LANDMARK:
         {distCounter}
