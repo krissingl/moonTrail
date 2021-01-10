@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import AlertWindow from './popUpAlert.jsx';
 import GetFinalSupplyObj from './getsupplyObj.jsx';
 import data from '../../dist/data.json';
 import classes from '../css/styles.css';
@@ -100,17 +99,21 @@ const StatusScreen = ({
     return () => clearInterval(timer);
   }, [oxyAmount]);
 
-  useEffect(() => {
-    const randomEventGeneration = randomEvent === '' && setInterval(() => {
+  const saveProgress = () => {
+    const finalSupplyObj = GetFinalSupplyObj(getNewSupplyAmountList());
+    changeGlobalSupplyObj(finalSupplyObj);
+    saveDistanceTraveled(distCounter);
+  };
+
+  const randomEventGeneration = () => {
+    setInterval(() => {
       changeRandomEvent('Fired');
-      console.log(randomEvent);
-      const finalSupplyObj = GetFinalSupplyObj(getNewSupplyAmountList());
-      changeGlobalSupplyObj(finalSupplyObj);
-      saveDistanceTraveled(distCounter);
+      saveProgress();
       changePage('event');
     }, 5000);
-    return () => clearInterval(randomEventGeneration);
-  }, [randomEvent]);
+  };
+
+  randomEventGeneration();
 
   return (
     <div className={classes.statusScreen}>
@@ -127,7 +130,8 @@ const StatusScreen = ({
         {`RATIONS_REMAINING: water__${waterAmount} food__${foodAmount}`}
       </div>
       <div className={classes.statusScreenOpt}>CREW_HEALTH: fair</div>
-      <button type="button" onClick={() => { const finalSupplyObj = GetFinalSupplyObj(getNewSupplyAmountList()); changeGlobalSupplyObj(finalSupplyObj); saveDistanceTraveled(distCounter); changePage('analyzeSitch'); }}>ANALYZE SITUATION</button>
+      <button type="button" onClick={() => { saveProgress(); changePage('analyzeSitch'); }}>ANALYZE SITUATION</button>
+      <button type="button" onClick={() => { saveProgress(); changePage('event'); }}>RANDOM EVENT</button>
     </div>
   );
 };
