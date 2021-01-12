@@ -33,17 +33,17 @@
   ],
   "introVerbiage": "ON YOUR WAY BACK FROM A SUCCESSFUL MISSION TO MARS, YOUR SPACECRAFT LOST CONTROL OF ITS FLIGHT SYSTEMS AND WAS THROWN INTO A METEOR FIELD. AFTER TAKING DAMAGE FROM SEVERAL METEOR IMPACTS, YOUR CREW MADE AN EMERGENCY LANDING ON THE MOON. YOUR CREW MUST TRAVEL BY ROVER TO AN OLD LANDING SITE WHERE A BACK-UP SPACECRAFT IS WAITING. YOU MUST FIND THE QUICKEST AND SAFEST ROUTE TO THE OLD LANDING SITE AND ESCAPE THE MOON BEFORE RESOURCES RUN OUT. STRATEGICALLY CHOOSE THE ROVER, SUPPLIES, AND ROUTE THAT WILL ASSURE THE HIGHEST SURVIVAL PROBABILITY FOR YOUR CREW. THE MISSION ENDS WHEN AT LEAST ONE CREW MEMBER REACHES THE OLD LANDING SITE AND ESCAPES, OR WHEN THE ENTIRE CREW HAS PERISHED. YOU WILL RECEIVE A POINT SCORE FOR WHATEVER SURVIVES THE JOURNEY.",
   "randomEventsList": [
-    {"type": "mysteriousCreature", "message": "A Mysterious Creature stole supplies in the night."},
-    {"type": "moonMadness", "message": "A crewmate developed a sudden case of Moon Madness and disappeared for a short time."},
-    {"type": "fallenAndCantGetUp", "message": "A crewmate mistook a cliff for a benign shadow and tumbled several hundred feet into a crator."},
-    {"type": "metorShower", "message": "A sudden onslaught of meteor showers forced the crew to take cover for some time."},
-    {"type": "alien...?", "message": "A crewmate thinks they saw someone waving in weird slow-motion fashion several miles away. He is now not okay."},
-    {"type": "iSpy", "message": "The crew's latest game of 'I-Spy' ended in bloodshed."},
-    {"type": "potHole", "message": "Due to an enormous bump on the path, some supplies may have fallen out and been lost."},
-    {"type": "blues", "message": "The crew is in particularly low spirits."},
-    {"type": "shoelace", "message": "A crewmate forgot to tie the laces on his boot. He tripped into a crator and needed to be fished out."},
-    {"type": "wrongTurn", "message": "The crew took a wrong turn and got lost."},
-    {"type": "badWater", "message": "Some of the crews' water has become contaminated."},
-    {"type": "boredom", "message": "The crew has run out of activities to pass the time."}
+    {"type": "mysteriousCreature", "message": "A MYSTERIOUS CREATURE STOLE SUPPLIES WHILE THE CREW WAS RESTING."},
+    {"type": "moonMadness", "message": "A CREWMATE DEVELOPED A SUDDEN CASE OF MOON MADNESS. STALLING PROGRESS FOR A SHORT TIME WHILE THEIR TEAM TRIED TO GET THEIR CLOTHES BACK ON."},
+    {"type": "fallenAndCantGetUp", "message": "A CREWMATE MISTOOK A CRATOR FOR A SHORT STEP AND TOOK A SEVERAL-MILE TUMBLE."},
+    {"type": "metorShower", "message": "A SUDDEN ONSLAUGHT OF METEORS FORCES THE CREW TO TAKE SHELTER."},
+    {"type": "alien...?", "message": "A CREWMATE SWEARS THEY SAW SOMEONE CASUALLY WAVING AT THE TEAM FROM SEVERAL MILES AWAY. EVERYONE IS UNEASY."},
+    {"type": "iSpy", "message": "THE CREW'S LATEST GAME OF ISPY ENDED IN BLOODSHED."},
+    {"type": "potHole", "message": "DUE TO AN ENEXPECTED CRATOR THE ROVER GOT MAD AIR."},
+    {"type": "blues", "message": "THE RADIO STOPPED WORKING."},
+    {"type": "shoelace", "message": "A CREWMATE FORGOT TO TIE THE LACES ON HIS BOOT. THE TEAM LOST TIME FISHING HIM OUT OF A CRATOR."},
+    {"type": "wrongTurn", "message": "THE CREW TOOK A WRONG TURN AND GOT TURNED AROUND."},
+    {"type": "badWater", "message": "SOME OF THE TEAM WATER HAS BECOME CONTAMINATED."},
+    {"type": "boredom", "message": "THE CREW HAS RUN OUT OF ROAD TRIP GAMES."}
   ]
 }
