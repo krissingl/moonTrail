@@ -44,6 +44,6 @@
     {"type": "shoelace", "message": "A CREWMATE FORGOT TO TIE THE LACES ON HIS BOOT. THE TEAM LOST TIME FISHING HIM OUT OF A CRATOR."},
     {"type": "wrongTurn", "message": "THE CREW TOOK A WRONG TURN AND GOT TURNED AROUND."},
     {"type": "badWater", "message": "SOME OF THE TEAM WATER HAS BECOME CONTAMINATED."},
-    {"type": "boredom", "message": "The crew has run out of activities to pass the time."}
+    {"type": "boredom", "message": "THE CREW HAS RUN OUT OF ROAD TRIP GAMES."}
   ]
 }
