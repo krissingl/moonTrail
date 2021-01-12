@@ -36,7 +36,7 @@
     {"type": "mysteriousCreature", "message": "A MYSTERIOUS CREATURE STOLE SUPPLIES WHILE THE CREW WAS RESTING."},
     {"type": "moonMadness", "message": "A CREWMATE DEVELOPED A SUDDEN CASE OF MOON MADNESS. STALLING PROGRESS FOR A SHORT TIME WHILE THEIR TEAM TRIED TO GET THEIR CLOTHES BACK ON."},
     {"type": "fallenAndCantGetUp", "message": "A CREWMATE MISTOOK A CRATOR FOR A SHORT STEP AND TOOK A SEVERAL-MILE TUMBLE."},
-    {"type": "metorShower", "message": "A sudden onslaught of meteor showers forced the crew to take cover for some time."},
+    {"type": "metorShower", "message": "A SUDDEN ONSLAUGHT OF METEORS FORCES THE CREW TO TAKE SHELTER."},
     {"type": "alien...?", "message": "A crewmate thinks they saw someone waving in weird slow-motion fashion several miles away. He is now not okay."},
     {"type": "iSpy", "message": "The crew's latest game of 'I-Spy' ended in bloodshed."},
     {"type": "potHole", "message": "Due to an enormous bump on the path, some supplies may have fallen out and been lost."},
