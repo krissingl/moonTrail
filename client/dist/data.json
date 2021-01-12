@@ -41,7 +41,7 @@
     {"type": "iSpy", "message": "THE CREW'S LATEST GAME OF ISPY ENDED IN BLOODSHED."},
     {"type": "potHole", "message": "DUE TO AN ENEXPECTED CRATOR THE ROVER GOT MAD AIR."},
     {"type": "blues", "message": "THE RADIO STOPPED WORKING."},
-    {"type": "shoelace", "message": "A crewmate forgot to tie the laces on his boot. He tripped into a crator and needed to be fished out."},
+    {"type": "shoelace", "message": "A CREWMATE FORGOT TO TIE THE LACES ON HIS BOOT. THE TEAM LOST TIME FISHING HIM OUT OF A CRATOR."},
     {"type": "wrongTurn", "message": "The crew took a wrong turn and got lost."},
     {"type": "badWater", "message": "Some of the crews' water has become contaminated."},
     {"type": "boredom", "message": "The crew has run out of activities to pass the time."}
