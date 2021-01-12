@@ -33,7 +33,7 @@
   ],
   "introVerbiage": "ON YOUR WAY BACK FROM A SUCCESSFUL MISSION TO MARS, YOUR SPACECRAFT LOST CONTROL OF ITS FLIGHT SYSTEMS AND WAS THROWN INTO A METEOR FIELD. AFTER TAKING DAMAGE FROM SEVERAL METEOR IMPACTS, YOUR CREW MADE AN EMERGENCY LANDING ON THE MOON. YOUR CREW MUST TRAVEL BY ROVER TO AN OLD LANDING SITE WHERE A BACK-UP SPACECRAFT IS WAITING. YOU MUST FIND THE QUICKEST AND SAFEST ROUTE TO THE OLD LANDING SITE AND ESCAPE THE MOON BEFORE RESOURCES RUN OUT. STRATEGICALLY CHOOSE THE ROVER, SUPPLIES, AND ROUTE THAT WILL ASSURE THE HIGHEST SURVIVAL PROBABILITY FOR YOUR CREW. THE MISSION ENDS WHEN AT LEAST ONE CREW MEMBER REACHES THE OLD LANDING SITE AND ESCAPES, OR WHEN THE ENTIRE CREW HAS PERISHED. YOU WILL RECEIVE A POINT SCORE FOR WHATEVER SURVIVES THE JOURNEY.",
   "randomEventsList": [
-    {"type": "mysteriousCreature", "message": "A Mysterious Creature stole supplies in the night."},
+    {"type": "mysteriousCreature", "message": "A MYSTERIOUS CREATURE STOLE SUPPLIES WHILE THE CREW WAS RESTING."},
     {"type": "moonMadness", "message": "A crewmate developed a sudden case of Moon Madness and disappeared for a short time."},
     {"type": "fallenAndCantGetUp", "message": "A crewmate mistook a cliff for a benign shadow and tumbled several hundred feet into a crator."},
     {"type": "metorShower", "message": "A sudden onslaught of meteor showers forced the crew to take cover for some time."},
