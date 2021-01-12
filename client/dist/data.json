@@ -42,7 +42,7 @@
     {"type": "potHole", "message": "DUE TO AN ENEXPECTED CRATOR THE ROVER GOT MAD AIR."},
     {"type": "blues", "message": "THE RADIO STOPPED WORKING."},
     {"type": "shoelace", "message": "A CREWMATE FORGOT TO TIE THE LACES ON HIS BOOT. THE TEAM LOST TIME FISHING HIM OUT OF A CRATOR."},
-    {"type": "wrongTurn", "message": "The crew took a wrong turn and got lost."},
+    {"type": "wrongTurn", "message": "THE CREW TOOK A WRONG TURN AND GOT TURNED AROUND."},
     {"type": "badWater", "message": "Some of the crews' water has become contaminated."},
     {"type": "boredom", "message": "The crew has run out of activities to pass the time."}
   ]
