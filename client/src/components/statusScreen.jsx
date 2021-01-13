@@ -113,7 +113,7 @@ const StatusScreen = ({
     }, 5000);
   };
 
-  randomEventGeneration();
+  // randomEventGeneration();
 
   return (
     <div className={classes.statusScreen}>
