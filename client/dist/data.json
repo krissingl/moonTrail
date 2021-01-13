@@ -40,7 +40,7 @@
     {"type": "alien...?", "message": "A CREWMATE SWEARS THEY SAW SOMEONE CASUALLY WAVING AT THE TEAM FROM SEVERAL MILES AWAY. EVERYONE IS UNEASY."},
     {"type": "iSpy", "message": "THE CREW'S LATEST GAME OF ISPY ENDED IN BLOODSHED."},
     {"type": "potHole", "message": "DUE TO AN ENEXPECTED CRATOR THE ROVER GOT MAD AIR."},
-    {"type": "blues", "message": "THE RADIO STOPPED WORKING."},
+    {"type": "blues", "message": "THE ROVER'S RADIO HAS STOPPED WORKING."},
     {"type": "shoelace", "message": "A CREWMATE FORGOT TO TIE THE LACES ON HIS BOOT. THE TEAM LOST TIME FISHING HIM OUT OF A CRATOR."},
     {"type": "wrongTurn", "message": "THE CREW TOOK A WRONG TURN AND GOT TURNED AROUND."},
     {"type": "badWater", "message": "SOME OF THE TEAM WATER HAS BECOME CONTAMINATED."},
