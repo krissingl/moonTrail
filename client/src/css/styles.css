@@ -154,13 +154,15 @@ div {
   justify-content: center;
   padding-bottom: 10px;
 }
+.forkOptionBtns {
+  width: 200px;
+}
 .forkOR {
   padding-left: 20px;
   padding-right: 20px;
 }
 .forkMapBtn {
   width: 100px;
-  margin-left: 45%;
 }
 .analyzeMenu {
   display: flex;
