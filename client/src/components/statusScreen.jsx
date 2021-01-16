@@ -105,13 +105,22 @@ const StatusScreen = ({
     saveDistanceTraveled(distCounter);
   };
 
-  const randomEventGeneration = () => {
-    setInterval(() => {
+  useEffect(() => {
+    const timer = setInterval(() => {
       changeRandomEvent('Fired');
       saveProgress();
       changePage('event');
     }, 5000);
-  };
+    // clearing interval
+    return () => clearInterval(timer);
+  });
+  // const randomEventGeneration = () => {
+  //   setTimeout(() => {
+  //     changeRandomEvent('Fired');
+  //     saveProgress();
+  //     changePage('event');
+  //   }, 5000);
+  // };
 
   // randomEventGeneration();
 
