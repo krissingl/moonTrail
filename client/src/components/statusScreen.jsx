@@ -85,8 +85,6 @@ const StatusScreen = ({
     return () => clearInterval(timer);
   }, [distCounter]);
 
-  console.log('Current distance counter: ' + distCounter);
-
   // Test Oxygen depletion function
   useEffect(() => {
     const timer = oxyAmount > 0 && setInterval(() => {
