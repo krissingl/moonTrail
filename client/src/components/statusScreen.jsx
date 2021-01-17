@@ -64,6 +64,21 @@ const StatusScreen = ({
     ];
     return supplyAmountList;
   };
+  const getNewSupplyAmountFuncList = () => {
+    const supplyAmountFuncList = [
+      changeOxyAmount,
+      changeFoodAmount,
+      changeWaterAmount,
+      changeClothesAmount,
+      changeClothes2Amount,
+      changeSuitAmount,
+      changeSuit2Amount,
+      changeAImainAmount,
+      changeTirePatchAmount,
+      changeRoverMainAmount,
+    ];
+    return supplyAmountFuncList;
+  };
   const changeGlobalSupplyObj = (supplies) => {
     dispatch({
       type: 'supplyObjChange',
