@@ -107,7 +107,6 @@ const StatusScreen = ({
     const timer = oxyAmount > 0 && setInterval(() => {
       console.log(`Distance Counter before save:  ${distCounter}`);
       saveProgress(distCounter);
-      console.log(`Distance Counter after save:  ${distCounter}`);
       changePage('event');
     }, 5000);
     // clearing interval
