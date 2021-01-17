@@ -97,16 +97,16 @@ const StatusScreen = ({
     return () => clearInterval(timer);
   }, [oxyAmount]);
 
-  const saveProgress = () => {
+  const saveProgress = (distance) => {
     const finalSupplyObj = GetFinalSupplyObj(getNewSupplyAmountList());
-    saveDistanceTraveled(distCounter);
+    saveDistanceTraveled(distance);
     changeGlobalSupplyObj(finalSupplyObj);
   };
 
   useEffect(() => {
     const timer = oxyAmount > 0 && setInterval(() => {
       console.log(`Distance Counter before save:  ${distCounter}`);
-      saveProgress();
+      saveProgress(distCounter);
       console.log(`Distance Counter after save:  ${distCounter}`);
       changePage('event');
     }, 5000);
@@ -129,8 +129,8 @@ const StatusScreen = ({
         {`RATIONS_REMAINING: water__${waterAmount} food__${foodAmount}`}
       </div>
       <div className={classes.statusScreenOpt}>CREW_HEALTH: fair</div>
-      <button type="button" onClick={() => { saveProgress(); changePage('analyzeSitch'); }}>ANALYZE SITUATION</button>
-      <button type="button" onClick={() => { saveProgress(); changePage('event'); }}>RANDOM EVENT</button>
+      <button type="button" onClick={() => { saveProgress(distCounter); changePage('analyzeSitch'); }}>ANALYZE SITUATION</button>
+      <button type="button" onClick={() => { saveProgress(distCounter); changePage('event'); }}>RANDOM EVENT</button>
     </div>
   );
 };
