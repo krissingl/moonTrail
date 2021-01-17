@@ -87,6 +87,8 @@ const StatusScreen = ({
     return () => clearInterval(timer);
   }, [distCounter]);
 
+  console.log('Current distance counter: ' + distCounter);
+
   // Test Oxygen depletion function
   useEffect(() => {
     const timer = oxyAmount > 0 && setInterval(() => {
@@ -101,19 +103,20 @@ const StatusScreen = ({
 
   const saveProgress = () => {
     const finalSupplyObj = GetFinalSupplyObj(getNewSupplyAmountList());
-    changeGlobalSupplyObj(finalSupplyObj);
     saveDistanceTraveled(distCounter);
+    changeGlobalSupplyObj(finalSupplyObj);
   };
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      changeRandomEvent('Fired');
+    const timer = oxyAmount > 0 && setInterval(() => {
+      console.log(`Distance Counter before save:  ${distCounter}`);
       saveProgress();
+      console.log(`Distance Counter after save:  ${distCounter}`);
       changePage('event');
     }, 5000);
     // clearing interval
     return () => clearInterval(timer);
-  });
+  }, [oxyAmount]);
 
   return (
     <div className={classes.statusScreen}>
