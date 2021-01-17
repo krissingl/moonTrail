@@ -105,7 +105,6 @@ const StatusScreen = ({
 
   useEffect(() => {
     const timer = oxyAmount > 0 && setInterval(() => {
-      console.log(`Distance Counter before save:  ${distCounter}`);
       saveProgress(distCounter);
       changePage('event');
     }, 5000);
