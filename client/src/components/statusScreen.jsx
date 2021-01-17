@@ -114,15 +114,6 @@ const StatusScreen = ({
     // clearing interval
     return () => clearInterval(timer);
   });
-  // const randomEventGeneration = () => {
-  //   setTimeout(() => {
-  //     changeRandomEvent('Fired');
-  //     saveProgress();
-  //     changePage('event');
-  //   }, 5000);
-  // };
-
-  // randomEventGeneration();
 
   return (
     <div className={classes.statusScreen}>
