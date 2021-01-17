@@ -64,6 +64,21 @@ const StatusScreen = ({
     ];
     return supplyAmountList;
   };
+  const getNewSupplyAmountFuncList = () => {
+    const supplyAmountFuncList = [
+      changeOxyAmount,
+      changeFoodAmount,
+      changeWaterAmount,
+      changeClothesAmount,
+      changeClothes2Amount,
+      changeSuitAmount,
+      changeSuit2Amount,
+      changeAImainAmount,
+      changeTirePatchAmount,
+      changeRoverMainAmount,
+    ];
+    return supplyAmountFuncList;
+  };
   const changeGlobalSupplyObj = (supplies) => {
     dispatch({
       type: 'supplyObjChange',
@@ -97,17 +112,15 @@ const StatusScreen = ({
     return () => clearInterval(timer);
   }, [oxyAmount]);
 
-  const saveProgress = () => {
+  const saveProgress = (distance) => {
     const finalSupplyObj = GetFinalSupplyObj(getNewSupplyAmountList());
-    saveDistanceTraveled(distCounter);
+    saveDistanceTraveled(distance);
     changeGlobalSupplyObj(finalSupplyObj);
   };
 
   useEffect(() => {
     const timer = oxyAmount > 0 && setInterval(() => {
-      console.log(`Distance Counter before save:  ${distCounter}`);
-      saveProgress();
-      console.log(`Distance Counter after save:  ${distCounter}`);
+      saveProgress(distCounter);
       changePage('event');
     }, 5000);
     // clearing interval
@@ -129,8 +142,8 @@ const StatusScreen = ({
         {`RATIONS_REMAINING: water__${waterAmount} food__${foodAmount}`}
       </div>
       <div className={classes.statusScreenOpt}>CREW_HEALTH: fair</div>
-      <button type="button" onClick={() => { saveProgress(); changePage('analyzeSitch'); }}>ANALYZE SITUATION</button>
-      <button type="button" onClick={() => { saveProgress(); changePage('event'); }}>RANDOM EVENT</button>
+      <button type="button" onClick={() => { saveProgress(distCounter); changePage('analyzeSitch'); }}>ANALYZE SITUATION</button>
+      <button type="button" onClick={() => { saveProgress(distCounter); changePage('event'); }}>RANDOM EVENT</button>
     </div>
   );
 };
