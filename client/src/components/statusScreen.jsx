@@ -24,8 +24,6 @@ const StatusScreen = ({
   const [tirePatchAmount, changeTirePatchAmount] = useState(supplyObj.tirePatch.amount);
   const [roverKitAmount, changeRoverMainAmount] = useState(supplyObj.roverKit.amount);
 
-  const [randomEvent, changeRandomEvent] = useState('');
-
   // Getting landmark data for route
   const { landmarkList } = data;
 
