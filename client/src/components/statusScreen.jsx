@@ -24,8 +24,6 @@ const StatusScreen = ({
   const [tirePatchAmount, changeTirePatchAmount] = useState(supplyObj.tirePatch.amount);
   const [roverKitAmount, changeRoverMainAmount] = useState(supplyObj.roverKit.amount);
 
-  const [randomEvent, changeRandomEvent] = useState('');
-
   // Getting landmark data for route
   const { landmarkList } = data;
 
@@ -101,28 +99,20 @@ const StatusScreen = ({
 
   const saveProgress = () => {
     const finalSupplyObj = GetFinalSupplyObj(getNewSupplyAmountList());
-    changeGlobalSupplyObj(finalSupplyObj);
     saveDistanceTraveled(distCounter);
+    changeGlobalSupplyObj(finalSupplyObj);
   };
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      changeRandomEvent('Fired');
+    const timer = oxyAmount > 0 && setInterval(() => {
+      console.log(`Distance Counter before save:  ${distCounter}`);
       saveProgress();
+      console.log(`Distance Counter after save:  ${distCounter}`);
       changePage('event');
     }, 5000);
     // clearing interval
     return () => clearInterval(timer);
-  });
-  // const randomEventGeneration = () => {
-  //   setTimeout(() => {
-  //     changeRandomEvent('Fired');
-  //     saveProgress();
-  //     changePage('event');
-  //   }, 5000);
-  // };
-
-  // randomEventGeneration();
+  }, [oxyAmount]);
 
   return (
     <div className={classes.statusScreen}>
