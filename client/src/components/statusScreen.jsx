@@ -114,12 +114,14 @@ const StatusScreen = ({
     return () => clearInterval(timer);
   }, [oxyAmount]);
 
+  // Save distance and supply changes to global store in event of a page change
   const saveProgress = (distance) => {
     const finalSupplyObj = GetFinalSupplyObj(getNewSupplyAmountList());
     saveDistanceTraveled(distance);
     changeGlobalSupplyObj(finalSupplyObj);
   };
 
+  // Generate random event
   useEffect(() => {
     const timer = oxyAmount > 0 && setInterval(() => {
       toggleRandomEvent(true);
@@ -128,7 +130,6 @@ const StatusScreen = ({
       saveProgress(distCounter);
       changePage('event');
     }
-    // clearing interval
     return () => clearInterval(timer);
   }, [oxyAmount]);
 
