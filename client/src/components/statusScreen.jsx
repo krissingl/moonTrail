@@ -24,6 +24,8 @@ const StatusScreen = ({
   const [tirePatchAmount, changeTirePatchAmount] = useState(supplyObj.tirePatch.amount);
   const [roverKitAmount, changeRoverMainAmount] = useState(supplyObj.roverKit.amount);
 
+  const [randomEventOn, toggleRandomEvent] = useState(false);
+
   // Getting landmark data for route
   const { landmarkList } = data;
 
@@ -120,9 +122,12 @@ const StatusScreen = ({
 
   useEffect(() => {
     const timer = oxyAmount > 0 && setInterval(() => {
+      toggleRandomEvent(true);
+    }, 5000);
+    if (randomEventOn) {
       saveProgress(distCounter);
       changePage('event');
-    }, 5000);
+    }
     // clearing interval
     return () => clearInterval(timer);
   }, [oxyAmount]);
