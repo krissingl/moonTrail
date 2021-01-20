@@ -8,8 +8,6 @@ const Event = ({ changePage }) => {
 
   const [randomEvent] = useState(randomEventsList[randomIndex].message);
 
-  // changeRandomEvent(newEvent);
-
   return (
     <div className={classes.noticePage}>
       <h5>{randomEvent}</h5>
