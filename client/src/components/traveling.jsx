@@ -10,7 +10,7 @@ import classes from '../css/styles.css';
 const TravelingPage = ({ changePage, dispatch, rover }) => {
   // Local State Hooks
   const [showAlert, toggleAlert] = useState(false);
-  const [alertMsg, changeAlertMsg] = useState('');
+  const [alertMsg] = useState('');
 
   // Change the Global Traveling Status State
   const changeTravelingStatus = (status) => {
