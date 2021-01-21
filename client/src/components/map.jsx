@@ -24,7 +24,6 @@ const Map = (nextLandmark) => {
 
 const mapStateToProps = (state) => ({
   nextLandmark: state.nextLandmark,
-  previousLandmark: state.previousLandmark,
 });
 
 export default connect(mapStateToProps)(Map);
