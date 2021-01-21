@@ -5,11 +5,12 @@ import maniForkMap from '../../dist/extras/moonPathImgs/fork_mani.png';
 import arisForkMap from '../../dist/extras/moonPathImgs/fork_aris.png';
 import classes from '../css/styles.css';
 
-const Map = (nextLandmark) => {
+const Map = ({ landmark }) => {
+  console.log(landmark);
   let mapImg;
-  if (nextLandmark === 'PLINIUS') {
+  if (landmark === 'PLINIUS') {
     mapImg = pliniusForkMap;
-  } else if (nextLandmark === 'MANILIUS') {
+  } else if (landmark === 'MANILIUS') {
     mapImg = maniForkMap;
   } else {
     mapImg = arisForkMap;
@@ -22,8 +23,6 @@ const Map = (nextLandmark) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  nextLandmark: state.nextLandmark,
-});
+const mapStateToProps = (state) => ({ landmark: state.landmark });
 
 export default connect(mapStateToProps)(Map);
