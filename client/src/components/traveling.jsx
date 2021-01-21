@@ -62,7 +62,6 @@ const TravelingPage = ({ changePage, dispatch, rover }) => {
         </span>
       </div>
       {alertPopUp}
-      <button type="button" onClick={() => { changeAlertMsg('Someone died of dysentry.'); toggleAlert(true); }}>Someone Died</button>
       <button type="button" onClick={(e) => { changeTravelingStatus(e, false); changePage('landmark'); }}>Arrive at Landmark</button>
     </div>
   );
