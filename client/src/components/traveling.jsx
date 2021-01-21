@@ -10,7 +10,7 @@ import classes from '../css/styles.css';
 const TravelingPage = ({ changePage, dispatch, rover }) => {
   // Local State Hooks
   const [showAlert, toggleAlert] = useState(false);
-  const [alertMsg, changeAlertMsg] = useState('');
+  const [alertMsg] = useState('');
 
   // Change the Global Traveling Status State
   const changeTravelingStatus = (status) => {
@@ -62,7 +62,6 @@ const TravelingPage = ({ changePage, dispatch, rover }) => {
         </span>
       </div>
       {alertPopUp}
-      <button type="button" onClick={() => { changeAlertMsg('Someone died of dysentry.'); toggleAlert(true); }}>Someone Died</button>
       <button type="button" onClick={(e) => { changeTravelingStatus(e, false); changePage('landmark'); }}>Arrive at Landmark</button>
     </div>
   );
