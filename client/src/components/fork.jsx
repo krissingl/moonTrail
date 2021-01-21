@@ -9,6 +9,7 @@ const Fork = ({
   changePage,
   landmark,
 }) => {
+  console.log('Current landmark: ' + landmark);
   const { landmarkList } = data;
   const currentLandmark = landmark;
   const landmarkOption1 = landmarkList[landmark][0].next;
