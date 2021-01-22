@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import data from '../../dist/data.json';
 import classes from '../css/styles.css';
 
@@ -16,4 +17,8 @@ const Event = ({ changePage }) => {
   );
 };
 
-export default Event;
+const mapDispatchToProps = (dispatch) => ({
+  dispatch,
+});
+
+export default connect(mapDispatchToProps)(Event);
