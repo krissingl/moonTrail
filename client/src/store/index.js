@@ -30,7 +30,7 @@ const reducer = (state = initialState, action) => {
   } if (action.type === 'changeLandmark') {
     return { ...state, landmark: action.payload };
   } if (action.type === 'changeEventConseq') {
-    return { ...state, landmark: action.payload };
+    return { ...state, eventConseq: action.payload };
   } if (action.type === 'reset') {
     return { ...state, ...initialState };
   }
