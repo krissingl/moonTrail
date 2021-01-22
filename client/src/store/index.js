@@ -9,7 +9,7 @@ const initialState = {
   currentlyTraveling: false,
   previousLandmark: 'spaceLOL',
   landmark: 'MARE_CRISIUM',
-  eventConseq: '',
+  eventConseq: [],
 };
 
 const reducer = (state = initialState, action) => {
