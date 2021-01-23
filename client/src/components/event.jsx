@@ -10,6 +10,8 @@ const Event = ({ changePage, dispatch }) => {
   const [randomEventMsg] = useState(randomEventsList[randomIndex].message);
   const [randomEventConseq] = useState(randomEventsList[randomIndex].consequence[0]);
 
+  console.log(randomEventConseq);
+
   const changeEventConseq = (consequence) => {
     dispatch({
       type: 'changeEventConseq',
