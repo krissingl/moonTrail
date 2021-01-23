@@ -7,7 +7,6 @@ import arisForkMap from '../../dist/extras/moonPathImgs/fork_aris.png';
 import classes from '../css/styles.css';
 
 const Map = ({ landmark }) => {
-  console.log(landmark);
   let mapImg;
   let stylingClass = classes.mapImg;
   if (landmark === 'PLINIUS') {

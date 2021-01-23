@@ -9,6 +9,7 @@ const initialState = {
   currentlyTraveling: false,
   previousLandmark: 'spaceLOL',
   landmark: 'MARE_CRISIUM',
+  eventConseq: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -28,6 +29,8 @@ const reducer = (state = initialState, action) => {
     return { ...state, previousLandmark: action.payload };
   } if (action.type === 'changeLandmark') {
     return { ...state, landmark: action.payload };
+  } if (action.type === 'changeEventConseq') {
+    return { ...state, eventConseq: action.payload };
   } if (action.type === 'reset') {
     return { ...state, ...initialState };
   }
