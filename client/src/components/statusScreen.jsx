@@ -11,6 +11,9 @@ const StatusScreen = ({
   savedDistance,
   nextLandmark,
   previousLandmark,
+  eventConseq,
+  crewHealth,
+  roverHealth
 }) => {
   // Local supply amount states
   const [oxyAmount, changeOxyAmount] = useState(supplyObj.oxygen.amount);
@@ -25,6 +28,9 @@ const StatusScreen = ({
   const [roverKitAmount, changeRoverMainAmount] = useState(supplyObj.roverKit.amount);
 
   const [randomEventOn, toggleRandomEvent] = useState(false);
+  const [randomEventConseq] = useState(eventConseq);
+  const [crewHealth, changeCrewHealth] = useState(crewHealth);
+  const [roverHealth, changeRoverHealth] = useState(roverHealth);
 
   // Getting landmark data for route
   const { landmarkList } = data;
@@ -159,6 +165,9 @@ const mapStateToProps = (state) => ({
   savedDistance: state.savedDistance,
   nextLandmark: state.nextLandmark,
   previousLandmark: state.previousLandmark,
+  eventConseq: state.eventConseq,
+  crewHealth: state.crewHealth,
+  roverHealth: state.roverHealth,
 });
 const mapDispatchToProps = (dispatch) => ({
   dispatch,
