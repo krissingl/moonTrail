@@ -10,6 +10,8 @@ const initialState = {
   previousLandmark: 'spaceLOL',
   landmark: 'MARE_CRISIUM',
   eventConseq: [],
+  crewHealth: 25,
+  roverHealth: 10,
 };
 
 const reducer = (state = initialState, action) => {
