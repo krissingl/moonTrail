@@ -29,8 +29,6 @@ const StatusScreen = ({
 
   const [randomEventOn, toggleRandomEvent] = useState(false);
   const [randomEventConseq] = useState(eventConseq);
-  const [crewHealth, changeCrewHealth] = useState(crewHealth);
-  const [roverHealth, changeRoverHealth] = useState(roverHealth);
 
   // Getting landmark data for route
   const { landmarkList } = data;
