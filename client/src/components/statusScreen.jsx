@@ -28,7 +28,11 @@ const StatusScreen = ({
   const [roverKitAmount, changeRoverMainAmount] = useState(supplyObj.roverKit.amount);
 
   const [randomEventOn, toggleRandomEvent] = useState(false);
-  // const [randomEventConseq] = useState(eventConseq);
+  const [randomEventConseq] = useState(eventConseq);
+
+  if (eventConseq !== null) {
+
+  }
 
   // Getting landmark data for route
   const { landmarkList } = data;
