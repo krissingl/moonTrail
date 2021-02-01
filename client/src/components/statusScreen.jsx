@@ -29,6 +29,13 @@ const StatusScreen = ({
 
   const [randomEventOn, toggleRandomEvent] = useState(false);
 
+  const changeEventConseq = (consequence) => {
+    dispatch({
+      type: 'changeEventConseq',
+      payload: consequence,
+    });
+  };
+
   if (eventConseq !== null) {
     if (eventConseq[0] === 'crewHealth') {
       console.log('crewHealth');
