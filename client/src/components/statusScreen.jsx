@@ -28,10 +28,17 @@ const StatusScreen = ({
   const [roverKitAmount, changeRoverMainAmount] = useState(supplyObj.roverKit.amount);
 
   const [randomEventOn, toggleRandomEvent] = useState(false);
-  const [randomEventConseq] = useState(eventConseq);
 
   if (eventConseq !== null) {
-
+    if (eventConseq[0] === 'crewHealth') {
+      console.log('crewHealth');
+    } else if (eventConseq[0] === 'roverHealth') {
+      console.log('roverHealth');
+    } else {
+      let funcList = getNewSupplyAmountFuncList();
+      let eventType = eventConseq[0];
+      let eventAmount = eventConseq[1];
+    }
   }
 
   // Getting landmark data for route

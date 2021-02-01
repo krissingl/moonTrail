@@ -9,7 +9,7 @@ const initialState = {
   currentlyTraveling: false,
   previousLandmark: 'spaceLOL',
   landmark: 'MARE_CRISIUM',
-  eventConseq: [],
+  eventConseq: null,
   crewHealth: 25,
   roverHealth: 10,
 };
