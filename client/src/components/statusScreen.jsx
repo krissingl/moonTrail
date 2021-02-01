@@ -27,33 +27,6 @@ const StatusScreen = ({
   const [tirePatchAmount, changeTirePatchAmount] = useState(supplyObj.tirePatch.amount);
   const [roverKitAmount, changeRoverMainAmount] = useState(supplyObj.roverKit.amount);
 
-  const [randomEventOn, toggleRandomEvent] = useState(false);
-  // const [randomEventConseq] = useState(eventConseq);
-
-  // Getting landmark data for route
-  const { landmarkList } = data;
-
-  let landmarkDistance;
-  if (savedDistance !== null) {
-    landmarkDistance = savedDistance;
-  } else if (landmarkList[previousLandmark].length !== 1) {
-    if (landmarkList[previousLandmark][1].next === nextLandmark) {
-      landmarkDistance = landmarkList[previousLandmark][1].distance;
-    } else {
-      landmarkDistance = landmarkList[previousLandmark][0].distance;
-    }
-  } else {
-    landmarkDistance = landmarkList[previousLandmark][0].distance;
-  }
-
-  // Save distance traveled to redux store in case of page change
-  const saveDistanceTraveled = (currentDistance) => {
-    dispatch({
-      type: 'landmarkDistanceChange',
-      payload: currentDistance,
-    });
-  };
-
   // Global Supply State manipulation functions
   const getNewSupplyAmountList = () => {
     const supplyAmountList = [
@@ -85,6 +58,53 @@ const StatusScreen = ({
     ];
     return supplyAmountFuncList;
   };
+  const [randomEventOn, toggleRandomEvent] = useState(false);
+
+  const changeEventConseq = (consequence) => {
+    dispatch({
+      type: 'changeEventConseq',
+      payload: consequence,
+    });
+  };
+
+  if (eventConseq !== null) {
+    if (eventConseq[0] === 'crewHealth') {
+      console.log('crewHealth');
+    } else if (eventConseq[0] === 'roverHealth') {
+      console.log('roverHealth');
+    } else {
+      const funcList = getNewSupplyAmountFuncList();
+      const amountsList = getNewSupplyAmountList();
+      const functionToChangeConsequenceAmount = funcList[eventConseq[0]];
+      functionToChangeConsequenceAmount(amountsList[eventConseq[0]] - eventConseq[1]);
+    }
+    changeEventConseq(null);
+  }
+
+  // Getting landmark data for route
+  const { landmarkList } = data;
+
+  let landmarkDistance;
+  if (savedDistance !== null) {
+    landmarkDistance = savedDistance;
+  } else if (landmarkList[previousLandmark].length !== 1) {
+    if (landmarkList[previousLandmark][1].next === nextLandmark) {
+      landmarkDistance = landmarkList[previousLandmark][1].distance;
+    } else {
+      landmarkDistance = landmarkList[previousLandmark][0].distance;
+    }
+  } else {
+    landmarkDistance = landmarkList[previousLandmark][0].distance;
+  }
+
+  // Save distance traveled to redux store in case of page change
+  const saveDistanceTraveled = (currentDistance) => {
+    dispatch({
+      type: 'landmarkDistanceChange',
+      payload: currentDistance,
+    });
+  };
+
   const changeGlobalSupplyObj = (supplies) => {
     dispatch({
       type: 'supplyObjChange',
