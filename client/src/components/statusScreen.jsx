@@ -74,8 +74,9 @@ const StatusScreen = ({
       console.log('roverHealth');
     } else {
       const funcList = getNewSupplyAmountFuncList();
+      const amountsList = getNewSupplyAmountList();
       const functionToChangeConsequenceAmount = funcList[eventConseq[0]];
-      functionToChangeConsequenceAmount(eventConseq[1]);
+      functionToChangeConsequenceAmount(amountsList[eventConseq[0]] - eventConseq[1]);
     }
     changeEventConseq(null);
   }
