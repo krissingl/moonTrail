@@ -8,7 +8,7 @@ const Event = ({ changePage, dispatch }) => {
   const randomIndex = Math.floor((Math.random() * randomEventsList.length));
 
   const [randomEventMsg] = useState(randomEventsList[randomIndex].message);
-  const [randomEventConseq] = useState(randomEventsList[randomIndex].consequence[0]);
+  const [randomEventConseq] = useState(randomEventsList[randomIndex].consequence);
 
   console.log(randomEventConseq);
 
