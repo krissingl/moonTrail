@@ -104,7 +104,7 @@ class App extends React.Component {
     }
     return (
       <div>
-        <TitleMenu changePage={this.changePage} reset={this.resetGame} />
+        <TitleMenu changePage={this.changePage} />
         <div>
           {level}
         </div>
