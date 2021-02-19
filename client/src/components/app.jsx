@@ -22,15 +22,10 @@ class App extends React.Component {
       page: 'main',
     };
     this.changePage = this.changePage.bind(this);
-    this.resetGame = this.resetGame.bind(this);
   }
 
   changePage(newPage) {
     this.setState({ page: newPage });
-  }
-
-  resetGame() {
-    this.setState({ currentLandmark: 'MARE_CRISIUM' });
   }
 
   render() {
@@ -104,7 +99,7 @@ class App extends React.Component {
     }
     return (
       <div>
-        <TitleMenu changePage={this.changePage} reset={this.resetGame} />
+        <TitleMenu changePage={this.changePage} />
         <div>
           {level}
         </div>

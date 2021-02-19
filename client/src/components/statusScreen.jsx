@@ -69,17 +69,24 @@ const StatusScreen = ({
 
   if (eventConseq !== null) {
     if (eventConseq[0] === 'crewHealth') {
+      changeEventConseq(null);
       console.log('crewHealth');
     } else if (eventConseq[0] === 'roverHealth') {
+      changeEventConseq(null);
       console.log('roverHealth');
     } else {
+      const supplyTypeIndex = eventConseq[0];
+      const supplyAmount = eventConseq[1];
+      changeEventConseq(null);
+      console.log(eventConseq);
       const funcList = getNewSupplyAmountFuncList();
       const amountsList = getNewSupplyAmountList();
-      const amountToBeChanged = amountsList[eventConseq[0]];
-      const functionToChangeConsequenceAmount = funcList[eventConseq[0]];
-      functionToChangeConsequenceAmount(amountToBeChanged - eventConseq[1]);
+      const amountToBeChanged = amountsList[supplyTypeIndex];
+      const functionToChangeConsequenceAmount = funcList[supplyTypeIndex];
+      const newAmount = amountToBeChanged - supplyAmount;
+      console.log(newAmount);
+      functionToChangeConsequenceAmount(newAmount);
     }
-    changeEventConseq(null);
   }
 
   // Getting landmark data for route
