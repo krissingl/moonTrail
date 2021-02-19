@@ -22,15 +22,10 @@ class App extends React.Component {
       page: 'main',
     };
     this.changePage = this.changePage.bind(this);
-    this.resetGame = this.resetGame.bind(this);
   }
 
   changePage(newPage) {
     this.setState({ page: newPage });
-  }
-
-  resetGame() {
-    this.setState({ currentLandmark: 'MARE_CRISIUM' });
   }
 
   render() {
