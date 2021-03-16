@@ -81,9 +81,6 @@ class App extends React.Component {
       level = (
         <Fork
           changePage={this.changePage}
-          landmark={this.state.currentLandmark}
-          changeLandmark={this.changeLandmark}
-          changePreviousLandmark={this.changePreviousLandmark}
         />
       );
     } else if (this.state.page === 'event') {

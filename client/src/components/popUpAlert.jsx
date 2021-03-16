@@ -16,7 +16,7 @@ const AlertWindow = ({
           <div>
             <h5>{message}</h5>
             <Map />
-            <button type="button" onClick={() => { toggleAlert(false); }}>Close</button>
+            <button type="button" onClick={() => { toggleAlert(false); }}>CLOSE</button>
           </div>
         </div>
       </div>
@@ -27,7 +27,7 @@ const AlertWindow = ({
         <div className={classes.mapInnerPopup}>
           <h5>{message}</h5>
           <SupplyCheck />
-          <button type="button" onClick={() => { toggleAlert(false); }}>Close</button>
+          <button type="button" onClick={() => { toggleAlert(false); }}>CLOSE</button>
         </div>
       </div>
     );
@@ -36,7 +36,7 @@ const AlertWindow = ({
       <div className={classes.popup}>
         <div className={classes.innerPopup}>
           <h5>{message}</h5>
-          <button type="button" onClick={() => { toggleAlert(false); }}>Close</button>
+          <button type="button" onClick={() => { toggleAlert(false); }}>CLOSE</button>
         </div>
       </div>
     );
