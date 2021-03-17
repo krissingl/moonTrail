@@ -63,15 +63,15 @@ const Landmark = ({
   let continueBtn;
   if (isThereFork) {
     continueBtn = (
-      <button type="button" onClick={() => { changePage('fork'); }}>CONTINUE MISSION</button>
+      <button type="button" onClick={() => { changePage('fork'); }}>CONTINUE_MISSION</button>
     );
   } else if (landmark === 'HERODOTUS') {
     continueBtn = (
-      <button type="button" onClick={() => { changePage('gameover'); }}>MISSION COMPLETION</button>
+      <button type="button" onClick={() => { changePage('gameover'); }}>MISSION_COMPLETION</button>
     );
   } else {
     continueBtn = (
-      <button type="button" onClick={() => { changeCurrentGlobalLandmark(localNextLandmark); changePreviousGlobalLandmark(localCurrentLandmark); changeTravelingStatus(true); changePage('traveling'); }}>CONTINUE MISSION</button>
+      <button type="button" onClick={() => { changeCurrentGlobalLandmark(localNextLandmark); changePreviousGlobalLandmark(localCurrentLandmark); changeTravelingStatus(true); changePage('traveling'); }}>CONTINUE_MISSION</button>
     );
   }
 
