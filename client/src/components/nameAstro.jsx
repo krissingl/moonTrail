@@ -44,23 +44,23 @@ const NameAstros = ({ changePage, dispatch }) => {
           onSubmit={() => { addCrewToGlobalState(createCrewList()); changePage('rover'); }}
         >
           <label>
-            Crew Member 1:
+            CREW_MEMBER_1:
             <input type="text" value={astro1} onChange={changeAstro1} />
           </label>
           <label>
-            Crew Member 2:
+            CREW_MEMBER_2:
             <input type="text" value={astro2} onChange={changeAstro2} />
           </label>
           <label>
-            Crew Member 3:
+            CREW_MEMBER_3:
             <input type="text" value={astro3} onChange={changeAstro3} />
           </label>
           <label>
-            Crew Member 4:
+            CREW_MEMBER_4:
             <input type="text" value={astro4} onChange={changeAstro4} />
           </label>
           <label>
-            Crew Member 5:
+            CREW_MEMBER_5:
             <input type="text" value={astro5} onChange={changeAstro5} />
           </label>
           <br />
