@@ -102,19 +102,6 @@ const StatusScreen = ({
     getNewSupplyAmountList,
     changePage,
   );
-  // Landmark distance calculator- saves current supplies and changes page upon arrival at landmark
-  // const [distCounter, setDistCounter] = useState(landmarkDistance);
-  // useEffect(() => {
-  //   const timer = distCounter > 0 && setInterval(() => {
-  //     setDistCounter(distCounter - 1);
-  //   }, 1000);
-  //   if (distCounter === 0) {
-  //     changeGlobalSupplyObj(GetFinalSupplyObj(getNewSupplyAmountList()));
-  //     saveDistanceTraveled(null);
-  //     changePage('landmark');
-  //   }
-  //   return () => clearInterval(timer);
-  // }, [distCounter]);
 
   DepleteResource(oxyAmount, changeOxyAmount, 'steady', changePage);
   DepleteResource(foodAmount, changeFoodAmount, 'slow', changePage);
