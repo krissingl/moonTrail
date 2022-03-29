@@ -105,7 +105,9 @@ const StatusScreen = ({
     return () => clearInterval(timer);
   }, [distCounter]);
 
-  DepleteResource(oxyAmount, changeOxyAmount, 'rapid', changePage);
+  DepleteResource(oxyAmount, changeOxyAmount, 'steady', changePage);
+  DepleteResource(foodAmount, changeFoodAmount, 'slow', changePage);
+  DepleteResource(waterAmount, changeWaterAmount, 'slow', changePage);
 
   // Save distance and supply changes to global store in event of a page change
   const saveProgress = (distance) => {
