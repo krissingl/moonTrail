@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import GetFinalSupplyObj from './getsupplyObj.jsx';
+import DepleteResource from '../tools/resourceDepletion.jsx';
 import data from '../../dist/data.json';
 import classes from '../css/styles.css';
 
@@ -11,9 +12,9 @@ const StatusScreen = ({
   savedDistance,
   nextLandmark,
   previousLandmark,
-  eventConseq,
-  crewHealth,
-  roverHealth
+  // eventConseq,
+  // crewHealth,
+  // roverHealth
 }) => {
   // Local supply amount states
   const [oxyAmount, changeOxyAmount] = useState(supplyObj.oxygen.amount);
@@ -58,36 +59,6 @@ const StatusScreen = ({
     ];
     return supplyAmountFuncList;
   };
-  const [randomEventOn, toggleRandomEvent] = useState(false);
-
-  const changeEventConseq = (consequence) => {
-    dispatch({
-      type: 'changeEventConseq',
-      payload: consequence,
-    });
-  };
-
-  if (eventConseq !== null) {
-    if (eventConseq[0] === 'crewHealth') {
-      changeEventConseq(null);
-      console.log('crewHealth');
-    } else if (eventConseq[0] === 'roverHealth') {
-      changeEventConseq(null);
-      console.log('roverHealth');
-    } else {
-      const supplyTypeIndex = eventConseq[0];
-      const supplyAmount = eventConseq[1];
-      changeEventConseq(null);
-      console.log(eventConseq);
-      const funcList = getNewSupplyAmountFuncList();
-      const amountsList = getNewSupplyAmountList();
-      const amountToBeChanged = amountsList[supplyTypeIndex];
-      const functionToChangeConsequenceAmount = funcList[supplyTypeIndex];
-      const newAmount = amountToBeChanged - supplyAmount;
-      console.log(newAmount);
-      functionToChangeConsequenceAmount(newAmount);
-    }
-  }
 
   // Getting landmark data for route
   const { landmarkList } = data;
@@ -120,7 +91,7 @@ const StatusScreen = ({
     });
   };
 
-  // Landmark distance calculator
+  // Landmark distance calculator- saves current supplies and changes page upon arrival at landmark
   const [distCounter, setDistCounter] = useState(landmarkDistance);
   useEffect(() => {
     const timer = distCounter > 0 && setInterval(() => {
@@ -134,17 +105,7 @@ const StatusScreen = ({
     return () => clearInterval(timer);
   }, [distCounter]);
 
-  // Test Oxygen depletion function
-  useEffect(() => {
-    const timer = oxyAmount > 0 && setInterval(() => {
-      changeOxyAmount(oxyAmount - 1);
-    }, 10000);
-    if (oxyAmount === 0) {
-      // Need to add a message receiver for gameover page to tell player why they lost
-      changePage('gameover');
-    }
-    return () => clearInterval(timer);
-  }, [oxyAmount]);
+  DepleteResource(oxyAmount, changeOxyAmount, 'rapid', changePage);
 
   // Save distance and supply changes to global store in event of a page change
   const saveProgress = (distance) => {
@@ -152,18 +113,6 @@ const StatusScreen = ({
     saveDistanceTraveled(distance);
     changeGlobalSupplyObj(finalSupplyObj);
   };
-
-  // Generate random event
-  useEffect(() => {
-    const timer = oxyAmount > 0 && setInterval(() => {
-      toggleRandomEvent(true);
-    }, 5000);
-    if (randomEventOn) {
-      saveProgress(distCounter);
-      changePage('event');
-    }
-    return () => clearInterval(timer);
-  }, [oxyAmount]);
 
   return (
     <div className={classes.statusScreen}>

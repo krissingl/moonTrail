@@ -32,6 +32,7 @@
       "react/prop-types": "off",
       "class-methods-use-this": "off",
       "react/no-unescaped-entities": "off",
-      "react/sort-comp": "off"
+      "react/sort-comp": "off",
+      "quote-props": "off"
   }
 }
