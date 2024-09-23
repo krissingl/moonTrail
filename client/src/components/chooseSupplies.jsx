@@ -91,7 +91,7 @@ const ChooseSupplies = ({
   return (
     <div className={classes.noticePage}>
       <div className={classes.supplyPage}>
-        <h3>CHOOSE_MISSION_SUPPLIES</h3>
+        <h3 className={classes.title}>CHOOSE_MISSION_SUPPLIES</h3>
         {alertPopUp}
         <div>
           current weight:
@@ -113,8 +113,8 @@ const ChooseSupplies = ({
           />
         </div>
         <br />
-        <button type="button" onClick={() => { changePage('supplyAdvice'); }}>Any advice on what should I take?</button>
-        <button type="button" onClick={() => { changeGlobalSupplyList(getSupplyList()); changeGlobalSupplyObj(GetFinalSupplyObj(supplyAmountList)); changePage('review'); }}>Review Equiptment</button>
+        <button type="button" className={classes.supplyBoxBtns} onClick={() => { changePage('supplyAdvice'); }}>Mission Equipment Data</button>
+        <button type="button" className={classes.supplyBoxBtns} onClick={() => { changeGlobalSupplyList(getSupplyList()); changeGlobalSupplyObj(GetFinalSupplyObj(supplyAmountList)); changePage('review'); }}>Review Equipment</button>
       </div>
     </div>
   );

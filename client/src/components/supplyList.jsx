@@ -31,11 +31,13 @@ const SupplyList = ({
       <label>
         {`${supply.type} (WEIGHT: ${supply.weight})`}
         <br />
-        {`how many: ${supplyAmountList[index]}`}
+        {`quantity: ${supplyAmountList[index]}`}
       </label>
       <div>
-        <button type="button" value={supply.weight} onClick={(e) => minusOneSupply(e, supplyAmountFuncList[index], supplyAmountList[index])}>--</button>
-        <button type="button" value={supply.weight} onClick={(e) => addOneSupply(e, supplyAmountFuncList[index], supplyAmountList[index])}>+</button>
+        <nobr>
+        <button type="button" className={classes.supplyBtn} value={supply.weight} onClick={(e) => minusOneSupply(e, supplyAmountFuncList[index], supplyAmountList[index])}>--</button>
+        <button type="button" className={classes.supplyBtn} value={supply.weight} onClick={(e) => addOneSupply(e, supplyAmountFuncList[index], supplyAmountList[index])}>+</button>
+        </nobr>
       </div>
     </div>
   ));

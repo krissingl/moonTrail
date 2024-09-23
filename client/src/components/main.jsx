@@ -3,7 +3,7 @@ import classes from '../css/styles.css';
 
 const Main = ({ changePage }) => (
   <div className={classes.noticePage}>
-    <h1>MOON_TRAIL</h1>
+    <h1 className={classes.title}>MOON_TRAIL</h1>
     <button type="button" className={classes.startBtn} onClick={() => { changePage('intro'); }}>START</button>
   </div>
 );

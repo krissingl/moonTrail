@@ -64,7 +64,7 @@ const ChooseRover = ({ dispatch, changePage }) => {
 
   return (
     <div className={classes.noticePage}>
-      <h3>CHOOSE_ROVER_FOR_MISSION</h3>
+      <h3 className={classes.title}>CHOOSE_ROVER_FOR_MISSION</h3>
       <div>
         <span>Select Rover:</span>
         <select onChange={findRover}>

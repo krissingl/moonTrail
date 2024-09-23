@@ -7,7 +7,7 @@ const SupplyCheck = ({ supplyObj }) => {
   const currentSupplies = supplyTypes.map((supply) => (
     <div key={supply} className={classes.reviewItem}>
       <div>{supply}</div>
-      <div>{`how-many: ${supplyObj[supply].amount}`}</div>
+      <div>{`quantity: ${supplyObj[supply].amount}`}</div>
     </div>
   ));
   return (

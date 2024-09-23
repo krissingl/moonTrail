@@ -53,8 +53,8 @@ const Fork = ({
   return (
     <div className={classes.noticePage}>
       <div className={classes.forkContent}>
-        <h3>FORK_DETECTED_IN_ROUTE</h3>
-        <h3>WHICH_DIRECTION_SHOULD_THE_CREW_TAKE?</h3>
+        <h3 className={classes.title}>FORK_DETECTED_IN_ROUTE</h3>
+        <h3 className={classes.title}>WHICH_DIRECTION_SHOULD_THE_CREW_TAKE?</h3>
         <br />
         <div>
           {alertPopUp}

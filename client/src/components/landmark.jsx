@@ -63,28 +63,28 @@ const Landmark = ({
   let continueBtn;
   if (isThereFork) {
     continueBtn = (
-      <button type="button" onClick={() => { changePage('fork'); }}>CONTINUE_MISSION</button>
+      <button type="button" className={classes.landmarkBtn} onClick={() => { changePage('fork'); }}>CONTINUE_MISSION</button>
     );
   } else if (landmark === 'HERODOTUS') {
     continueBtn = (
-      <button type="button" onClick={() => { changePage('gameover'); }}>MISSION_COMPLETION</button>
+      <button type="button" className={classes.landmarkBtn} onClick={() => { changePage('gameover'); }}>MISSION_COMPLETION</button>
     );
   } else {
     continueBtn = (
-      <button type="button" onClick={() => { changeCurrentGlobalLandmark(localNextLandmark); changePreviousGlobalLandmark(localCurrentLandmark); changeTravelingStatus(true); changePage('traveling'); }}>CONTINUE_MISSION</button>
+      <button type="button" className={classes.landmarkBtn} onClick={() => { changeCurrentGlobalLandmark(localNextLandmark); changePreviousGlobalLandmark(localCurrentLandmark); changeTravelingStatus(true); changePage('traveling'); }}>CONTINUE_MISSION</button>
     );
   }
 
   return (
     <div className={classes.noticePage}>
-      <h2>
+      <h2 className={classes.title}>
         {`YOU_HAVE_ARRIVED_AT_${landmark}`}
       </h2>
       {alertPopUp}
-      <h3>WHAT_WOULD_YOU_LIKE_TO_DO?</h3>
-      <button type="button">LOOK AROUND</button>
-      <button type="button" onClick={() => { changeAlertMsg('cannot contact GROUND_CONTROL right now'); toggleAlert(true); }}>ATTEMPT CONTACT WITH GROUND CONTROL</button>
-      <button type="button" onClick={() => { changeAlertMsg('cannot debug CACAL right now'); toggleAlert(true); }}>ATTEMPT CACAL DEBUG</button>
+      <h3 className={classes.title}>WHAT_WOULD_YOU_LIKE_TO_DO?</h3>
+      <button type="button" className={classes.landmarkBtn} >LOOK_AROUND</button>
+      <button type="button" className={classes.landmarkBtn} onClick={() => { changeAlertMsg('cannot contact GROUND_CONTROL right now'); toggleAlert(true); }}>CONTACT_GROUND_CONTROL</button>
+      <button type="button" className={classes.landmarkBtn} onClick={() => { changeAlertMsg('cannot debug CACAL right now'); toggleAlert(true); }}>DEBUG_CACAL_DEVICE</button>
       {continueBtn}
     </div>
   );

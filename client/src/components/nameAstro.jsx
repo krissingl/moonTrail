@@ -37,31 +37,36 @@ const NameAstros = ({ changePage, dispatch }) => {
 
   return (
     <div className={classes.noticePage}>
-      <h3>IDENTIFY_THE_ASTRONAUTS_ON_THIS_MISSION</h3>
+      <h3 className={classes.title}>IDENTIFY_THE_ASTRONAUTS_ON_THIS_MISSION</h3>
       <div>
         <form
           className={classes.crewNames}
           onSubmit={() => { addCrewToGlobalState(createCrewList()); changePage('rover'); }}
         >
           <label>
-            CREW_MEMBER_1:
-            <input type="text" value={astro1} onChange={changeAstro1} />
+            <nobr>
+            CREW_MEMBER_1:<input type="text" value={astro1} onChange={changeAstro1} />
+            </nobr>
           </label>
           <label>
-            CREW_MEMBER_2:
-            <input type="text" value={astro2} onChange={changeAstro2} />
+            <nobr>
+            CREW_MEMBER_2:<input type="text" value={astro2} onChange={changeAstro2} />
+            </nobr>
           </label>
           <label>
-            CREW_MEMBER_3:
-            <input type="text" value={astro3} onChange={changeAstro3} />
+            <nobr>
+            CREW_MEMBER_3:<input type="text" value={astro3} onChange={changeAstro3} />
+            </nobr>
           </label>
           <label>
-            CREW_MEMBER_4:
-            <input type="text" value={astro4} onChange={changeAstro4} />
+            <nobr>
+            CREW_MEMBER_4:<input type="text" value={astro4} onChange={changeAstro4} />
+            </nobr>
           </label>
           <label>
-            CREW_MEMBER_5:
-            <input type="text" value={astro5} onChange={changeAstro5} />
+            <nobr>
+            CREW_MEMBER_5:<input type="text" value={astro5} onChange={changeAstro5} />
+            </nobr>
           </label>
           <br />
           <input type="submit" value="Choose Rover" className={classes.nameAstrosSubmitBtn} disabled={!isEnabled} />

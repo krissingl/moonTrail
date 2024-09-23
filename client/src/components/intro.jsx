@@ -6,7 +6,7 @@ const Intro = ({ changePage }) => {
   const intro = data.introVerbiage;
   return (
     <div className={classes.noticePage}>
-      <h2>SITUATION_DEBRIEFING</h2>
+      <h2 className={classes.title}>SITUATION_DEBRIEFING</h2>
       <p>{intro}</p>
       <button type="button" onClick={() => { changePage('naming'); }}>BEGIN</button>
     </div>

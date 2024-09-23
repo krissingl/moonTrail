@@ -16,13 +16,13 @@ const ChoiceReview = ({
   // ROVER INFO
   const chosenRover = (
     <div>
-      type:
+      type: 
       {rover.type}
       <br />
-      max-speed:
+      max_speed: 
       {rover.maxSpeed}
       <br />
-      max-storage:
+      max_storage: 
       {rover.storageCapacity}
     </div>
   );
@@ -30,23 +30,23 @@ const ChoiceReview = ({
   // SUPPLY LIST
   const chosenSupplies = supplyList.map((supply) => (
     <div key={supply.type} className={classes.reviewItem}>
-      <div>{supply.type}</div>
-      <div>{`how-many: ${supply.amount}`}</div>
+      <div><b>{supply.type}</b></div>
+      <div>{`quantity: ${supply.amount}`}</div>
     </div>
   ));
 
   return (
     <div className={classes.noticePage}>
-      <h3>REVIEW_BEFORE_MISSION_LAUNCH</h3>
+      <h3 className={classes.title}>REVIEW_BEFORE_MISSION_LAUNCH</h3>
       <div className={classes.supplyBox}>
         <div>
           <div className={classes.reviewList}>
-            crew list:
+            <label className={classes.reviewLabel}>CREW_LIST:</label>
             {crewList}
           </div>
           <br />
           <div className={classes.reviewList}>
-            rover:
+            <label className={classes.reviewLabel}>ROVER:</label>
             <br />
             <div className={classes.reviewItem}>
               {chosenRover}
@@ -56,15 +56,17 @@ const ChoiceReview = ({
         </div>
         <div>
           <div className={classes.reviewList}>
-            supply list:
+            <label className={classes.reviewLabel}>SUPPLY_LIST:</label>
             {chosenSupplies}
           </div>
           <br />
         </div>
       </div>
-      <div className={classes.supplyBox}>
-        <button type="button" onClick={() => { changePage('main'); }}>Start Over</button>
-        <button type="button" onClick={() => { changePage('landmark'); }}>Launch Mission</button>
+      <div>
+        <nobr>
+          <button type="button" className={classes.supplyBoxBtns} onClick={() => { changePage('main'); }}>START_OVER</button>
+          <button type="button" className={classes.supplyBoxBtns} onClick={() => { changePage('landmark'); }}>LAUNCH_MISSION</button>
+        </nobr>
       </div>
     </div>
   );
