@@ -1,4 +1,5 @@
 import React from 'react';
+import classes from '../css/styles.css';
 import TitleMenu from './titleMenu.jsx';
 import Main from './main.jsx';
 import Intro from './intro.jsx';
@@ -13,6 +14,10 @@ import Fork from './fork.jsx';
 import StatusScreen from './statusScreen.jsx';
 import Analyzation from './analyzeSituation.jsx';
 import Event from './event.jsx';
+import Notice from './notice.jsx';
+import SearchResources from './searchResources.jsx';
+import Trade from './trade.jsx';
+import LookAround from './lookAround.jsx';
 import Gameover from './gameover.jsx';
 
 class App extends React.Component {
@@ -62,8 +67,8 @@ class App extends React.Component {
       );
     } else if (this.state.page === 'traveling') {
       level = (
-        <div>
-          <Traveling changePage={this.changePage} />
+        <div className={classes.travelPage}>
+          <Traveling />
           <StatusScreen changePage={this.changePage} />
         </div>
       );
@@ -89,9 +94,25 @@ class App extends React.Component {
           <Event changePage={this.changePage} />
         </div>
       );
+    } else if (this.state.page === 'notice') {
+      level = (
+        <Notice changePage={this.changePage} />
+      );
+    } else if (this.state.page === 'searchResources') {
+      level = (
+        <SearchResources changePage={this.changePage} />
+      );
+    } else if (this.state.page === 'trade') {
+      level = (
+        <Trade changePage={this.changePage} />
+      );
+    } else if (this.state.page === 'lookAround') {
+      level = (
+        <LookAround changePage={this.changePage} />
+      );
     } else if (this.state.page === 'gameover') {
       level = (
-        <Gameover />
+        <Gameover changePage={this.changePage} />
       );
     }
     return (

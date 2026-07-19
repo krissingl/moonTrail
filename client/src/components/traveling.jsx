@@ -1,26 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import AlertWindow from './popUpAlert.jsx';
 import sky from '../../dist/extras/moonSky.png';
 import bug from '../../dist/extras/rovers/bug.gif';
 import jeep from '../../dist/extras/rovers/jeep.gif';
 import stationWag from '../../dist/extras/rovers/stationWagon.gif';
 import classes from '../css/styles.css';
 
-const TravelingPage = ({ changePage, dispatch, rover }) => {
-  // Local State Hooks
-  const [showAlert, toggleAlert] = useState(false);
-  const [alertMsg] = useState('');
-
-  // Change the Global Traveling Status State
-  const changeTravelingStatus = (status) => {
-    dispatch({
-      type: 'changeTravelingStatus',
-      payload: status,
-    });
-  };
-
-  // Change the Rover Image
+const TravelingPage = ({ rover }) => {
   let roverImg;
   if (rover.type === 'StationWagon') {
     roverImg = (
@@ -42,15 +28,8 @@ const TravelingPage = ({ changePage, dispatch, rover }) => {
     );
   }
 
-  // Alert Window Function
-  let alertPopUp;
-  if (showAlert) {
-    alertPopUp = (
-      <AlertWindow message={alertMsg} toggleAlert={toggleAlert} />
-    );
-  }
   return (
-    <div>
+    <div className={classes.travelViewport}>
       <div className={classes.travelingCanvas}>
         <img className={classes.travelSky} src={sky} alt="sky" />
       </div>
@@ -61,18 +40,10 @@ const TravelingPage = ({ changePage, dispatch, rover }) => {
           {roverImg}
         </span>
       </div>
-      {alertPopUp}
-      <button type="button" onClick={(e) => { changeTravelingStatus(e, false); changePage('landmark'); }}>Arrive at Landmark</button>
     </div>
   );
 };
 
 const mapStateToProps = (state) => ({ rover: state.rover });
-const mapDispatchToProps = (dispatch) => ({
-  dispatch,
-});
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(TravelingPage);
+export default connect(mapStateToProps)(TravelingPage);

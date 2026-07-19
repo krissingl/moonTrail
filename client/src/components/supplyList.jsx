@@ -1,43 +1,90 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import data from '../../dist/data.json';
 import classes from '../css/styles.css';
+
+const HOLD_DELAY = 400;
+const HOLD_INTERVAL = 90;
 
 const SupplyList = ({
   maxStorage,
   toggleAlert,
-  totalWeight,
-  changeTotalWeight,
-  supplyAmountList,
-  supplyAmountFuncList,
+  amounts,
+  setAmount,
 }) => {
-  // Add and Subtract Supply Functions
-  const addOneSupply = (e, callback, value) => {
-    if ((totalWeight + Number(e.target.value)) <= maxStorage) {
-      changeTotalWeight(totalWeight + Number(e.target.value));
-      callback(value + 1);
+  const holdTimers = useRef([]);
+  const amountsRef = useRef(amounts);
+  amountsRef.current = amounts;
+
+  const stopHold = () => {
+    holdTimers.current.forEach(clearTimeout);
+    holdTimers.current.forEach(clearInterval);
+    holdTimers.current = [];
+  };
+
+  useEffect(() => stopHold, []);
+
+  const startHold = (step) => {
+    step();
+    const delay = setTimeout(() => {
+      const repeat = setInterval(step, HOLD_INTERVAL);
+      holdTimers.current.push(repeat);
+    }, HOLD_DELAY);
+    holdTimers.current.push(delay);
+  };
+
+  const currentWeight = () => data.supplyList.reduce(
+    (sum, supply) => sum + (amountsRef.current[supply.key] * supply.weight),
+    0,
+  );
+
+  const addOneSupply = (supply) => {
+    if ((currentWeight() + supply.weight) <= maxStorage) {
+      setAmount(supply.key, amountsRef.current[supply.key] + 1);
     } else {
+      stopHold();
       toggleAlert(true);
     }
   };
-  const minusOneSupply = (e, callback, value) => {
-    changeTotalWeight(totalWeight - Number(e.target.value));
-    callback(value - 1);
+
+  const minusOneSupply = (supply) => {
+    if (amountsRef.current[supply.key] > 0) {
+      setAmount(supply.key, amountsRef.current[supply.key] - 1);
+    } else {
+      stopHold();
+    }
   };
 
-  // Supply List Builder
-  const supplyList = data.supplyList.map((supply, index) => (
-    <div className={classes.supplyItem} key={supply.type}>
-      <label>
+  const supplyList = data.supplyList.map((supply) => (
+    <div className={classes.supplyItem} key={supply.key}>
+      <label className={classes.supplyItemLabel}>
         {`${supply.type} (WEIGHT: ${supply.weight})`}
         <br />
-        {`quantity: ${supplyAmountList[index]}`}
+        {`quantity: ${amounts[supply.key]}`}
       </label>
-      <div>
-        <nobr>
-        <button type="button" className={classes.supplyBtn} value={supply.weight} onClick={(e) => minusOneSupply(e, supplyAmountFuncList[index], supplyAmountList[index])}>--</button>
-        <button type="button" className={classes.supplyBtn} value={supply.weight} onClick={(e) => addOneSupply(e, supplyAmountFuncList[index], supplyAmountList[index])}>+</button>
-        </nobr>
+      <div className={classes.supplyItemControls}>
+        <button
+          type="button"
+          className={classes.supplyBtn}
+          onMouseDown={() => startHold(() => minusOneSupply(supply))}
+          onMouseUp={stopHold}
+          onMouseLeave={stopHold}
+          onTouchStart={() => startHold(() => minusOneSupply(supply))}
+          onTouchEnd={stopHold}
+        >
+          --
+        </button>
+        <button
+          type="button"
+          className={classes.supplyBtn}
+          onMouseDown={() => startHold(() => addOneSupply(supply))}
+          onMouseUp={stopHold}
+          onMouseLeave={stopHold}
+          onTouchStart={() => startHold(() => addOneSupply(supply))}
+          onTouchEnd={stopHold}
+        >
+          +
+        </button>
       </div>
     </div>
   ));

@@ -82,7 +82,8 @@ const Landmark = ({
       </h2>
       {alertPopUp}
       <h3 className={classes.title}>WHAT_WOULD_YOU_LIKE_TO_DO?</h3>
-      <button type="button" className={classes.landmarkBtn} >LOOK_AROUND</button>
+      <button type="button" className={classes.landmarkBtn} onClick={() => { changePage('lookAround'); }}>LOOK_AROUND</button>
+      <button type="button" className={classes.landmarkBtn} onClick={() => { changePage('trade'); }}>STRANGE_VENDING_MACHINE</button>
       <button type="button" className={classes.landmarkBtn} onClick={() => { changeAlertMsg('cannot contact GROUND_CONTROL right now'); toggleAlert(true); }}>CONTACT_GROUND_CONTROL</button>
       <button type="button" className={classes.landmarkBtn} onClick={() => { changeAlertMsg('cannot debug CACAL right now'); toggleAlert(true); }}>DEBUG_CACAL_DEVICE</button>
       {continueBtn}

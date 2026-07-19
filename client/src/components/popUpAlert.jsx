@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Map from './map.jsx';
 import SupplyCheck from './supplyCheck.jsx';
 import classes from '../css/styles.css';
@@ -8,44 +9,30 @@ const AlertWindow = ({
   toggleAlert,
   type,
 }) => {
-  let popUpContent;
+  let body = null;
   if (type === 'map') {
-    popUpContent = (
-      <div className={classes.popup}>
-        <div className={classes.mapInnerPopup}>
-          <div>
-            <h5>{message}</h5>
-            <Map />
-            <button type="button" onClick={() => { toggleAlert(false); }}>CLOSE</button>
-          </div>
-        </div>
-      </div>
-    );
+    body = <Map />;
   } else if (type === 'checkSupplies') {
-    popUpContent = (
-      <div className={classes.popup}>
-        <div className={classes.mapInnerPopup}>
-          <h5>{message}</h5>
-          <SupplyCheck />
-          <button type="button" onClick={() => { toggleAlert(false); }}>CLOSE</button>
-        </div>
-      </div>
-    );
-  } else {
-    popUpContent = (
-      <div className={classes.popup}>
-        <div className={classes.innerPopup}>
-          <h5>{message}</h5>
-          <button type="button" onClick={() => { toggleAlert(false); }}>CLOSE</button>
-        </div>
-      </div>
-    );
+    body = <SupplyCheck />;
   }
 
-  return (
-    <div>
-      { popUpContent }
-    </div>
+  const innerClass = body ? classes.wideInnerPopup : classes.innerPopup;
+
+  return ReactDOM.createPortal(
+    <div className={classes.popup}>
+      <div className={innerClass}>
+        <h5 className={classes.popupTitle}>{message}</h5>
+        {body}
+        <button
+          type="button"
+          className={classes.popupCloseBtn}
+          onClick={() => { toggleAlert(false); }}
+        >
+          CLOSE
+        </button>
+      </div>
+    </div>,
+    document.body,
   );
 };
 

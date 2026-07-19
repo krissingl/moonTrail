@@ -10,7 +10,7 @@ const ChoiceReview = ({
 }) => {
   // CREW LIST
   const crewList = crew.map((astro) => (
-    <div key={astro} className={classes.reviewItem}>{astro}</div>
+    <div key={astro.name} className={classes.reviewItem}>{astro.name}</div>
   ));
 
   // ROVER INFO

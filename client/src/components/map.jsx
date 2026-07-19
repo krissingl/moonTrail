@@ -21,9 +21,9 @@ const Map = ({ landmark }) => {
   }
 
   return (
-    <span>
+    <div className={classes.mapWrap}>
       <img className={stylingClass} src={mapImg} alt="map" />
-    </span>
+    </div>
   );
 };
 

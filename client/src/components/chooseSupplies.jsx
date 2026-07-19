@@ -6,6 +6,11 @@ import GetFinalSupplyObj from './getsupplyObj.jsx';
 import data from '../../dist/data.json';
 import classes from '../css/styles.css';
 
+const emptyAmounts = () => data.supplyList.reduce(
+  (amounts, supply) => ({ ...amounts, [supply.key]: 0 }),
+  {},
+);
+
 const ChooseSupplies = ({
   changePage,
   rover,
@@ -13,45 +18,18 @@ const ChooseSupplies = ({
 }) => {
   const maxStorage = rover.storageCapacity;
 
-  const [totalWeight, changeTotalWeight] = useState(0);
-  const [oxyAmount, changeOxyAmount] = useState(0);
-  const [foodAmount, changeFoodAmount] = useState(0);
-  const [waterAmount, changeWaterAmount] = useState(0);
-  const [clothesAmount, changeClothesAmount] = useState(0);
-  const [clothesAmount2, changeClothesAmount2] = useState(0);
-  const [suitAmount, changeSuitAmount] = useState(0);
-  const [suitAmount2, changeSuitAmount2] = useState(0);
-  const [AImainAmount, changeAImainAmount] = useState(0);
-  const [tirePatchAmount, changeTirePatchAmount] = useState(0);
-  const [roverMainAmount, changeRoverMainAmount] = useState(0);
+  const [amounts, setAmounts] = useState(emptyAmounts());
   const [showAlert, toggleAlert] = useState(false);
 
-  const supplyAmountList = [
-    oxyAmount,
-    foodAmount,
-    waterAmount,
-    clothesAmount,
-    clothesAmount2,
-    suitAmount,
-    suitAmount2,
-    AImainAmount,
-    tirePatchAmount,
-    roverMainAmount,
-  ];
-  const supplyAmountFuncList = [
-    changeOxyAmount,
-    changeFoodAmount,
-    changeWaterAmount,
-    changeClothesAmount,
-    changeClothesAmount2,
-    changeSuitAmount,
-    changeSuitAmount2,
-    changeAImainAmount,
-    changeTirePatchAmount,
-    changeRoverMainAmount,
-  ];
+  const setAmount = (key, value) => {
+    setAmounts((prev) => ({ ...prev, [key]: value }));
+  };
 
-  // Alert Window Function
+  const totalWeight = data.supplyList.reduce(
+    (sum, supply) => sum + (amounts[supply.key] * supply.weight),
+    0,
+  );
+
   let alertPopUp;
   if (showAlert) {
     const alertMsg = 'There is not enough storage!';
@@ -60,21 +38,13 @@ const ChooseSupplies = ({
     );
   }
 
-  // Build SupplyList Function
-  const getSupplyList = () => {
-    const finalSupplyList = data.supplyList.map((supply, index) => {
-      const finalSupply = {
-        type: supply.type,
-        weight: supply.weight,
-        amount: supplyAmountList[index],
-        totalWeight: (supplyAmountList[index] * supply.weight),
-      };
-      return finalSupply;
-    });
-    return finalSupplyList;
-  };
+  const getSupplyList = () => data.supplyList.map((supply) => ({
+    type: supply.type,
+    weight: supply.weight,
+    amount: amounts[supply.key],
+    totalWeight: (amounts[supply.key] * supply.weight),
+  }));
 
-  // Global State Manipulation Functions
   const changeGlobalSupplyObj = (supplyObj) => {
     dispatch({
       type: 'supplyObjChange',
@@ -105,16 +75,14 @@ const ChooseSupplies = ({
         <div>
           <SupplyList
             maxStorage={maxStorage}
-            totalWeight={totalWeight}
             toggleAlert={toggleAlert}
-            changeTotalWeight={changeTotalWeight}
-            supplyAmountList={supplyAmountList}
-            supplyAmountFuncList={supplyAmountFuncList}
+            amounts={amounts}
+            setAmount={setAmount}
           />
         </div>
         <br />
         <button type="button" className={classes.supplyBoxBtns} onClick={() => { changePage('supplyAdvice'); }}>Mission Equipment Data</button>
-        <button type="button" className={classes.supplyBoxBtns} onClick={() => { changeGlobalSupplyList(getSupplyList()); changeGlobalSupplyObj(GetFinalSupplyObj(supplyAmountList)); changePage('review'); }}>Review Equipment</button>
+        <button type="button" className={classes.supplyBoxBtns} onClick={() => { changeGlobalSupplyList(getSupplyList()); changeGlobalSupplyObj(GetFinalSupplyObj(amounts)); changePage('review'); }}>Review Equipment</button>
       </div>
     </div>
   );
