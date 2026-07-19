@@ -3,9 +3,26 @@ import { connect } from 'react-redux';
 import supplyLabel from './supplyLabel.jsx';
 import classes from '../css/styles.css';
 
-const DROP_POOL = ['oxygen', 'food', 'water', 'tirePatch', 'clothes'];
+const DROP_TABLE = [
+  { key: 'oxygen', weight: 5 },
+  { key: 'food', weight: 5 },
+  { key: 'water', weight: 5 },
+  { key: 'tirePatch', weight: 3 },
+  { key: 'roverKit', weight: 3 },
+  { key: 'clothes', weight: 2 },
+];
+const DROP_TOTAL = DROP_TABLE.reduce((sum, drop) => sum + drop.weight, 0);
 const GAME_SECONDS = 12;
 const randInt = (max) => Math.floor(Math.random() * max);
+
+const rollDrop = () => {
+  let roll = Math.random() * DROP_TOTAL;
+  const found = DROP_TABLE.find((drop) => {
+    roll -= drop.weight;
+    return roll < 0;
+  });
+  return found ? found.key : DROP_TABLE[0].key;
+};
 
 const SearchResources = ({ changePage, dispatch, currentlyTraveling }) => {
   const [timeLeft, setTimeLeft] = useState(GAME_SECONDS);
@@ -43,7 +60,7 @@ const SearchResources = ({ changePage, dispatch, currentlyTraveling }) => {
   }, [done]);
 
   const catchAlien = (alien) => {
-    const drop = DROP_POOL[randInt(DROP_POOL.length)];
+    const drop = rollDrop();
     setCollected((prev) => ({ ...prev, [drop]: (prev[drop] || 0) + 1 }));
     setCaught((prev) => prev + 1);
     setAliens((prev) => prev.filter((item) => item.id !== alien.id));

@@ -15,6 +15,7 @@ const initialState = {
   roverPace: 'normal',
   notifications: [],
   landmarkOffer: null,
+  eventlessTicks: 0,
 };
 
 const CREW_START_HEALTH = 20;
@@ -192,6 +193,7 @@ const travelTick = (state) => {
     ...state,
     savedDistance,
     travelTicks: ticks,
+    eventlessTicks: state.eventlessTicks + 1,
     supplyObj,
     crew,
   });
@@ -256,7 +258,7 @@ const reducer = (state = initialState, action) => {
   } if (action.type === 'setLandmarkOffer') {
     return { ...state, landmarkOffer: action.payload };
   } if (action.type === 'resolveEvent') {
-    return resolveEvent(state, action.payload);
+    return { ...resolveEvent(state, action.payload), eventlessTicks: 0 };
   } if (action.type === 'travelTick') {
     return travelTick(state);
   } if (action.type === 'restCrew') {

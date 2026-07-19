@@ -1,6 +1,20 @@
 body {
+  margin: 0;
   font-family: 'Courier New', Courier, monospace;
   background-image: url('../../dist/extras/stars.gif');
+}
+.appShell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: transparent;
+}
+.appBody {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background-color: transparent;
 }
 button {
   border-style: solid;
@@ -17,6 +31,9 @@ button:hover {
 }
 div {
   background-color: white;
+}
+body > div {
+  background-color: transparent;
 }
 input[type=text] {
   padding: 1% 1% 1% 1%;
@@ -230,9 +247,7 @@ input[type=text] {
   color: rgb(24, 24, 97);
 }
 .statusScreen {
-  position: fixed;
-  bottom: 0;
-  left: 0;
+  flex: 0 0 auto;
   width: 100%;
   box-sizing: border-box;
   padding: 8px 16px;
@@ -242,6 +257,42 @@ input[type=text] {
 .statusScreenOpt {
   background-color: black;
   color: rgb(133, 195, 250);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.statusGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px 32px;
+  align-items: start;
+  background-color: black;
+}
+.statusColumn {
+  min-width: 0;
+  background-color: black;
+}
+.statusHeading {
+  margin-bottom: 4px;
+  padding-bottom: 2px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: rgb(255, 255, 0);
+  background-color: black;
+  border-bottom: 1px solid rgb(70, 70, 70);
+}
+.statusActions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: black;
+}
+.statusActionBtn {
+  min-width: 200px;
+  padding: 12px 20px;
+  font-family: inherit;
+  font-size: 1rem;
+  letter-spacing: 1px;
 }
 .noticePage {
   position: absolute;
@@ -320,7 +371,7 @@ input[type=text] {
   color: rgb(255, 255, 255);
 }
 :root {
-  --laserCursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Crect x='11' y='5' width='6' height='11' fill='%23c8c8d8' stroke='%23000' stroke-width='1'/%3E%3Crect x='8' y='14' width='16' height='8' fill='%23182161' stroke='%23000' stroke-width='1'/%3E%3Crect x='9' y='21' width='6' height='9' fill='%23182161' stroke='%23000' stroke-width='1'/%3E%3Crect x='19' y='16' width='5' height='4' fill='%23FFFF00' stroke='%23000' stroke-width='1'/%3E%3Ccircle cx='14' cy='4' r='3' fill='%2300FFFF' stroke='%23000' stroke-width='1'/%3E%3C/svg%3E") 14 4, crosshair;
+  --laserCursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Crect x='17' y='11' width='11' height='4' fill='%23e8ecf8' stroke='%23000' stroke-width='1'/%3E%3Crect x='3' y='8' width='15' height='10' fill='%23f4f4fa' stroke='%23000' stroke-width='1'/%3E%3Crect x='5' y='18' width='7' height='10' fill='%23ffd000' stroke='%23000' stroke-width='1'/%3E%3Crect x='12' y='18' width='5' height='4' fill='%23ff3b30' stroke='%23000' stroke-width='1'/%3E%3Ccircle cx='28' cy='13' r='3' fill='%2300ffff' stroke='%23000' stroke-width='1'/%3E%3C/svg%3E") 28 13, crosshair;
 }
 .miniGameArea {
   position: relative;
@@ -449,10 +500,18 @@ input[type=text] {
 }
 .travelPage {
   position: relative;
-  min-height: 100vh;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
   background-color: rgb(1, 8, 78);
 }
 .travelViewport {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 0;
   background-color: rgb(1, 8, 78);
 }
 .travelSlide {
@@ -465,6 +524,8 @@ input[type=text] {
 }
 .travelingCanvas {
   width: 100%;
+  min-height: 0;
+  overflow: hidden;
   background-color: rgb(1, 8, 78);
 }
 .travelSlide > div {
@@ -499,6 +560,9 @@ input[type=text] {
   display: block;
   width: 100%;
   height: auto;
+  max-height: 42vh;
+  object-fit: cover;
+  object-position: bottom;
 }
 .drivingRover {
   background-color: transparent;

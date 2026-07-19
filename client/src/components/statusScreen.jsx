@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import data from '../../dist/data.json';
 import classes from '../css/styles.css';
 
-const EVENT_CHANCE = 0.09;
+const EVENT_BASE_CHANCE = 0.12;
+const EVENT_RAMP = 0.1;
+const EVENT_MAX_CHANCE = 0.65;
 
 const StatusScreen = ({
   dispatch,
@@ -17,8 +19,11 @@ const StatusScreen = ({
   notifications,
   rationLevel,
   roverPace,
+  eventlessTicks,
 }) => {
   const { landmarkList } = data;
+  const eventlessRef = useRef(eventlessTicks);
+  eventlessRef.current = eventlessTicks;
 
   const legDistance = () => {
     const branches = landmarkList[previousLandmark];
@@ -38,7 +43,11 @@ const StatusScreen = ({
   useEffect(() => {
     const timer = setInterval(() => {
       dispatch({ type: 'travelTick' });
-      if (Math.random() < EVENT_CHANCE) {
+      const chance = Math.min(
+        EVENT_MAX_CHANCE,
+        EVENT_BASE_CHANCE + (EVENT_RAMP * eventlessRef.current),
+      );
+      if (Math.random() < chance) {
         changePage('event');
       }
     }, 1000);
@@ -72,34 +81,44 @@ const StatusScreen = ({
 
   return (
     <div className={classes.statusScreen}>
-      <div className={classes.statusScreenOpt}>
-        DISTANCE_TO_NEXT_LANDMARK:
-        {distanceRemaining}
-      </div>
-      <div className={classes.statusScreenOpt}>WEATHER: mild</div>
-      <div className={classes.statusScreenOpt}>
-        OXYGEN_REMAINING:
-        {supplyAmount('oxygen')}
-      </div>
-      <div className={classes.statusScreenOpt}>
-        {`RATIONS_REMAINING: water__${supplyAmount('water')} food__${supplyAmount('food')}`}
-      </div>
-      <div className={classes.statusScreenOpt}>CREW:</div>
-      {crew.map((member) => (
-        <div className={classes.statusScreenOpt} key={member.name}>
-          {member.health <= 0
-            ? `  ${member.name}: PERISHED`
-            : `  ${member.name}: health ${member.health}${member.status !== 'healthy' ? ` (${member.status})` : ''}`}
+      <div className={classes.statusGrid}>
+        <div className={classes.statusColumn}>
+          <div className={classes.statusHeading}>MISSION</div>
+          <div className={classes.statusScreenOpt}>{`DISTANCE_TO_NEXT: ${distanceRemaining}`}</div>
+          <div className={classes.statusScreenOpt}>WEATHER: mild</div>
+          <div className={classes.statusScreenOpt}>{`RATIONS: ${rationLevel}`}</div>
+          <div className={classes.statusScreenOpt}>{`PACE: ${roverPace}`}</div>
+          <div className={classes.statusScreenOpt}>{`ROVER_HEALTH: ${roverHealth}`}</div>
         </div>
-      ))}
-      <div className={classes.statusScreenOpt}>
-        ROVER_HEALTH:
-        {roverHealth}
+
+        <div className={classes.statusColumn}>
+          <div className={classes.statusHeading}>SUPPLIES</div>
+          <div className={classes.statusScreenOpt}>{`OXYGEN: ${supplyAmount('oxygen')}`}</div>
+          <div className={classes.statusScreenOpt}>{`WATER: ${supplyAmount('water')}`}</div>
+          <div className={classes.statusScreenOpt}>{`FOOD: ${supplyAmount('food')}`}</div>
+        </div>
+
+        <div className={classes.statusColumn}>
+          <div className={classes.statusHeading}>CREW</div>
+          {crew.map((member) => (
+            <div className={classes.statusScreenOpt} key={member.name}>
+              {member.health <= 0
+                ? `${member.name}: PERISHED`
+                : `${member.name}: ${member.health}${member.status !== 'healthy' ? ` (${member.status})` : ''}`}
+            </div>
+          ))}
+        </div>
+
+        <div className={classes.statusActions}>
+          <button
+            type="button"
+            className={classes.statusActionBtn}
+            onClick={() => { changePage('analyzeSitch'); }}
+          >
+            ANALYZE_SITUATION
+          </button>
+        </div>
       </div>
-      <div className={classes.statusScreenOpt}>
-        {`RATIONS: ${rationLevel}   PACE: ${roverPace}`}
-      </div>
-      <button type="button" onClick={() => { changePage('analyzeSitch'); }}>ANALYZE_SITUATION</button>
     </div>
   );
 };
@@ -114,6 +133,7 @@ const mapStateToProps = (state) => ({
   notifications: state.notifications,
   rationLevel: state.rationLevel,
   roverPace: state.roverPace,
+  eventlessTicks: state.eventlessTicks,
 });
 const mapDispatchToProps = (dispatch) => ({
   dispatch,

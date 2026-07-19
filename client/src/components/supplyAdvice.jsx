@@ -20,7 +20,7 @@ const SupplyAdvice = ({ changePage }) => {
       <p>DUST_PROOF_SPACE_SUIT</p>
       <p>safer alternative to the SPACE_SUIT (reccomend: 1+ per crewmember)</p>
       <p>CACAL_MAINTENANCE_KIT</p>
-      <p>needed to maintain CACAL bot (used for danger navigation)(reccomend: 9+)</p>
+      <p>spare parts for the CACAL navigation bot. THE BOT IS OFFLINE FOR THIS MISSION - THESE KITS ARE DEAD WEIGHT (reccomend: 0)</p>
       <p>ROVER_TIRE_PATCH</p>
       <p>must-have in case of rover flat tire (reccomend: 5+)</p>
       <p>ROVER_MAINTENANCE_KIT</p>

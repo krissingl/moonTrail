@@ -116,9 +116,9 @@ class App extends React.Component {
       );
     }
     return (
-      <div>
+      <div className={classes.appShell}>
         <TitleMenu changePage={this.changePage} />
-        <div>
+        <div className={classes.appBody}>
           {level}
         </div>
       </div>

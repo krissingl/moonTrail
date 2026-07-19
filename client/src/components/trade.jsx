@@ -3,10 +3,12 @@ import { connect } from 'react-redux';
 import supplyLabel from './supplyLabel.jsx';
 import classes from '../css/styles.css';
 
+const INERT_SUPPLIES = ['aiKit'];
+
 const randItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
 const makeOffer = (supplyObj) => {
-  const keys = Object.keys(supplyObj);
+  const keys = Object.keys(supplyObj).filter((key) => !INERT_SUPPLIES.includes(key));
   const owned = keys.filter((key) => supplyObj[key].amount > 0);
   const giveKey = randItem(owned.length ? owned : keys);
   const maxGive = Math.min(3, Math.max(1, supplyObj[giveKey].amount));

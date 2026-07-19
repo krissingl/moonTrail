@@ -16,6 +16,7 @@ const Analyzation = ({
   const [alertMsg, changeAlertMsg] = useState('');
   const [alertType, changeAlertType] = useState('');
   const [showRations, setShowRations] = useState(false);
+  const [showPace, setShowPace] = useState(false);
 
   const popAlert = (msg, type = '') => {
     changeAlertType(type);
@@ -28,18 +29,28 @@ const Analyzation = ({
     popAlert('THE CREW STOPS TO REST. AFFLICTIONS ARE TREATED AND THE WOUNDED RECOVER A LITTLE. REST ALONE WILL NOT BRING ANYONE BACK TO FULL STRENGTH. THIS COSTS TIME.');
   };
 
+  const toggleRations = () => {
+    setShowPace(false);
+    setShowRations(!showRations);
+  };
+
+  const togglePace = () => {
+    setShowRations(false);
+    setShowPace(!showPace);
+  };
+
   const setRations = (level) => {
     dispatch({ type: 'setRationLevel', payload: level });
     setShowRations(false);
     popAlert(`RATIONS SET TO ${level.toUpperCase()}. LEANER RATIONS LAST LONGER BUT RISK ILLNESS.`);
   };
 
-  const togglePace = () => {
-    const next = roverPace === 'cautious' ? 'normal' : 'cautious';
-    dispatch({ type: 'setRoverPace', payload: next });
-    popAlert(next === 'cautious'
+  const setPace = (pace) => {
+    dispatch({ type: 'setRoverPace', payload: pace });
+    setShowPace(false);
+    popAlert(pace === 'cautious'
       ? 'ROVER SLOWED TO A CAUTIOUS PACE. SLOWER TRAVEL, LESS WEAR ON THE ROVER.'
-      : 'ROVER RETURNED TO NORMAL PACE.');
+      : 'ROVER RETURNED TO NORMAL PACE. FASTER TRAVEL, MORE WEAR ON THE ROVER.');
   };
 
   let alertPopUp;
@@ -55,7 +66,7 @@ const Analyzation = ({
       <div>{alertPopUp}</div>
       <div className={classes.analyzeMenu}>
         <button type="button" className={classes.analyzeMenuBtn} onClick={rest}>STOP_TO_REST</button>
-        <button type="button" className={classes.analyzeMenuBtn} onClick={() => setShowRations(!showRations)}>{`ALTER_CREW_RATIONS (${rationLevel})`}</button>
+        <button type="button" className={classes.analyzeMenuBtn} onClick={toggleRations}>{`ALTER_CREW_RATIONS (${rationLevel})`}</button>
         {showRations ? (
           <div className={classes.rationOptions}>
             <button type="button" className={classes.analyzeMenuBtn} onClick={() => setRations('full')}>FULL</button>
@@ -64,6 +75,12 @@ const Analyzation = ({
           </div>
         ) : null}
         <button type="button" className={classes.analyzeMenuBtn} onClick={togglePace}>{`ALTER_ROVER_SPEED (${roverPace})`}</button>
+        {showPace ? (
+          <div className={classes.rationOptions}>
+            <button type="button" className={classes.analyzeMenuBtn} onClick={() => setPace('normal')}>NORMAL</button>
+            <button type="button" className={classes.analyzeMenuBtn} onClick={() => setPace('cautious')}>CAUTIOUS</button>
+          </div>
+        ) : null}
         <button type="button" className={classes.analyzeMenuBtn} onClick={() => changePage('searchResources')}>SEARCH_FOR_RESOURCES</button>
         <button type="button" className={classes.analyzeMenuBtn} onClick={() => popAlert('ROUTE_MAP', 'map')}>CHECK_MAP</button>
         <button type="button" className={classes.analyzeMenuBtn} onClick={() => popAlert('CREW_SUPPLIES', 'checkSupplies')}>CHECK_CREW_SUPPLIES</button>
