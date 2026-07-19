@@ -250,7 +250,7 @@ input[type=text] {
   flex: 0 0 auto;
   width: 100%;
   box-sizing: border-box;
-  padding: 8px 16px;
+  padding: 10px 16px 22px 16px;
   background-color: black;
   color: rgb(133, 195, 250);
 }

@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import data from '../../dist/data.json';
 import classes from '../css/styles.css';
 
-const EVENT_BASE_CHANCE = 0.12;
-const EVENT_RAMP = 0.1;
-const EVENT_MAX_CHANCE = 0.65;
+const EVENT_BASE_CHANCE = 0.04;
+const EVENT_RAMP = 0.03;
+const EVENT_MAX_CHANCE = 0.3;
+const EVENT_COOLDOWN = 2;
 
 const StatusScreen = ({
   dispatch,
@@ -43,6 +44,9 @@ const StatusScreen = ({
   useEffect(() => {
     const timer = setInterval(() => {
       dispatch({ type: 'travelTick' });
+      if (eventlessRef.current < EVENT_COOLDOWN) {
+        return;
+      }
       const chance = Math.min(
         EVENT_MAX_CHANCE,
         EVENT_BASE_CHANCE + (EVENT_RAMP * eventlessRef.current),
