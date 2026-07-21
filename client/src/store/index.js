@@ -21,6 +21,8 @@ const initialState = {
 const CREW_START_HEALTH = 20;
 const CRITICAL_SUPPLIES = ['oxygen', 'food', 'water'];
 const DEPLETION_CADENCE = { oxygen: 2, food: 4, water: 4 };
+const CREW_SCALED_SUPPLIES = ['food', 'water'];
+const CREW_PER_UNIT_DRAWN = 2;
 const RATION_FACTOR = { full: 1, meager: 2, bareBones: 3 };
 const RATION_SICKNESS = { full: 0, meager: 0.01, bareBones: 0.03 };
 const CLOTHING_BY_QUALITY = ['spaceSuit2', 'clothes2', 'spaceSuit', 'clothes'];
@@ -54,6 +56,10 @@ const damageWeakest = (crew, amount) => {
   const weakest = living.reduce((a, b) => (crew[b].health < crew[a].health ? b : a));
   return damageMember(crew, weakest, amount);
 };
+
+const damageAll = (crew, amount) => crew.map((member) => (
+  member.health > 0 ? { ...member, health: Math.max(0, member.health - amount) } : member
+));
 
 const damageRandom = (crew, amount) => {
   const living = livingIndexes(crew);
@@ -155,12 +161,15 @@ const travelTick = (state) => {
   const savedDistance = Math.max(0, (state.savedDistance || 0) - step);
 
   const rationFactor = RATION_FACTOR[state.rationLevel] || 1;
+  const livingAtTickStart = livingIndexes(state.crew).length;
+  const crewDraw = Math.max(1, Math.ceil(livingAtTickStart / CREW_PER_UNIT_DRAWN));
   const supplyObj = { ...state.supplyObj };
   Object.keys(DEPLETION_CADENCE).forEach((key) => {
     const supply = supplyObj[key];
     const cadence = (key === 'oxygen') ? DEPLETION_CADENCE[key] : DEPLETION_CADENCE[key] * rationFactor;
+    const draw = CREW_SCALED_SUPPLIES.includes(key) ? crewDraw : 1;
     if (supply && supply.amount > 0 && ticks % cadence === 0) {
-      supplyObj[key] = { ...supply, amount: supply.amount - 1 };
+      supplyObj[key] = { ...supply, amount: Math.max(0, supply.amount - draw) };
     }
   });
 
@@ -168,7 +177,7 @@ const travelTick = (state) => {
 
   const depleted = CRITICAL_SUPPLIES.some((key) => !supplyObj[key] || supplyObj[key].amount <= 0);
   if (depleted) {
-    crew = damageWeakest(crew, 1);
+    crew = damageAll(crew, 1);
   }
 
   if (ticks % AFFLICTION_CADENCE === 0) {
