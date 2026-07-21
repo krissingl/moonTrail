@@ -66,22 +66,20 @@ const SupplyList = ({
         <button
           type="button"
           className={classes.supplyBtn}
-          onMouseDown={() => startHold(() => minusOneSupply(supply))}
-          onMouseUp={stopHold}
-          onMouseLeave={stopHold}
-          onTouchStart={() => startHold(() => minusOneSupply(supply))}
-          onTouchEnd={stopHold}
+          onPointerDown={() => startHold(() => minusOneSupply(supply))}
+          onPointerUp={stopHold}
+          onPointerLeave={stopHold}
+          onPointerCancel={stopHold}
         >
           --
         </button>
         <button
           type="button"
           className={classes.supplyBtn}
-          onMouseDown={() => startHold(() => addOneSupply(supply))}
-          onMouseUp={stopHold}
-          onMouseLeave={stopHold}
-          onTouchStart={() => startHold(() => addOneSupply(supply))}
-          onTouchEnd={stopHold}
+          onPointerDown={() => startHold(() => addOneSupply(supply))}
+          onPointerUp={stopHold}
+          onPointerLeave={stopHold}
+          onPointerCancel={stopHold}
         >
           +
         </button>

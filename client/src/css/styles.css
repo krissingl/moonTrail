@@ -93,6 +93,7 @@ input[type=text] {
 }
 .supplyBtn {
   padding: 6px 0;
+  touch-action: manipulation;
   width: 44px;
   margin-left: 6px;
   font-weight: 700;
@@ -570,4 +571,141 @@ input[type=text] {
   position: absolute;
   margin-left: min(500px, 45%);
   margin-top: 100px;
+}
+
+@media (max-width: 640px) {
+  body {
+    overflow-x: hidden;
+  }
+  .appBody {
+    justify-content: center;
+    overflow-y: auto;
+  }
+  .noticePage {
+    position: static;
+    transform: none;
+    width: 100%;
+    box-sizing: border-box;
+    margin: auto 0;
+    padding: 14px 12px;
+  }
+  .title,
+  .popupTitle {
+    overflow-wrap: anywhere;
+    font-size: clamp(0.78rem, 3.5vw, 1rem);
+    line-height: 1.5;
+  }
+  .reviewLabel {
+    overflow-wrap: anywhere;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+  .forkContent,
+  .forkOptions {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .forkOptions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding-bottom: 6%;
+  }
+  .forkOR {
+    padding: 4px 0;
+    text-align: center;
+  }
+  .landmarkBtn,
+  .forkOptionBtns,
+  .forkMapBtn,
+  .popupCloseBtn,
+  .statusActionBtn,
+  .supplyBoxBtns {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+  button,
+  .nameAstrosSubmitBtn,
+  input[type=text] {
+    padding: 10px 12px;
+  }
+  .supplyBtn {
+    width: 44px;
+    min-width: 44px;
+    padding: 10px 0;
+  }
+  .supplyBoxBtns {
+    padding: 12px 10px;
+    overflow-wrap: anywhere;
+  }
+  .supplyBox {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .supplyItem {
+    gap: 10px;
+    padding: 8px 6px;
+  }
+  .supplyItemLabel {
+    overflow-wrap: anywhere;
+  }
+  nobr {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    white-space: normal;
+  }
+  .reviewList {
+    width: 100%;
+  }
+  .reviewItem {
+    padding: 3px 10px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+  }
+  .supplyItem:hover,
+  .supplyBoxBtns:hover,
+  button:hover,
+  .nameAstrosSubmitBtn:hover {
+    background-color: white;
+    color: inherit;
+  }
+  .bugRoverImg,
+  .jeepRoverImg,
+  .sWRoverImg {
+    width: 100%;
+    max-width: 220px;
+  }
+  .drivingRover {
+    margin-left: 8%;
+    margin-top: 120px;
+  }
+  .drivingRover img {
+    max-width: 55vw;
+  }
+  .miniGameArea {
+    width: 92vw;
+    height: 42vh;
+    cursor: default;
+  }
+  .miniGameHud {
+    width: 92vw;
+  }
+  .alienTarget {
+    min-width: 44px;
+    min-height: 44px;
+    font-size: 2.4rem;
+    cursor: default;
+  }
+  .innerPopup {
+    padding: 18px 14px;
+  }
+  .wideInnerPopup {
+    width: 94vw;
+    padding: 16px 12px;
+  }
+  .statusActions {
+    justify-content: stretch;
+  }
 }
