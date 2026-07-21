@@ -568,6 +568,6 @@ input[type=text] {
   background-color: transparent;
   padding: none;
   position: absolute;
-  margin-left: 500px;
+  margin-left: min(500px, 45%);
   margin-top: 100px;
 }
